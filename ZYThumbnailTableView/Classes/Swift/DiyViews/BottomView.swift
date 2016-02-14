@@ -18,4 +18,8 @@ class BottomView: UIView {
         }
         return view
     }
+    
+    @IBAction func clickDismissButton(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
+    }
 }

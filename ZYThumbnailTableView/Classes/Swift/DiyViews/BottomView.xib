@@ -12,20 +12,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-v4-s12">
-                    <rect key="frame" x="25" y="5" width="270" height="30"/>
+                    <rect key="frame" x="25" y="5" width="226" height="30"/>
                     <color key="backgroundColor" red="0.59999999999999998" green="0.67450980392156867" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfU-4O-5kh">
+                    <rect key="frame" x="261" y="6.5" width="44" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Dismiss">
+                        <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="clickDismissButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="eTh-iU-Fb2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.20784313725490194" green="0.28235294117647058" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="jfU-4O-5kh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7M9-6A-Vz4"/>
                 <constraint firstItem="SNc-v4-s12" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FuO-tD-xMm"/>
+                <constraint firstItem="jfU-4O-5kh" firstAttribute="leading" secondItem="SNc-v4-s12" secondAttribute="trailing" constant="10" id="K8m-eA-fvc"/>
                 <constraint firstItem="SNc-v4-s12" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="O9h-G5-d0q"/>
                 <constraint firstAttribute="trailing" secondItem="SNc-v4-s12" secondAttribute="trailing" constant="25" id="nke-BP-mk9"/>
+                <constraint firstAttribute="trailing" secondItem="jfU-4O-5kh" secondAttribute="trailing" constant="15" id="qK6-e9-oCW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="nke-BP-mk9"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

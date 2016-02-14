@@ -13,7 +13,9 @@ typealias SpreadCellAnimationBlick = (cell: UITableViewCell) -> Void
 typealias CreateTopExpansionViewBlock = () -> UIView
 typealias CreateBottomExpansionViewBlock = () -> UIView
 
-var KEY_CONTENT_VIEW = "KEY_CONTENT_VIEW"
+let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
+
+
 class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
@@ -78,6 +80,20 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .None
         mainTableView.reloadData()
+        
+        registerNotification()
+    }
+    
+    deinit {
+        resignNotification()
+    }
+    
+    func registerNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissPreview", name: NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
+    }
+    
+    func resignNotification() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -216,7 +232,17 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func dismissPreview() {
-        
+        print("需要我的时候再来")
+        clickIndexPathRow = nil
+        //todo 这里给开发者一个选择，要动画过程还是立即完成
+        //        mainTableView.reloadData()
+        mainTableView.beginUpdates()
+        mainTableView.endUpdates()
+        UIView.animateWithDuration(0.301992, animations: { () -> Void in
+            self.thumbnailView.superview?.alpha = 0
+            }) { (finish) -> Void in
+                self.thumbnailView.superview?.removeFromSuperview()
+        }
     }
     
     func panThumbnailView(gesture: UIPanGestureRecognizer) {
