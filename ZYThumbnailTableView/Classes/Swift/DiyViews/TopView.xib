@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TopView" customModule="ZYThumbnailTableView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Essay Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLA-NH-HTS">
+                    <rect key="frame" x="25" y="10" width="88.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc desc desc desc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svh-3G-pj3">
+                    <rect key="frame" x="143.5" y="10" width="153" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.20784313725490194" green="0.28235294117647058" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="QLA-NH-HTS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="9cY-Mc-GX5"/>
+                <constraint firstItem="Svh-3G-pj3" firstAttribute="leading" secondItem="QLA-NH-HTS" secondAttribute="trailing" constant="30" id="M6F-UA-wR7"/>
+                <constraint firstItem="Svh-3G-pj3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bVt-gU-oWg"/>
+                <constraint firstItem="Svh-3G-pj3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ekK-3a-lO4"/>
+                <constraint firstItem="QLA-NH-HTS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rcE-8x-HV8"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="bVt-gU-oWg"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

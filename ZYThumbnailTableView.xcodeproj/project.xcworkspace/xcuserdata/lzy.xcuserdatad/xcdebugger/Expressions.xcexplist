@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ZYThumbnailTableViewController.tableView(UITableView, heightForRowAtIndexPath : NSIndexPath) -&gt; CGFloat:ZYThumbnailTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "clickIndexPathRow">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "spreadCellHeight">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.(configureZYTableView(ViewController) -&gt; () -&gt; ()).(closure #2):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.thumbnailCell.contentLabel.numberOfLines">
+            </PersistentString>
+            <PersistentString
+               value = "self.thumbnailCell">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ZYThumbnailTableViewController.tableView(UITableView, didSelectRowAtIndexPath : NSIndexPath) -&gt; ():ZYThumbnailTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "clickIndexPathRow">
+            </PersistentString>
+            <PersistentString
+               value = "cellDictionary">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
