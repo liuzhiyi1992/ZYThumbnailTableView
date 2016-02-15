@@ -324,10 +324,20 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         
         //update Frame
         topView.updateOriginY(-topView.bounds.height)
-        UIView.animateWithDuration(0.201992) { () -> Void in
+        UIView.animateWithDuration(0.201992, animations: { () -> Void in
             self.thumbnailView.updateHeight(self.thumbnailView.bounds.height + topView.bounds.height)
             contentView?.updateOriginY(topView.bounds.height)
             topView.updateOriginY(0)
+            }) { (finish) -> Void in
+                //Overflow screen
+                let keyWindow = UIApplication.sharedApplication().keyWindow
+                let convertRect = self.thumbnailView.superview?.convertRect(self.thumbnailView.frame, toView: keyWindow)
+                let diff = CGRectGetMaxY(convertRect!) - CGRectGetMaxY(UIScreen.mainScreen().bounds)
+                if diff > 0 {
+                    UIView.animateWithDuration(0.201992, animations: { () -> Void in
+                        self.thumbnailView.updateOriginY(self.thumbnailView.frame.origin.y - diff)
+                    })
+                }
         }
     }
     
@@ -349,6 +359,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
             self.thumbnailView.updateHeight(self.thumbnailView.bounds.height + bottomView.bounds.height)
             self.thumbnailView.updateOriginY(self.thumbnailView.frame.origin.y - bottomView.bounds.height)
             }) { (finish) -> Void in
+                //Overflow screen
                 if self.thumbnailView.frame.origin.y < 0 {
                     UIView.animateWithDuration(0.201992, animations: { () -> Void in
                         self.thumbnailView.updateOriginY(0)

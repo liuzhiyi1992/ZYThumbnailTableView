@@ -12,22 +12,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Essay Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLA-NH-HTS">
-                    <rect key="frame" x="25" y="10" width="88.5" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <rect key="frame" x="25" y="12" width="69" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc desc desc desc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svh-3G-pj3">
-                    <rect key="frame" x="143.5" y="10" width="153" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <rect key="frame" x="168" y="12.5" width="119.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYx-Oa-3t5">
+                    <rect key="frame" x="109" y="7" width="44" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Dismiss">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="clickDismissButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="hPY-5D-sAz"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.20784313725490194" green="0.28235294117647058" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="XYx-Oa-3t5" firstAttribute="leading" secondItem="QLA-NH-HTS" secondAttribute="trailing" constant="15" id="5jK-6Q-djS"/>
                 <constraint firstItem="QLA-NH-HTS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="9cY-Mc-GX5"/>
                 <constraint firstItem="Svh-3G-pj3" firstAttribute="leading" secondItem="QLA-NH-HTS" secondAttribute="trailing" constant="30" id="M6F-UA-wR7"/>
+                <constraint firstItem="XYx-Oa-3t5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NX6-hF-yyi"/>
+                <constraint firstItem="Svh-3G-pj3" firstAttribute="leading" secondItem="XYx-Oa-3t5" secondAttribute="trailing" constant="15" id="QRY-8n-2RL"/>
                 <constraint firstItem="Svh-3G-pj3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bVt-gU-oWg"/>
                 <constraint firstItem="Svh-3G-pj3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ekK-3a-lO4"/>
                 <constraint firstItem="QLA-NH-HTS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rcE-8x-HV8"/>
@@ -36,6 +49,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="M6F-UA-wR7"/>
                     <exclude reference="bVt-gU-oWg"/>
                 </mask>
             </variation>
