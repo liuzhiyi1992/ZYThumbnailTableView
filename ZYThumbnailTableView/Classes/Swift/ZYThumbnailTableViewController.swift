@@ -213,8 +213,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
         var toFrame = thumbnailView.frame
         toFrame.size.height = nonNilSpreadCellHeight
-        UIView.animateWithDuration(0.301992) { () -> Void in
+        UIView.animateWithDuration(0.201992, animations: { () -> Void in
             thumbnailView.frame = toFrame
+            }) { (finish) -> Void in
+                //Overflow screen
+                self.handleOverFlowScreen(self.thumbnailView)
         }
     }
     
@@ -330,14 +333,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
             topView.updateOriginY(0)
             }) { (finish) -> Void in
                 //Overflow screen
-                let keyWindow = UIApplication.sharedApplication().keyWindow
-                let convertRect = self.thumbnailView.superview?.convertRect(self.thumbnailView.frame, toView: keyWindow)
-                let diff = CGRectGetMaxY(convertRect!) - CGRectGetMaxY(UIScreen.mainScreen().bounds)
-                if diff > 0 {
-                    UIView.animateWithDuration(0.201992, animations: { () -> Void in
-                        self.thumbnailView.updateOriginY(self.thumbnailView.frame.origin.y - diff)
-                    })
-                }
+                self.handleOverFlowScreen(self.thumbnailView)
         }
     }
     
@@ -367,6 +363,21 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
                 }
         }
         
+    }
+    
+    func handleOverFlowScreen(handleView: UIView) {
+        let keyWindow = UIApplication.sharedApplication().keyWindow
+        let convertRect = handleView.superview?.convertRect(handleView.frame, toView: keyWindow)
+        guard let nonNilConvertRect = convertRect else {
+            print("ERROR: can not convert Rect error")
+            return
+        }
+        let diff = CGRectGetMaxY(nonNilConvertRect) - CGRectGetMaxY(UIScreen.mainScreen().bounds)
+        if diff > 0 {
+            UIView.animateWithDuration(0.201992, animations: { () -> Void in
+                handleView.updateOriginY(handleView.frame.origin.y - diff)
+            })
+        }
     }
     
     override func didReceiveMemoryWarning() {
