@@ -345,11 +345,17 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views))
         
         //update Frame
-        
-        UIView.animateWithDuration(0.201992) { () -> Void in
+        UIView.animateWithDuration(0.201992, animations: { () -> Void in
             self.thumbnailView.updateHeight(self.thumbnailView.bounds.height + bottomView.bounds.height)
             self.thumbnailView.updateOriginY(self.thumbnailView.frame.origin.y - bottomView.bounds.height)
+            }) { (finish) -> Void in
+                if self.thumbnailView.frame.origin.y < 0 {
+                    UIView.animateWithDuration(0.201992, animations: { () -> Void in
+                        self.thumbnailView.updateOriginY(0)
+                    })
+                }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -358,6 +364,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
 
 }
+
 
 
 extension UIView {
