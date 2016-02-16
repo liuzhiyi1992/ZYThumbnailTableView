@@ -229,20 +229,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tapPreviewCover(gesture: UITapGestureRecognizer) {
-        clickIndexPathRow = nil
-        //todo 这里给开发者一个选择，要动画过程还是立即完成
-//        mainTableView.reloadData()
-        mainTableView.beginUpdates()
-        mainTableView.endUpdates()
-        UIView.animateWithDuration(0.301992, animations: { () -> Void in
-            gesture.view?.alpha = 0
-        }) { (finish) -> Void in
-            gesture.view?.removeFromSuperview()
-        }
+        dismissPreview()
     }
     
     func dismissPreview() {
-        print("需要我的时候再来")
         clickIndexPathRow = nil
         //todo 这里给开发者一个选择，要动画过程还是立即完成
         //        mainTableView.reloadData()
@@ -252,11 +242,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
             self.thumbnailView.superview?.alpha = 0
             }) { (finish) -> Void in
                 self.thumbnailView.superview?.removeFromSuperview()
+                self.thumbnailViewCanPan = true
         }
     }
     
     func panThumbnailView(gesture: UIPanGestureRecognizer) {
-        //限制canpan
         let thumbnailViewHeight = gesture.view!.bounds.height
         let gestureTranslation = gesture.translationInView(gesture.view)
         let thresholdValue = thumbnailViewHeight * 0.3
@@ -275,7 +265,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
             animator.removeAllBehaviors()
             break
         case .Ended:
-            thumbnailViewCanPan = true
             break
         default:
             break
