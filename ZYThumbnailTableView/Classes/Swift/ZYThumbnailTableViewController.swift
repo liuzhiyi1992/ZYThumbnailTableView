@@ -9,6 +9,7 @@
 import UIKit
 
 typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
+typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
 typealias SpreadCellAnimationBlick = (cell: UITableViewCell) -> Void
 typealias CreateTopExpansionViewBlock = () -> UIView
 typealias CreateBottomExpansionViewBlock = () -> UIView
@@ -27,6 +28,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
 //MARK: PROPERTY
     var cellHeight: CGFloat = CELL_HEIGHT_DEFAULT
+    //todo数据源要不要规定成字典数组?
     var dataList = NSArray()
     var cellReuseId = "zythumbnailCell"
     
@@ -45,6 +47,12 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         return {
             assertionFailure("ERROR: You must configure the configureTableViewCellBlock")
             return nil
+        }
+    }()
+    
+    lazy var updateTableViewCellBlock: UpdateTableViewCellBlock = {
+        return {
+            print("ERROR: You must configure the updateTableViewCellBlock")
         }
     }()
     
@@ -105,19 +113,20 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = cellReuseId
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
-        
         if cell == nil {
             //配置cell的Block
-            //我觉得，也可以在里面update
             cell = configureTableViewCellBlock()
             cell?.selectionStyle = .None
         }
         guard let nonNilcell = cell else {
-            assertionFailure("ERROR: cell can not be nil, plase config cell with configureTableViewCellBlock")
+            assertionFailure("ERROR: cell can not be nil, plase config cell aright with configureTableViewCellBlock")
             return UITableViewCell(frame: CGRectZero)
         }
+        //这里updateCell
+        updateTableViewCellBlock(cell: nonNilcell, indexPath: indexPath)
+        
         //记录所有cell,didSelected后拿出来配置
-        cellDictionary.setValue(cell, forKey: "\(indexPath.row)")
+        cellDictionary.setValue(nonNilcell, forKey: "\(indexPath.row)")
         return nonNilcell
     }
     

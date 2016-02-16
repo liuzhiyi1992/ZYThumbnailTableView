@@ -37,11 +37,17 @@ class ViewController: UIViewController {
         
         //因为是push过去的关系,数据源交给tableviewcontroller，更新数据源也交给他吧
         zyThumbnailTableVC.configureTableViewCellBlock = {
-            //这里的名字是自定义的,看能不能把重用id也动态？
             let cell = NSBundle.mainBundle().loadNibNamed("ZYThumbnailTableViewCell", owner: nil, options: nil).first as? ZYThumbnailTableViewCell
             //configure cell
             cell?.updateCell()
             return cell
+        }
+        
+        zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
+            print(indexPath.row)
+            print(cell)
+            let myCell = cell as? ZYThumbnailTableViewCell
+            myCell?.updateCell()
         }
         
         zyThumbnailTableVC.spreadCellAnimationBlock =  {
