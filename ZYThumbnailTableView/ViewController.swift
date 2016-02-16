@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
-//    @IBOutlet weak var mainTableView: UITableView!
     var zyThumbnailTableVC: ZYThumbnailTableViewController!
     
     var dataList = NSArray()
@@ -24,11 +22,7 @@ class ViewController: UIViewController {
         
         configureNav()
         configureZYTableView()
-        
-        
-        
     }
-
     
     func configureNav() {
         self.navigationController?.navigationBar.translucent = false
@@ -38,12 +32,14 @@ class ViewController: UIViewController {
     
     func configureZYTableView() {
         zyThumbnailTableVC = ZYThumbnailTableViewController()
+        zyThumbnailTableVC.cellReuseId = "zythumbnailCell"
+        zyThumbnailTableVC.cellHeight = 100.0
+        
         //因为是push过去的关系,数据源交给tableviewcontroller，更新数据源也交给他吧
         zyThumbnailTableVC.configureTableViewCellBlock = {
             //这里的名字是自定义的,看能不能把重用id也动态？
             let cell = NSBundle.mainBundle().loadNibNamed("ZYThumbnailTableViewCell", owner: nil, options: nil).first as? ZYThumbnailTableViewCell
             //configure cell
-            
             cell?.updateCell()
             return cell
         }

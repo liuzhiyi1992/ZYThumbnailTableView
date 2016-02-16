@@ -26,23 +26,19 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
 //MARK: PROPERTY
-    let cellHeight: CGFloat = CELL_HEIGHT_DEFAULT
+    var cellHeight: CGFloat = CELL_HEIGHT_DEFAULT
     var dataList = NSArray()
-    var mainTableView: UITableView!
-    var clickIndexPathRow: Int?
-    var spreadCellHeight: CGFloat?
-
-    var cellSpreadHeight: CGFloat?
+    var cellReuseId = "zythumbnailCell"
     
-    var cellDictionary: NSMutableDictionary = NSMutableDictionary()
+    private var mainTableView: UITableView!
+    private var clickIndexPathRow: Int?
+    private var spreadCellHeight: CGFloat?
+    private var cellDictionary: NSMutableDictionary = NSMutableDictionary()
+    private var thumbnailView: UIView!
+    private var thumbnailViewCanPan = true
+    private var animator: UIDynamicAnimator!
+    private var expandAmplitude = EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT
     
-    var thumbnailView: UIView!
-    
-    var thumbnailViewCanPan = true
-    
-    var animator: UIDynamicAnimator!
-    
-    let expandAmplitude = EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT
     
 //MARK: BLOCKS
     lazy var configureTableViewCellBlock: ConfigureTableViewCellBlock = {
@@ -107,22 +103,20 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //todo 注意自定义的cell的id要设置成这个
-        let identifier = "zythumbnailCell"
+        let identifier = cellReuseId
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         
         if cell == nil {
-            //这里放一个Block 返回值 只能 是一个uitableviewCell
+            //配置cell的Block
             //我觉得，也可以在里面update
             cell = configureTableViewCellBlock()
             cell?.selectionStyle = .None
         }
-        
         guard let nonNilcell = cell else {
             assertionFailure("ERROR: cell can not be nil, plase config cell with configureTableViewCellBlock")
             return UITableViewCell(frame: CGRectZero)
         }
-        //计算cell完全展开的高度，记录
+        //记录所有cell,didSelected后拿出来配置
         cellDictionary.setValue(cell, forKey: "\(indexPath.row)")
         return nonNilcell
     }
@@ -271,7 +265,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    
     func shock(view: UIView, type: String) {
         //超出tableview范围不shock
         var expandShockAmplitude: CGFloat!
@@ -319,51 +312,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    /*
-    func layoutExpansionView(type: String) {
-        let contentView = thumbnailView.subviews.first
-        var expansionView: UIView!
-        
-        //create ExpansionView
-        if type == TYPE_EXPANSION_VIEW_TOP {
-            expansionView = TopView.createView()!
-        } else if type == TYPE_EXPANSION_VIEW_BOTTOM {
-            expansionView = BottomView.createView()!
-        }
-
-        //layout expansionView
-        expansionView.translatesAutoresizingMaskIntoConstraints = false
-        thumbnailView.addSubview(expansionView)
-        
-        //Constraint
-        let views = ["contentView":contentView!, "expansionView":expansionView]
-        _ = thumbnailView.constraints.map { $0.active = false }
-        if type == TYPE_EXPANSION_VIEW_TOP {
-            thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[expansionView]-0-[contentView]|", options: .AlignAllCenterX, metrics: nil, views: views))
-        } else if type == TYPE_EXPANSION_VIEW_BOTTOM {
-            thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView]-0-[expansionView]|", options: .AlignAllCenterX, metrics: nil, views: views))
-        }
-        thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[expansionView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views))
-        thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views))
-
-        //update Frame
-        if type == TYPE_EXPANSION_VIEW_TOP {
-            expansionView.updateOriginY(-expansionView.bounds.height)
-            UIView.animateWithDuration(0.3) { () -> Void in
-                self.thumbnailView.updateHeight(self.thumbnailView.bounds.height + expansionView.bounds.height)
-                contentView?.updateOriginY(expansionView.bounds.height)
-                expansionView.updateOriginY(0)
-            }
-        } else if type == TYPE_EXPANSION_VIEW_BOTTOM {
-            UIView.animateWithDuration(0.301992, animations: { () -> Void in
-                self.thumbnailView.updateHeight(self.thumbnailView.bounds.height + expansionView.bounds.height)
-            }, completion: { (finish) -> Void in
-                
-            })
-        }
-    }
-    */
-    
     func layoutTopView() {
         let contentView = thumbnailView.subviews.first
         let topView = createTopExpansionViewBlock()
@@ -389,93 +337,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
         //shock
         shock(thumbnailView, type: TYPE_EXPANSION_VIEW_TOP)
-        
-        /*
-        
-        let boundsAnim = CABasicAnimation(keyPath: "bounds")
-        let frombounds = self.thumbnailView.bounds
-        var tobounds = self.thumbnailView.bounds
-        tobounds.size.height = thumbnailView.layer.frame.height + topView.layer.frame.height
-        
-        boundsAnim.fromValue = frombounds as? AnyObject
-        boundsAnim.toValue = tobounds as? AnyObject
-        boundsAnim.duration = 3.201992
-        boundsAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
-        
-        
-        let thumbnailViewPositionAnim = CAKeyframeAnimation(keyPath: "position")
-        let thumbnailViewPosition = self.thumbnailView.layer.position
-        let path = UIBezierPath()
-        path.moveToPoint(thumbnailViewPosition)
-        path.addLineToPoint(CGPointMake(thumbnailViewPosition.x, thumbnailViewPosition.y + 0.5*topView.layer.frame.height))
-        thumbnailViewPositionAnim.path = path.CGPath
-        thumbnailViewPositionAnim.duration = 3.201992
-        thumbnailViewPositionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
-        
-        
-        
-        let group = CAAnimationGroup()
-        group.animations = [boundsAnim ,thumbnailViewPositionAnim]
-        group.duration = 3.201992
-        group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
-        self.thumbnailView.layer.addAnimation(group, forKey: "group")
-        
-        
-        CATransaction.begin()
-        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-//        thumbnailView.frame.size.height = thumbnailView.layer.frame.height + topView.layer.frame.height
-        thumbnailView.layer.bounds = tobounds
-        self.thumbnailView.layer.position = CGPointMake(thumbnailViewPosition.x, thumbnailViewPosition.y + 0.5*topView.layer.frame.height)
-        CATransaction.commit()
-        */
-        
-        
-        
-        
-        //shock Anim
-        /*
-        let shockAmplitude = CGFloat(10)
-        let contentViewPositionAnim = CAKeyframeAnimation(keyPath: "position")
-        let contentViewPosition = contentView!.layer.position
-        let contentViewPath = movingPath(contentViewPosition,
-                                         keyPoints: CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height + shockAmplitude),
-                                                    CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height - 0.5 * shockAmplitude),
-                                                    CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height))
-        contentViewPositionAnim.path = contentViewPath.CGPath
-        contentViewPositionAnim.keyTimes = [0.0, 0.8, 0.9, 1.0]
-        contentViewPositionAnim.duration = 2.3
-        contentViewPositionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        contentView?.layer.addAnimation(contentViewPositionAnim, forKey: "contentview")
-        
-        
-        
-        let topViewPositionAnim = CAKeyframeAnimation(keyPath: "position")
-        let topViewPosition = topView.layer.position
-        let topViewPath = movingPath(topViewPosition,
-                                     keyPoints: CGPointMake(topViewPosition.x, topViewPosition.y + topView.bounds.height + shockAmplitude),
-                                                CGPointMake(topViewPosition.x, topViewPosition.y + topView.bounds.height - 0.5 * shockAmplitude),
-                                                CGPointMake(topViewPosition.x, topViewPosition.y + topView.bounds.height))
-        topViewPositionAnim.path = topViewPath.CGPath
-        topViewPositionAnim.keyTimes = [0.0, 0.8, 0.9, 1.0]
-        topViewPositionAnim.duration = 2.3
-        topViewPositionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        topView.layer.addAnimation(topViewPositionAnim, forKey: "topview")
-        
-        
-        
-        contentView?.layer.position = CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height)
-        topView.layer.position = CGPointMake(topView.layer.position.x, topViewPosition.y + topView.bounds.height)
-        */
-        
-    }
-    
-    func movingPath(startPoint: CGPoint, keyPoints: CGPoint...) -> UIBezierPath {
-        let path = UIBezierPath()
-        path.moveToPoint(startPoint)
-        for point in keyPoints {
-            path.addLineToPoint(point)
-        }
-        return path
     }
     
     func layoutBottomView() {
@@ -505,7 +366,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
         //shock
         shock(thumbnailView, type: TYPE_EXPANSION_VIEW_BOTTOM)
-        
     }
     
     func handleOverFlowScreen(handleView: UIView) {
@@ -521,6 +381,15 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
                 handleView.updateOriginY(handleView.frame.origin.y - diff)
             })
         }
+    }
+    
+    func movingPath(startPoint: CGPoint, keyPoints: CGPoint...) -> UIBezierPath {
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        for point in keyPoints {
+            path.addLineToPoint(point)
+        }
+        return path
     }
     
     override func didReceiveMemoryWarning() {
