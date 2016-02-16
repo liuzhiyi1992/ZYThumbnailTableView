@@ -21,6 +21,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
 //MARK: DEFINE
     private static let CELL_HEIGHT_DEFAULT = CGFloat(100.0)
+    private static let EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT = CGFloat(10)
     let TYPE_EXPANSION_VIEW_TOP = "TYPE_EXPANSION_VIEW_TOP"
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
@@ -38,6 +39,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     var thumbnailView: UIView!
     
     var thumbnailViewCanPan = true
+    
+    var animator: UIDynamicAnimator!
+    
+    let expandAmplitude = EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT
     
 //MARK: BLOCKS
     lazy var configureTableViewCellBlock: ConfigureTableViewCellBlock = {
@@ -180,6 +185,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
         previewCover.addGestureRecognizer(tapGesture)
         self.view.insertSubview(previewCover, aboveSubview: mainTableView)
+        //animator
+        animator = UIDynamicAnimator(referenceView: previewCover)
         
         //create thumbnailView
         let convertRect = mainTableView.convertRect(cell.frame, toView: self.view)
@@ -249,6 +256,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func panThumbnailView(gesture: UIPanGestureRecognizer) {
+        //限制canpan
         let thumbnailViewHeight = gesture.view!.bounds.height
         let gestureTranslation = gesture.translationInView(gesture.view)
         let thresholdValue = thumbnailViewHeight * 0.3
@@ -261,9 +269,64 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
                 thumbnailViewCanPan = false
             }
         }
-        
-        if gesture.state == .Ended {
+        //gesture state
+        switch gesture.state {
+        case .Began:
+            animator.removeAllBehaviors()
+            break
+        case .Ended:
             thumbnailViewCanPan = true
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    func shock(view: UIView, type: String) {
+        //超出tableview范围不shock
+        var expandShockAmplitude: CGFloat!
+        let convertRect = view.superview?.convertRect(view.frame, toView: self.view)
+        guard let nonNilConvertRect = convertRect else {
+            print("ERROR: convertRect error")
+            return
+        }
+        if type == TYPE_EXPANSION_VIEW_TOP {
+            expandShockAmplitude = self.expandAmplitude
+            if CGRectGetMaxY(nonNilConvertRect) > CGRectGetHeight(self.view.frame) {
+                //超出下面
+                return
+            }
+        } else if (type == TYPE_EXPANSION_VIEW_BOTTOM) {
+            expandShockAmplitude = -self.expandAmplitude
+            if CGRectGetMinY(nonNilConvertRect) < 0 {
+                //超出上面
+                return
+            }
+        } else {
+            print("ERROR: function shock parameter illegal")
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+            NSThread.sleepForTimeInterval(0.1)
+            var snapPoint = view.center
+            snapPoint.y += expandShockAmplitude
+            var snapBehavior = UISnapBehavior(item: view, snapToPoint: snapPoint)
+            snapBehavior.damping = 0.9
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.animator.addBehavior(snapBehavior)
+            })
+            
+            NSThread.sleepForTimeInterval(0.1)
+            
+            snapPoint.y -= expandShockAmplitude
+            snapBehavior = UISnapBehavior(item: view, snapToPoint: snapPoint)
+            snapBehavior.damping = 0.9
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.animator.removeAllBehaviors()
+                self.animator.addBehavior(snapBehavior)
+            })
+            
         }
     }
     
@@ -329,12 +392,101 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         topView.updateOriginY(-topView.bounds.height)
         UIView.animateWithDuration(0.201992, animations: { () -> Void in
             self.thumbnailView.updateHeight(self.thumbnailView.bounds.height + topView.bounds.height)
-            contentView?.updateOriginY(topView.bounds.height)
-            topView.updateOriginY(0)
+                contentView?.updateOriginY(topView.bounds.height)
+                topView.updateOriginY(0)
             }) { (finish) -> Void in
                 //Overflow screen
                 self.handleOverFlowScreen(self.thumbnailView)
         }
+        //shock
+        shock(thumbnailView, type: TYPE_EXPANSION_VIEW_TOP)
+        
+        /*
+        
+        let boundsAnim = CABasicAnimation(keyPath: "bounds")
+        let frombounds = self.thumbnailView.bounds
+        var tobounds = self.thumbnailView.bounds
+        tobounds.size.height = thumbnailView.layer.frame.height + topView.layer.frame.height
+        
+        boundsAnim.fromValue = frombounds as? AnyObject
+        boundsAnim.toValue = tobounds as? AnyObject
+        boundsAnim.duration = 3.201992
+        boundsAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+        
+        
+        let thumbnailViewPositionAnim = CAKeyframeAnimation(keyPath: "position")
+        let thumbnailViewPosition = self.thumbnailView.layer.position
+        let path = UIBezierPath()
+        path.moveToPoint(thumbnailViewPosition)
+        path.addLineToPoint(CGPointMake(thumbnailViewPosition.x, thumbnailViewPosition.y + 0.5*topView.layer.frame.height))
+        thumbnailViewPositionAnim.path = path.CGPath
+        thumbnailViewPositionAnim.duration = 3.201992
+        thumbnailViewPositionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+        
+        
+        
+        let group = CAAnimationGroup()
+        group.animations = [boundsAnim ,thumbnailViewPositionAnim]
+        group.duration = 3.201992
+        group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+        self.thumbnailView.layer.addAnimation(group, forKey: "group")
+        
+        
+        CATransaction.begin()
+        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
+//        thumbnailView.frame.size.height = thumbnailView.layer.frame.height + topView.layer.frame.height
+        thumbnailView.layer.bounds = tobounds
+        self.thumbnailView.layer.position = CGPointMake(thumbnailViewPosition.x, thumbnailViewPosition.y + 0.5*topView.layer.frame.height)
+        CATransaction.commit()
+        */
+        
+        
+        
+        
+        //shock Anim
+        /*
+        let shockAmplitude = CGFloat(10)
+        let contentViewPositionAnim = CAKeyframeAnimation(keyPath: "position")
+        let contentViewPosition = contentView!.layer.position
+        let contentViewPath = movingPath(contentViewPosition,
+                                         keyPoints: CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height + shockAmplitude),
+                                                    CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height - 0.5 * shockAmplitude),
+                                                    CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height))
+        contentViewPositionAnim.path = contentViewPath.CGPath
+        contentViewPositionAnim.keyTimes = [0.0, 0.8, 0.9, 1.0]
+        contentViewPositionAnim.duration = 2.3
+        contentViewPositionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        contentView?.layer.addAnimation(contentViewPositionAnim, forKey: "contentview")
+        
+        
+        
+        let topViewPositionAnim = CAKeyframeAnimation(keyPath: "position")
+        let topViewPosition = topView.layer.position
+        let topViewPath = movingPath(topViewPosition,
+                                     keyPoints: CGPointMake(topViewPosition.x, topViewPosition.y + topView.bounds.height + shockAmplitude),
+                                                CGPointMake(topViewPosition.x, topViewPosition.y + topView.bounds.height - 0.5 * shockAmplitude),
+                                                CGPointMake(topViewPosition.x, topViewPosition.y + topView.bounds.height))
+        topViewPositionAnim.path = topViewPath.CGPath
+        topViewPositionAnim.keyTimes = [0.0, 0.8, 0.9, 1.0]
+        topViewPositionAnim.duration = 2.3
+        topViewPositionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        topView.layer.addAnimation(topViewPositionAnim, forKey: "topview")
+        
+        
+        
+        contentView?.layer.position = CGPointMake(contentViewPosition.x, contentViewPosition.y + topView.bounds.height)
+        topView.layer.position = CGPointMake(topView.layer.position.x, topViewPosition.y + topView.bounds.height)
+        */
+        
+    }
+    
+    func movingPath(startPoint: CGPoint, keyPoints: CGPoint...) -> UIBezierPath {
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        for point in keyPoints {
+            path.addLineToPoint(point)
+        }
+        return path
     }
     
     func layoutBottomView() {
@@ -362,6 +514,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
                     })
                 }
         }
+        //shock
+        shock(thumbnailView, type: TYPE_EXPANSION_VIEW_BOTTOM)
         
     }
     
