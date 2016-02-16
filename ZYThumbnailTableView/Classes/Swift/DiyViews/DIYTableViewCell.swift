@@ -8,9 +8,13 @@
 
 import UIKit
 
-class ZYThumbnailTableViewCell: UITableViewCell {
+class DIYTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,15 +22,18 @@ class ZYThumbnailTableViewCell: UITableViewCell {
     }
     
     
-    class func createCell() -> ZYThumbnailTableViewCell {
-        let cell = NSBundle.mainBundle().loadNibNamed("ZYThumbnailTableViewCell", owner: nil, options: nil).first as? ZYThumbnailTableViewCell
-        assert(cell != nil, "can not load nib named ZYThumbnailTableViewCell")
+    class func createCell() -> DIYTableViewCell {
+        let cell = NSBundle.mainBundle().loadNibNamed("DIYTableViewCell", owner: nil, options: nil).first as? DIYTableViewCell
+        assert(cell != nil, "can not load nib named DIYTableViewCell")
         return cell!
     }
     
     
-    func updateCell() {
-//        contentLabel.text = "更新成功啦"
+    func updateCell(dict: [String : String]) {
+        nameLabel.text = dict["name"] ?? "error"
+        descLabel.text = dict["desc"] ?? "error"
+        timeLabel.text = dict["time"] ?? "error"
+        contentLabel.text = dict["content"] ?? "error"
         print("更新成功")
     }
     

@@ -11,9 +11,9 @@
 		484A1D2A1C70B80F0046AEF4 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D231C70B80F0046AEF4 /* BottomView.xib */; };
 		484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D241C70B80F0046AEF4 /* TopView.swift */; };
 		484A1D2C1C70B80F0046AEF4 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D251C70B80F0046AEF4 /* TopView.xib */; };
-		484A1D2D1C70B80F0046AEF4 /* ZYThumbnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D261C70B80F0046AEF4 /* ZYThumbnailTableViewCell.swift */; };
-		484A1D2E1C70B80F0046AEF4 /* ZYThumbnailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D271C70B80F0046AEF4 /* ZYThumbnailTableViewCell.xib */; };
 		484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */; };
+		48F9AB831C73302500D825AB /* DIYTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9AB811C73302500D825AB /* DIYTableViewCell.swift */; };
+		48F9AB841C73302500D825AB /* DIYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F9AB821C73302500D825AB /* DIYTableViewCell.xib */; };
 		48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE17E11C68CB8D008857BE /* AppDelegate.swift */; };
 		48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE17E31C68CB8D008857BE /* ViewController.swift */; };
 		48FE17E71C68CB8D008857BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FE17E51C68CB8D008857BE /* Main.storyboard */; };
@@ -27,9 +27,9 @@
 		484A1D231C70B80F0046AEF4 /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		484A1D241C70B80F0046AEF4 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		484A1D251C70B80F0046AEF4 /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
-		484A1D261C70B80F0046AEF4 /* ZYThumbnailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYThumbnailTableViewCell.swift; sourceTree = "<group>"; };
-		484A1D271C70B80F0046AEF4 /* ZYThumbnailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZYThumbnailTableViewCell.xib; sourceTree = "<group>"; };
 		484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYThumbnailTableViewController.swift; sourceTree = "<group>"; };
+		48F9AB811C73302500D825AB /* DIYTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIYTableViewCell.swift; sourceTree = "<group>"; };
+		48F9AB821C73302500D825AB /* DIYTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIYTableViewCell.xib; sourceTree = "<group>"; };
 		48FE17DE1C68CB8D008857BE /* ZYThumbnailTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYThumbnailTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48FE17E11C68CB8D008857BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48FE17E31C68CB8D008857BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */,
-				484A1D261C70B80F0046AEF4 /* ZYThumbnailTableViewCell.swift */,
-				484A1D271C70B80F0046AEF4 /* ZYThumbnailTableViewCell.xib */,
 				484A1D211C70B80F0046AEF4 /* DiyViews */,
 			);
 			path = Swift;
@@ -68,6 +66,8 @@
 				484A1D231C70B80F0046AEF4 /* BottomView.xib */,
 				484A1D241C70B80F0046AEF4 /* TopView.swift */,
 				484A1D251C70B80F0046AEF4 /* TopView.xib */,
+				48F9AB811C73302500D825AB /* DIYTableViewCell.swift */,
+				48F9AB821C73302500D825AB /* DIYTableViewCell.xib */,
 			);
 			path = DiyViews;
 			sourceTree = "<group>";
@@ -173,8 +173,8 @@
 				484A1D2C1C70B80F0046AEF4 /* TopView.xib in Resources */,
 				48FE17E91C68CB8D008857BE /* Assets.xcassets in Resources */,
 				48FE17E71C68CB8D008857BE /* Main.storyboard in Resources */,
+				48F9AB841C73302500D825AB /* DIYTableViewCell.xib in Resources */,
 				484A1D2A1C70B80F0046AEF4 /* BottomView.xib in Resources */,
-				484A1D2E1C70B80F0046AEF4 /* ZYThumbnailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +185,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F9AB831C73302500D825AB /* DIYTableViewCell.swift in Sources */,
 				484A1D291C70B80F0046AEF4 /* BottomView.swift in Sources */,
-				484A1D2D1C70B80F0046AEF4 /* ZYThumbnailTableViewCell.swift in Sources */,
 				48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */,
 				484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */,
 				484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */,

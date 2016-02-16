@@ -32,26 +32,40 @@ class ViewController: UIViewController {
     
     func configureZYTableView() {
         zyThumbnailTableVC = ZYThumbnailTableViewController()
-        zyThumbnailTableVC.cellReuseId = "zythumbnailCell"
+        zyThumbnailTableVC.cellReuseId = "DIYTableViewCell"
         zyThumbnailTableVC.cellHeight = 100.0
+        
+        //create dataSource
+        let dataList = NSMutableArray()
+        var tempDict: [String : String]
+        for index in  0...9 {
+            tempDict = ["name":"hava a nice day \(index)",
+                        "desc":"sub title and sub title \(index)",
+                        "time":"timestamp\(index)",
+                        "content":"Pro tip: (\(index)) updating your profile with your name, location, and a profile picture helps other GitHub users get to know you.\n-\(index)-\nA Button spread its sub path buttons like the flower or sickle(two spread mode) if you click it, once again, close.And you can also change the SpreadPositionMode between FixedMode & TouchBorderMode， while one like the marbleBall fixed on the wall, another one like the AssistiveTouch is iphone"]
+            dataList.addObject(tempDict)
+        }
+        zyThumbnailTableVC.dataList = NSArray(array: dataList)
         
         //因为是push过去的关系,数据源交给tableviewcontroller，更新数据源也交给他吧
         zyThumbnailTableVC.configureTableViewCellBlock = {
-            let cell = NSBundle.mainBundle().loadNibNamed("ZYThumbnailTableViewCell", owner: nil, options: nil).first as? ZYThumbnailTableViewCell
-            //configure cell
-            cell?.updateCell()
+            let cell = DIYTableViewCell.createCell()
             return cell
         }
         
         zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             print(indexPath.row)
             print(cell)
-            let myCell = cell as? ZYThumbnailTableViewCell
-            myCell?.updateCell()
+            let myCell = cell as? DIYTableViewCell
+            guard let dataDict = dataList[indexPath.row] as? [String : String] else {
+                print("ERROR: illegal tableview dataSource")
+                return
+            }
+            myCell?.updateCell(dataDict)
         }
         
         zyThumbnailTableVC.spreadCellAnimationBlock =  {
-            let cell = $0 as? ZYThumbnailTableViewCell
+            let cell = $0 as? DIYTableViewCell
             cell?.contentLabel.numberOfLines = 0
             print("更新了行数")
         }

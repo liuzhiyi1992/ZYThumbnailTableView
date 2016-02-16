@@ -30,7 +30,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     var cellHeight: CGFloat = CELL_HEIGHT_DEFAULT
     //todo数据源要不要规定成字典数组?
     var dataList = NSArray()
-    var cellReuseId = "zythumbnailCell"
+    var cellReuseId = "diyCell"
     
     private var mainTableView: UITableView!
     private var clickIndexPathRow: Int?
@@ -80,17 +80,16 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "ZYThumbnailTableViewCell"
+        self.navigationItem.title = "ZYThumbnailTableView"
         self.mainTableView = UITableView(frame: self.view.frame)
-        self.view.addSubview(mainTableView)
         
-        mainTableView.backgroundColor = UIColor(red: 53/255.0, green: 72/255.0, blue: 83/255.0, alpha: 1.0)
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        mainTableView.separatorStyle = .None
-        mainTableView.reloadData()
+        configureTableView()
         
         registerNotification()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.mainTableView.updateHeight(self.view.frame.height)
     }
     
     deinit {
@@ -105,9 +104,18 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    func configureTableView() {
+        self.view.addSubview(mainTableView)
+        
+        mainTableView.backgroundColor = UIColor(red: 53/255.0, green: 72/255.0, blue: 83/255.0, alpha: 1.0)
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        mainTableView.separatorStyle = .None
+        mainTableView.reloadData()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return dataList.count
-        return 12
+        return dataList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -177,10 +185,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         cell.contentView.removeConstraint(tempConstraint)
         spreadCellHeight = size.height
-        previewCell(cell, index: indexPath.row)
+        previewCell(cell, indexPatch: indexPath)
     }
     
-    func previewCell(cell: UITableViewCell, index: Int) {
+    func previewCell(cell: UITableViewCell, indexPatch: NSIndexPath) {
         //create previewCover
         let previewCover = UIView(frame: mainTableView.frame)
         previewCover.backgroundColor = UIColor.blackColor()
@@ -204,6 +212,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         //can not copy object in swift, we can only create a new one with configureTableViewCellBlock
         let previewCell = configureTableViewCellBlock()
         previewCell?.selectionStyle = .None
+        updateTableViewCellBlock(cell: previewCell!, indexPath: indexPatch)
         
         //layout cell contentView in thumbnailView with VFL
         let contentView = previewCell!.contentView
@@ -409,7 +418,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
 }
 
 
-
+//MARK: UIView extension
 extension UIView {
     func updateOriginX(originX: CGFloat) {
         self.frame = CGRectMake(originX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
