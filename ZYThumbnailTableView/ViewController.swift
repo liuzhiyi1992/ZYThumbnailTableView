@@ -68,35 +68,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    
 }
-
-
-    /*
-    func configureThumbnail(cell: ZYThumbnailTableViewCell, thumbnailViewNibName: String) {
-        let thumbnailView = NSBundle.mainBundle().loadNibNamed(thumbnailViewNibName, owner: nil, options: nil).first as? UIView
-        assert(thumbnailView != nil, "can not load nib named \(thumbnailViewNibName)")
-        
-        
-        //开工
-        thumbnailView?.translatesAutoresizingMaskIntoConstraints = false
-        
-        let views = ["thumbnailView":thumbnailView!]
-        cell.addSubview(thumbnailView!)
-        
-        cell.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[thumbnailView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views))
-        cell.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[thumbnailView]|", options: .AlignAllCenterY, metrics: nil, views: views))
-        
-    
-        
-        
-        //先不管这个
-        let thumbnailClass = NSClassFromString("DemoThumbnailView") as! UIView.Type
-        let thumbnailView2 = thumbnailClass.init()
-        //但是不能动态调用方法啊
-        //也不能规定调用方法的参数
-        
-        
-    }
-*/
