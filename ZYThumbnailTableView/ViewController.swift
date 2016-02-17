@@ -54,8 +54,6 @@ class ViewController: UIViewController {
         }
         
         zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
-            print(indexPath.row)
-            print(cell)
             let myCell = cell as? DIYTableViewCell
             guard let dataDict = dataList[indexPath.row] as? [String : String] else {
                 print("ERROR: illegal tableview dataSource")
