@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnB-Bq-Vvk">
-                                <rect key="frame" x="229" y="280" width="142" height="40"/>
+                                <rect key="frame" x="229" y="220" width="142" height="40"/>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7hd-nW-eFt"/>
@@ -58,7 +58,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YnB-Bq-Vvk" firstAttribute="centerY" secondItem="nOS-tE-AgZ" secondAttribute="centerY" id="WKL-NE-Jpn"/>
+                            <constraint firstItem="YnB-Bq-Vvk" firstAttribute="centerY" secondItem="nOS-tE-AgZ" secondAttribute="centerY" constant="-60" id="WKL-NE-Jpn"/>
                             <constraint firstItem="YnB-Bq-Vvk" firstAttribute="centerX" secondItem="nOS-tE-AgZ" secondAttribute="centerX" id="t9d-LZ-nOt"/>
                         </constraints>
                     </view>
