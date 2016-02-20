@@ -16,6 +16,15 @@ class ViewController: UIViewController {
     
     let cellHeight: CGFloat = 100.0
     
+    override func viewWillAppear(animated: Bool) {
+        let barItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.grayColor()
+        self.navigationItem.backBarButtonItem = barItem
+//        self.navigationItem.titleView?.tintColor = UIColor.blueColor()
+//        self.navigationItem.titleView?.tintColor
+//        self.navigationItem.titleView
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +36,9 @@ class ViewController: UIViewController {
     func configureNav() {
         self.navigationController?.navigationBar.translucent = false
         self.navigationItem.title = "welcome !"
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 77/255.0, green: 105/255.0, blue: 121/255.0, alpha: 1.0)
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 77/255.0, green: 105/255.0, blue: 121/255.0, alpha: 1.0)
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func configureZYTableView() {
@@ -39,9 +50,9 @@ class ViewController: UIViewController {
         let dataList = NSMutableArray()
         var tempDict: [String : String]
         for index in  0...9 {
-            tempDict = ["name":"hava a nice day \(index)",
+            tempDict = ["name":"NURGIO",
                         "desc":"sub title and sub title \(index)",
-                        "time":"timestamp\(index)",
+                        "time":"\(index) minute",
                         "content":"Pro tip: (\(index)) updating your profile with your name, location, and a profile picture helps other GitHub users get to know you.\n-\(index)-\nA Button spread its sub path buttons like the flower or sickle(two spread mode) if you click it, once again, close.And you can also change the SpreadPositionMode between FixedMode & TouchBorderMode， while one like the marbleBall fixed on the wall, another one like the AssistiveTouch is iphone"]
             dataList.addObject(tempDict)
         }

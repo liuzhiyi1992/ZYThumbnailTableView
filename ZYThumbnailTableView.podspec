@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZYThumbnailTableView"
-  s.version      = "0.0.1"
+  s.version      = "0.1.1"
   s.summary      = "A TableView not only the thumbnail Cell and it can be expanded."
 
   # This description is used to generate tags and improve search results.
@@ -25,10 +25,10 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-                   DESC
-                   you can use panGesture let the tableviewCell(thumbanil) expanded, expand topView or Bottom which DIY by youself.
+                   You can use panGesture let the tableviewCell(thumbanil) expanded, expand topView or Bottom which DIY by youself.
                    and you can congure the tableview cell, topView, bottomView and update cell certainly with the Block in ZYThumbnailTableView.
                    have fun!
+                   DESC
 
   s.homepage     = "https://github.com/liuzhiyi1992/ZYThumbnailTableView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -67,7 +67,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -93,7 +93,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{swift}"
+  s.source_files  = "ZYThumbnailTableView/Classes/**/*.{swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -132,7 +132,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+  s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"

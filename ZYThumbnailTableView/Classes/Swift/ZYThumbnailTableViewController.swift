@@ -86,6 +86,16 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         configureTableView()
         
         registerNotification()
+        
+        mainTableView.backgroundColor = UIColor.whiteColor()
+        
+        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
+        titleView.text = "woshibiaoti"
+        titleView.textAlignment = .Center
+        titleView.font = UIFont.systemFontOfSize(20.0);
+        //503f39
+        titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
+        self.navigationItem.titleView = titleView
     }
     
     override func viewDidLayoutSubviews() {
@@ -107,7 +117,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     func configureTableView() {
         self.view.addSubview(mainTableView)
         
-        mainTableView.backgroundColor = UIColor(red: 53/255.0, green: 72/255.0, blue: 83/255.0, alpha: 1.0)
+//        mainTableView.backgroundColor = UIColor(red: 53/255.0, green: 72/255.0, blue: 83/255.0, alpha: 1.0)
+        mainTableView.backgroundColor = UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .None
@@ -192,7 +203,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         //create previewCover
         let previewCover = UIView(frame: mainTableView.frame)
         previewCover.backgroundColor = UIColor.blackColor()
-        previewCover.alpha = 0.9
+        //todo 修改透明度
+        previewCover.alpha = 1
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
         previewCover.addGestureRecognizer(tapGesture)
         self.view.insertSubview(previewCover, aboveSubview: mainTableView)
