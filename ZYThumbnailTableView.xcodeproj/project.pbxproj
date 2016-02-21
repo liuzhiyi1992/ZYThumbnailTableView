@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		483F0A781C7969DD0096A09A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483F0A771C7969DD0096A09A /* Foundation.framework */; };
+		483F0A7A1C796A0D0096A09A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483F0A791C796A0D0096A09A /* CoreFoundation.framework */; };
+		483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 483F0A7D1C7979950096A09A /* BlurUtil.m */; };
 		484A1D291C70B80F0046AEF4 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D221C70B80F0046AEF4 /* BottomView.swift */; };
 		484A1D2A1C70B80F0046AEF4 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D231C70B80F0046AEF4 /* BottomView.xib */; };
 		484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D241C70B80F0046AEF4 /* TopView.swift */; };
@@ -23,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZYThumbnailTableView-Bridging-Header.h"; sourceTree = "<group>"; };
+		483F0A771C7969DD0096A09A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		483F0A791C796A0D0096A09A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		483F0A7C1C7979950096A09A /* BlurUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurUtil.h; sourceTree = "<group>"; };
+		483F0A7D1C7979950096A09A /* BlurUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurUtil.m; sourceTree = "<group>"; };
 		484A1D221C70B80F0046AEF4 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		484A1D231C70B80F0046AEF4 /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		484A1D241C70B80F0046AEF4 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
@@ -44,12 +51,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				483F0A7A1C796A0D0096A09A /* CoreFoundation.framework in Frameworks */,
+				483F0A781C7969DD0096A09A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		483F0A7B1C79795C0096A09A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				483F0A7C1C7979950096A09A /* BlurUtil.h */,
+				483F0A7D1C7979950096A09A /* BlurUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		484A1D201C70B80F0046AEF4 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +93,8 @@
 		48FE17D51C68CB8D008857BE = {
 			isa = PBXGroup;
 			children = (
+				483F0A791C796A0D0096A09A /* CoreFoundation.framework */,
+				483F0A771C7969DD0096A09A /* Foundation.framework */,
 				48FE17E01C68CB8D008857BE /* ZYThumbnailTableView */,
 				48FE17DF1C68CB8D008857BE /* Products */,
 			);
@@ -106,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				484A1D201C70B80F0046AEF4 /* Swift */,
+				483F0A7B1C79795C0096A09A /* Util */,
 				4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */,
 			);
 			path = Classes;
@@ -190,6 +211,7 @@
 				48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */,
 				484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */,
 				484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */,
+				483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */,
 				48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
