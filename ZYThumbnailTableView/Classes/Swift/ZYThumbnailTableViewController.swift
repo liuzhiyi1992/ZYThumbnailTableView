@@ -203,8 +203,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         //create previewCover
         let previewCover = UIView(frame: mainTableView.frame)
         previewCover.backgroundColor = UIColor.blackColor()
+//        previewCover.image = BlurUtil.applyBlurOnImage(UIImage(named: "bg1"), withRadius: 0.8)
         //todo 修改透明度
-        previewCover.alpha = 1
+        previewCover.alpha = 0.9
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
         previewCover.addGestureRecognizer(tapGesture)
         self.view.insertSubview(previewCover, aboveSubview: mainTableView)
@@ -422,6 +423,53 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         return path
     }
     
+    func applyBlurOnImage(image: UIImage, blurRadius: CGFloat) -> UIImage {
+        var boxSize = UInt32(blurRadius * 100)
+        boxSize -= (boxSize % 2) + 1
+        
+        let rawImage = image.CGImage
+        
+        var inBuffer = vImage_Buffer()
+        var outBuffer = vImage_Buffer()
+        var error = vImage_Error()
+        var pixelBuffer = UnsafeMutablePointer<Void>()
+        
+        let inProvider = CGImageGetDataProvider(rawImage)! as CGDataProviderRef
+        let inBitmapData = CGDataProviderCopyData(inProvider)
+        
+        inBuffer.width =  UInt(CGImageGetWidth(rawImage))
+        inBuffer.height = UInt(CGImageGetHeight(rawImage))
+        inBuffer.rowBytes = CGImageGetBytesPerRow(rawImage)
+        inBuffer.data = UnsafeMutablePointer<Void>(CFDataGetBytePtr(inBitmapData))
+        
+        pixelBuffer = malloc(CGImageGetBytesPerRow(rawImage) * CGImageGetHeight(rawImage))
+        
+        outBuffer.data = pixelBuffer
+        outBuffer.width = UInt(CGImageGetWidth(rawImage))
+        outBuffer.height = UInt(CGImageGetHeight(rawImage))
+        outBuffer.rowBytes = CGImageGetBytesPerRow(rawImage)
+        
+        
+        let flags:vImage_Flags = UInt32(kvImageNoFlags)
+        error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, boxSize, boxSize, nil, flags)
+        
+        if error != 0 {
+            print("error from convolution \(error)")
+        }
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        let ctx = CGBitmapContextCreate(outBuffer.data, Int(outBuffer.width), Int(outBuffer.height), 8, outBuffer.rowBytes, colorSpace, CGImageGetBitmapInfo(rawImage).rawValue)
+        
+        let imageRef = CGBitmapContextCreateImage(ctx)
+        let returnImage = UIImage(CGImage: imageRef!)
+        
+        //clean up
+        free(pixelBuffer)
+        
+        return returnImage
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -455,4 +503,25 @@ extension UIView {
     func updateHeight(height: CGFloat) {
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
     }
+    
+    func screenShot() -> UIImage {
+        UIGraphicsBeginImageContext(self.bounds.size)
+        if self.respondsToSelector("drawViewHierarchyInRect:afterScreenUpdates:") {
+            self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: false)
+        } else {
+            //着色
+            self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        }
+        
+        var screenShotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        //可以选择压缩下图片
+        let imageData = UIImageJPEGRepresentation(screenShotImage, 0.7)
+        screenShotImage = UIImage(data: imageData!)
+        return screenShotImage
+    }
+    
 }
+
+
+
