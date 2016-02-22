@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="5" width="320" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S88-SG-l14">
-                                        <rect key="frame" x="241" y="12.5" width="63.5" height="14.5"/>
+                                        <rect key="frame" x="241" y="15.5" width="63.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -38,13 +38,13 @@
                                         <rect key="frame" x="67" y="9" width="164.5" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name sub Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oH-ag-D0t">
-                                                <rect key="frame" x="0.0" y="-2" width="113.5" height="23"/>
+                                                <rect key="frame" x="0.0" y="1.5" width="113.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub title the sub title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="978-KI-Qs3">
-                                                <rect key="frame" x="0.0" y="26" width="116.5" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="27.5" width="116.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -52,14 +52,18 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="978-KI-Qs3" firstAttribute="leading" secondItem="1oH-ag-D0t" secondAttribute="leading" id="C4x-jj-lag"/>
+                                            <constraint firstAttribute="bottom" secondItem="978-KI-Qs3" secondAttribute="bottom" id="RdP-Ux-0pX"/>
                                             <constraint firstItem="1oH-ag-D0t" firstAttribute="height" secondItem="Cig-1d-S3y" secondAttribute="height" multiplier="0.55:1" id="UI5-Z0-udZ"/>
                                             <constraint firstItem="1oH-ag-D0t" firstAttribute="leading" secondItem="Cig-1d-S3y" secondAttribute="leading" id="Vhj-Dj-fge"/>
                                             <constraint firstItem="978-KI-Qs3" firstAttribute="top" secondItem="1oH-ag-D0t" secondAttribute="bottom" constant="5" id="ZbQ-9G-Eja"/>
                                             <constraint firstItem="1oH-ag-D0t" firstAttribute="top" secondItem="Cig-1d-S3y" secondAttribute="top" constant="-2" id="ahp-jx-etA"/>
                                             <constraint firstAttribute="bottom" secondItem="978-KI-Qs3" secondAttribute="bottom" id="u9q-oH-EdH"/>
+                                            <constraint firstItem="978-KI-Qs3" firstAttribute="top" secondItem="1oH-ag-D0t" secondAttribute="bottom" constant="3" id="vDQ-kw-Vf4"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="ahp-jx-etA"/>
+                                                <exclude reference="ZbQ-9G-Eja"/>
                                                 <exclude reference="u9q-oH-EdH"/>
                                             </mask>
                                         </variation>
@@ -69,6 +73,7 @@
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="centerY" secondItem="h4w-Yd-jdn" secondAttribute="centerY" id="9UV-X6-HIe"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="centerY" secondItem="S88-SG-l14" secondAttribute="centerY" id="Cab-Ww-RjF"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="15" id="G6o-qW-MKE"/>
+                                    <constraint firstItem="Cig-1d-S3y" firstAttribute="bottom" secondItem="h4w-Yd-jdn" secondAttribute="bottom" id="GgP-Z4-fDt"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="HWO-1k-Ie4"/>
                                     <constraint firstAttribute="height" constant="60" id="T3O-vP-P5I"/>
                                     <constraint firstItem="S88-SG-l14" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="top" constant="10" id="TM0-Nq-4kv"/>
@@ -90,6 +95,7 @@
                                         <exclude reference="ZnY-3f-Gqh"/>
                                         <exclude reference="iSd-4e-iUO"/>
                                         <exclude reference="9UV-X6-HIe"/>
+                                        <exclude reference="HWO-1k-Ie4"/>
                                         <exclude reference="epd-0M-4rb"/>
                                         <exclude reference="TM0-Nq-4kv"/>
                                         <exclude reference="gRV-qf-b5r"/>
@@ -100,7 +106,7 @@
                                 <rect key="frame" x="0.0" y="65" width="320" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAk-QQ-ry4">
-                                        <rect key="frame" x="15" y="0.0" width="290" height="20"/>
+                                        <rect key="frame" x="15" y="0.0" width="290" height="30"/>
                                         <string key="text">1the post thumbnail text
 GitHub Pages is now running the latest major version of Jekyll
 
@@ -112,7 +118,7 @@ Meaning it's now easier and faster to publish beautiful sites for you and your p
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="KAk-QQ-ry4" secondAttribute="bottom" priority="900" constant="15" id="7oD-Ax-R9y"/>
+                                    <constraint firstAttribute="bottom" secondItem="KAk-QQ-ry4" secondAttribute="bottom" priority="900" constant="5" id="7oD-Ax-R9y"/>
                                     <constraint firstAttribute="trailing" secondItem="KAk-QQ-ry4" secondAttribute="trailing" constant="15" id="PUZ-UG-tes"/>
                                     <constraint firstItem="KAk-QQ-ry4" firstAttribute="top" secondItem="ri7-bE-twN" secondAttribute="top" id="fwK-SX-6ke"/>
                                     <constraint firstItem="KAk-QQ-ry4" firstAttribute="leading" secondItem="ri7-bE-twN" secondAttribute="leading" constant="30" id="gnf-MW-baw"/>

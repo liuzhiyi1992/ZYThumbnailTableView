@@ -23,7 +23,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
 //MARK: DEFINE
     private static let CELL_HEIGHT_DEFAULT = CGFloat(100.0)
     private static let EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT = CGFloat(10)
-    private static let BLUR_BACKGROUND_TINT_COLOR_DEFAULT = UIColor(white: 0.9, alpha: 0.3)
+    private static let BLUR_BACKGROUND_TINT_COLOR_DEFAULT = UIColor(white: 0.7, alpha: 0.3)
     let TYPE_EXPANSION_VIEW_TOP = "TYPE_EXPANSION_VIEW_TOP"
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
@@ -33,7 +33,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     var dataList = NSArray()
     var cellReuseId = "diyCell"
     var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
-    var blurRadius: CGFloat = 5.0
+    var blurRadius: CGFloat = 3.0
     var saturationDeltaFactor: CGFloat = 1.8
     
     private var mainTableView: UITableView!
