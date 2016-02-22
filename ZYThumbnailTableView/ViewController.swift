@@ -56,17 +56,8 @@ class ViewController: UIViewController {
         zyThumbnailTableVC.cellReuseId = "DIYTableViewCell"
         zyThumbnailTableVC.cellHeight = 100.0
         
-        //create dataSource
-        let dataList = NSMutableArray()
-        var tempDict: [String : String]
-        for index in  0...9 {
-            tempDict = ["name":"NURGIO",
-                        "desc":"sub title and sub title \(index)",
-                        "time":"\(index) minute",
-                        "content":"Pro tip: (\(index)) updating your profile with your name, location, and a profile picture helps other GitHub users get to know you.\n-\(index)-\nA Button spread its sub path buttons like the flower or sickle(two spread mode) if you click it, once again, close.And you can also change the SpreadPositionMode between FixedMode & TouchBorderMode， while one like the marbleBall fixed on the wall, another one like the AssistiveTouch is iphone"]
-            dataList.addObject(tempDict)
-        }
-        zyThumbnailTableVC.dataList = NSArray(array: dataList)
+        dataList = createDataSource()
+        zyThumbnailTableVC.dataList = dataList
         
         //因为是push过去的关系,数据源交给tableviewcontroller，更新数据源也交给他吧
         zyThumbnailTableVC.configureTableViewCellBlock = {
@@ -76,7 +67,7 @@ class ViewController: UIViewController {
         
         zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
-            guard let dataDict = dataList[indexPath.row] as? [String : String] else {
+            guard let dataDict = self.dataList[indexPath.row] as? [String : String] else {
                 print("ERROR: illegal tableview dataSource")
                 return
             }
@@ -105,6 +96,77 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Virtual DataSource
+    func createDataSource() -> NSArray {
+        let dataSource = NSMutableArray()
+        let content = "The lesson of the story, I suggested, was that in some strange sense we are more whole when we are missing something. \n    The man who has everything is in some ways a poor man. \n    He will never know what it feels like to yearn, to hope, to nourish his soul with the dream of something better. \n    He will never know the experience of having someone who loves him give him something he has always wanted or never had."
+        
+        dataSource.addObject([
+            "name" : "NURGIO",
+            "desc" : "Beijing,Chaoyang District",
+            "time" : "3 minute",
+          "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Cheers",
+            "desc" : "Joined on Dec 18, 2014",
+            "time" : "8 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Adleys",
+            "desc" : "The Technology Studio",
+            "time" : "16 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Coder_CYX",
+            "desc" : "Joined on Mar 26, 2013",
+            "time" : "21 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Coleman",
+            "desc" : "Zhejiang University of Technology",
+            "time" : "28 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Moguilay",
+            "desc" : "zbien.com",
+            "time" : "33 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Dikey",
+            "desc" : "Pluto at the moment",
+            "time" : "35 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "fmricky",
+            "desc" : "Waterloo, ON",
+            "time" : "42 minute",
+            "content": content,
+            ])
+        
+        dataSource.addObject([
+            "name" : "Robert Waggott",
+            "desc" : "Beijing chaoyang",
+            "time" : "46 minute",
+            "content": content,
+            ])
+        
+        return NSArray(array: dataSource)
     }
     
 }
