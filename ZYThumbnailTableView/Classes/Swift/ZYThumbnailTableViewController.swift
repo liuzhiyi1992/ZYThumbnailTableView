@@ -23,6 +23,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
 //MARK: DEFINE
     private static let CELL_HEIGHT_DEFAULT = CGFloat(100.0)
     private static let EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT = CGFloat(10)
+    private static let BLUR_BACKGROUND_TINT_COLOR_DEFAULT = UIColor(white: 0.9, alpha: 0.3)
     let TYPE_EXPANSION_VIEW_TOP = "TYPE_EXPANSION_VIEW_TOP"
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
@@ -89,8 +90,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         
         mainTableView.backgroundColor = UIColor.whiteColor()
         
+        //todo 上传pod时，注释以下修改UINavigationBar style代码
         let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
-        titleView.text = "woshibiaoti"
+        titleView.text = "ZYThumbnailTabelView"
         titleView.textAlignment = .Center
         titleView.font = UIFont.systemFontOfSize(20.0);
         //503f39
@@ -201,11 +203,15 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
     func previewCell(cell: UITableViewCell, indexPatch: NSIndexPath) {
         //create previewCover
-        let previewCover = UIView(frame: mainTableView.frame)
-        previewCover.backgroundColor = UIColor.blackColor()
-//        previewCover.image = BlurUtil.applyBlurOnImage(UIImage(named: "bg1"), withRadius: 0.8)
-        //todo 修改透明度
-        previewCover.alpha = 0.9
+        let previewCover = UIImageView(frame: mainTableView.frame)
+        //blur background
+        let blurImage = mainTableView.screenShot()
+        previewCover.image = BlurUtil.applyBlurOnImage(blurImage, withRadius: 0.2)
+//        let blurwBackgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.6)
+//        let blurwBackgroundColor = UIColor(white: 0.9, alpha: 0.3)
+//        previewCover.image = blurImage.applyBlurWithRadius(5.0, tintColor: blurwBackgroundColor, saturationDeltaFactor: 1.8, maskImage: nil)
+        previewCover.userInteractionEnabled = true
+//        previewCover.backgroundColor = UIColor.blackColor()
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
         previewCover.addGestureRecognizer(tapGesture)
         self.view.insertSubview(previewCover, aboveSubview: mainTableView)
@@ -507,9 +513,10 @@ extension UIView {
     func screenShot() -> UIImage {
         UIGraphicsBeginImageContext(self.bounds.size)
         if self.respondsToSelector("drawViewHierarchyInRect:afterScreenUpdates:") {
+            //ios7以上
             self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: false)
         } else {
-            //着色
+            //ios7以下
             self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         }
         
