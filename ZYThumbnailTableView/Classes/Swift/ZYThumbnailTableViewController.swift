@@ -32,6 +32,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     //todo数据源要不要规定成字典数组?
     var dataList = NSArray()
     var cellReuseId = "diyCell"
+    var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
+    var blurRadius: CGFloat = 5.0
+    var saturationDeltaFactor: CGFloat = 1.8
     
     private var mainTableView: UITableView!
     private var clickIndexPathRow: Int?
@@ -206,12 +209,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let previewCover = UIImageView(frame: mainTableView.frame)
         //blur background
         let blurImage = mainTableView.screenShot()
-        previewCover.image = BlurUtil.applyBlurOnImage(blurImage, withRadius: 0.2)
-//        let blurwBackgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.6)
-//        let blurwBackgroundColor = UIColor(white: 0.9, alpha: 0.3)
-//        previewCover.image = blurImage.applyBlurWithRadius(5.0, tintColor: blurwBackgroundColor, saturationDeltaFactor: 1.8, maskImage: nil)
+//        previewCover.image = BlurUtil.applyBlurOnImage(blurImage, withRadius: 0.2)
+        previewCover.image = blurImage.applyBlurWithRadius(blurRadius, tintColor: blurTintColor, saturationDeltaFactor: saturationDeltaFactor, maskImage: nil)
         previewCover.userInteractionEnabled = true
-//        previewCover.backgroundColor = UIColor.blackColor()
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
         previewCover.addGestureRecognizer(tapGesture)
         self.view.insertSubview(previewCover, aboveSubview: mainTableView)
