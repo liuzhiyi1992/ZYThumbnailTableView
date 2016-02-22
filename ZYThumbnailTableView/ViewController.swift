@@ -35,10 +35,20 @@ class ViewController: UIViewController {
     
     func configureNav() {
         self.navigationController?.navigationBar.translucent = false
-        self.navigationItem.title = "welcome !"
-//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 77/255.0, green: 105/255.0, blue: 121/255.0, alpha: 1.0)
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
+        /*
+        //导航控制器背景色
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 77/255.0, green: 105/255.0, blue: 121/255.0, alpha: 1.0)
+        //消除导航控制器底线
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        */
+        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
+        titleView.text = "ZYThumbnailTabelView"
+        titleView.textAlignment = .Center
+        titleView.font = UIFont.systemFontOfSize(20.0);
+        //503f39
+        titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
+        self.navigationItem.titleView = titleView
     }
     
     func configureZYTableView() {
