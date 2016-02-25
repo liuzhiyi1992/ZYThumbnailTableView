@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-v4-s12">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-v4-s12">
                     <rect key="frame" x="15" y="15" width="255" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="DQ9-W7-8R8"/>
@@ -26,10 +26,10 @@
                         </mask>
                     </variation>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfU-4O-5kh">
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfU-4O-5kh">
                     <rect key="frame" x="280" y="17.5" width="25" height="25"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" image="submit_button_normal">
+                    <state key="normal" image="submit_button_highlight">
                         <color key="titleColor" red="0.20784313730000001" green="0.28235294119999998" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <state key="highlighted" image="submit_button_highlight"/>
@@ -64,7 +64,6 @@
         </view>
     </objects>
     <resources>
-        <image name="submit_button_highlight" width="25" height="25"/>
-        <image name="submit_button_normal" width="25" height="25"/>
+        <image name="submit_button_highlight" width="38" height="30"/>
     </resources>
 </document>
