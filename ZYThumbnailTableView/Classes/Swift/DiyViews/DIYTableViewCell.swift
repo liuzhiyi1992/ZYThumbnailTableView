@@ -14,7 +14,7 @@ class DIYTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +32,7 @@ class DIYTableViewCell: UITableViewCell {
         descLabel.text = dict["desc"] ?? "error"
         timeLabel.text = dict["time"] ?? "error"
         contentLabel.text = dict["content"] ?? "error"
+        avatarImageView.image = UIImage(named: dict["avatar"]!) ?? UIImage(named: "avatar0")
     }
     
 }

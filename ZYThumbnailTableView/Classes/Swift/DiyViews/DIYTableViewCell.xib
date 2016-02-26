@@ -28,7 +28,7 @@
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="h4w-Yd-jdn">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h4w-Yd-jdn">
                                         <rect key="frame" x="15" y="9" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="h4w-Yd-jdn" secondAttribute="height" multiplier="1:1" id="vSO-0z-C7E"/>
@@ -46,7 +46,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub title the sub title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="978-KI-Qs3">
                                                 <rect key="frame" x="0.0" y="27.5" width="116.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.46274509803921571" green="0.34509803921568627" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -162,6 +162,7 @@ Meaning it's now easier and faster to publish beautiful sites for you and your p
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="avatarImageView" destination="h4w-Yd-jdn" id="tPc-TI-dF0"/>
                 <outlet property="contentLabel" destination="KAk-QQ-ry4" id="lvw-7l-Bmw"/>
                 <outlet property="descLabel" destination="978-KI-Qs3" id="ga9-z0-Y9x"/>
                 <outlet property="nameLabel" destination="1oH-ag-D0t" id="YN2-XE-P0l"/>
@@ -169,7 +170,4 @@ Meaning it's now easier and faster to publish beautiful sites for you and your p
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="man" width="57" height="55"/>
-    </resources>
 </document>
