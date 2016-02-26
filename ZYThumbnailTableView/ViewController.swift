@@ -11,37 +11,17 @@ import UIKit
 class ViewController: UIViewController {
 
     var zyThumbnailTableVC: ZYThumbnailTableViewController!
-    
     var dataList = NSArray()
-    
-    let cellHeight: CGFloat = 100.0
-    
-    override func viewWillAppear(animated: Bool) {
-        let barItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = UIColor.grayColor()
-        self.navigationItem.backBarButtonItem = barItem
-//        self.navigationItem.titleView?.tintColor = UIColor.blueColor()
-//        self.navigationItem.titleView?.tintColor
-//        self.navigationItem.titleView
-    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureNav()
         configureZYTableView()
     }
     
     func configureNav() {
         self.navigationController?.navigationBar.translucent = false
-        /*
-        //导航控制器背景色
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 77/255.0, green: 105/255.0, blue: 121/255.0, alpha: 1.0)
-        //消除导航控制器底线
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        */
         let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
         titleView.text = "ZYThumbnailTabelView"
         titleView.textAlignment = .Center
@@ -49,6 +29,10 @@ class ViewController: UIViewController {
         //503f39
         titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
         self.navigationItem.titleView = titleView
+        
+        let barItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.grayColor()
+        self.navigationItem.backBarButtonItem = barItem
     }
     
     func configureZYTableView() {
@@ -56,15 +40,17 @@ class ViewController: UIViewController {
         zyThumbnailTableVC.tableviewCellReuseId = "DIYTableViewCell"
         zyThumbnailTableVC.tableviewCellHeight = 100.0
         
-        dataList = createDataSource()
-        zyThumbnailTableVC.tableviewDataList = dataList
-        
-        //因为是push过去的关系,数据源交给tableviewcontroller，更新数据源也交给他吧
+
+        //--------insert your diy tableview cell
         zyThumbnailTableVC.configureTableViewCellBlock = {
-            let cell = DIYTableViewCell.createCell()
-            return cell
+            return DIYTableViewCell.createCell()
         }
         
+        dataList = createDataSource()
+        //--------configure your diy tableview cell datalist
+        zyThumbnailTableVC.tableviewDataList = dataList
+        
+        //--------here is the fun of update your cell
         zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
             guard let dataDict = self.dataList[indexPath.row] as? [String : String] else {
@@ -77,15 +63,17 @@ class ViewController: UIViewController {
         zyThumbnailTableVC.spreadCellAnimationBlock =  {
             let cell = $0 as? DIYTableViewCell
             cell?.contentLabel.numberOfLines = 0
-            print("更新了行数")
         }
         
+        //--------insert your diy TopView
         zyThumbnailTableVC.createTopExpansionViewBlock = {
             return TopView.createView()!
         }
         
         let diyBottomView = BottomView.createView()!
+        //--------let your inputView component not cover by keyboard automatically (animated) (ZYKeyboardUtil)
         zyThumbnailTableVC.keyboardAdaptiveView = diyBottomView.inputTextField;
+        //--------insert your diy BottomView
         zyThumbnailTableVC.createBottomExpansionViewBlock = {
             return diyBottomView
         }

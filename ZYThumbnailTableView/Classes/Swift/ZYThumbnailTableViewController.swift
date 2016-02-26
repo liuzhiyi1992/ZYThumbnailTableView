@@ -200,8 +200,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
     func configureTableView() {
         self.view.addSubview(mainTableView)
-        
-//        mainTableView.backgroundColor = UIColor(red: 53/255.0, green: 72/255.0, blue: 83/255.0, alpha: 1.0)
+
         mainTableView.backgroundColor = UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -288,7 +287,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let previewCover = UIImageView(frame: mainTableView.frame)
         //blur background
         let blurImage = mainTableView.screenShot()
-//        previewCover.image = BlurUtil.applyBlurOnImage(blurImage, withRadius: 0.2)
         previewCover.image = blurImage.applyBlurWithRadius(blurRadius, tintColor: blurTintColor, saturationDeltaFactor: saturationDeltaFactor, maskImage: nil)
         previewCover.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
