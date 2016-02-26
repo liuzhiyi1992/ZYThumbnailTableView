@@ -74,9 +74,9 @@
     return returnImage;
 }
 
-
-
 @end
+
+
 
 
 //#import <Accelerate/Accelerate.h>
@@ -126,18 +126,6 @@
         effectOutBuffer.rowBytes = CGBitmapContextGetBytesPerRow(effectOutContext);
         
         if (hasBlur) {
-            // A description of how to compute the box kernel width from the Gaussian
-            // radius (aka standard deviation) appears in the SVG spec:
-            // http://www.w3.org/TR/SVG/filters.html#feGaussianBlurElement
-            //
-            // For larger values of 's' (s >= 2.0), an approximation can be used: Three
-            // successive box-blurs build a piece-wise quadratic convolution kernel, which
-            // approximates the Gaussian kernel to within roughly 3%.
-            //
-            // let d = floor(s * 3*sqrt(2*pi)/4 + 0.5)
-            //
-            // ... if d is odd, use three box-blurs of size 'd', centered on the output pixel.
-            //
             CGFloat inputRadius = blurRadius * [[UIScreen mainScreen] scale];
             uint32_t radius = floor(inputRadius * 3. * sqrt(2 * M_PI) / 4 + 0.5);
             if (radius % 2 != 1) {

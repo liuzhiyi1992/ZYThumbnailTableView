@@ -10,6 +10,8 @@ import UIKit
 
 class BottomView: UIView {
     
+    @IBOutlet weak var inputTextField: UITextField!
+    
     class func createView() -> BottomView? {
         let view = NSBundle.mainBundle().loadNibNamed("BottomView", owner: nil, options: nil).first as? BottomView
         guard view != nil else {
