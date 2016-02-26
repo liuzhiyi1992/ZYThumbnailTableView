@@ -84,8 +84,10 @@ class ViewController: UIViewController {
             return TopView.createView()!
         }
         
+        let diyBottomView = BottomView.createView()!
+        zyThumbnailTableVC.keyboardAdaptiveView = diyBottomView.inputTextField;
         zyThumbnailTableVC.createBottomExpansionViewBlock = {
-            return BottomView.createView()!
+            return diyBottomView
         }
     }
     
@@ -105,6 +107,7 @@ class ViewController: UIViewController {
         
         dataSource.addObject([
             "name" : "NURGIO",
+            "avatar" : "avatar0",
             "desc" : "Beijing,Chaoyang District",
             "time" : "3 minute",
           "content": content,
@@ -112,34 +115,39 @@ class ViewController: UIViewController {
         
         dataSource.addObject([
             "name" : "Cheers",
+            "avatar" : "avatar1",
             "desc" : "Joined on Dec 18, 2014",
             "time" : "8 minute",
-            "content": content,
+            "content": "You know that you do not need to be in the limelight to gain happiness. If you constantly aim to be in the spotlight, you are looking to others for validation. \n    In actuality, you should just be yourself. People do not like characters that are always in your line of vision and trying to gain your attention.\n    You know that you can just be yourself with others, without the need to be in the limelight. \n    People will see you as a beautiful girl when you are being you, not trying to persistently have all attention on you. \n    Who can have a real conversation with someone who is eagerly looking around and making sure all eyes are on them?",
             ])
         
         dataSource.addObject([
             "name" : "Adleys",
+            "avatar" : "avatar2",
             "desc" : "The Technology Studio",
             "time" : "16 minute",
-            "content": content,
+            "content": "To each parent he responded with one line: \"Are you going to help me now?\" \n    And then he continued to dig for his son, stone by stone. \n    The fire chief showed up and tried to pull him off the school s ruins saying, \"Fires are breaking out, explosions are happening everywhere. \n    You’re in danger. We’ll take care of it. Go home.\" To which this loving, caring American father asked, \"Are you going to help me now?\"",
             ])
         
         dataSource.addObject([
             "name" : "Coder_CYX",
+            "avatar" : "avatar3",
             "desc" : "Joined on Mar 26, 2013",
             "time" : "21 minute",
-            "content": content,
+            "content": "One year after our \"talk,\" I discovered I had breast cancer. I was thirty-two, the mother of three beautiful young children, and scared. \n    The cancer had metastasized to my lymph nodes and the statistics were not great for long-term survival. \n    After my surgery, friends and loved ones visited and tried to find the right words. No one knew what to say, and many said the wrong things. \n    Others wept, and I tried to encourage them. I clung to hope myself.",
             ])
         
         dataSource.addObject([
             "name" : "Coleman",
+            "avatar" : "avatar4",
             "desc" : "Zhejiang University of Technology",
             "time" : "28 minute",
-            "content": content,
+            "content": "You don’t let others hold you back from being yourself. To many people, showing your real face to others is terrifying. But you are always yourself.\n    You don’t let others opinions scare you into being someone else. Instead you choose to be you, flaws and all. You are truly a beautiful girl if you possess this quality. \n    People can often sense when you are being fake, or notice if you are reserved and afraid to speak. To be able to be yourself is inspiring and beautiful, because you are putting yourself out there (without fear).",
             ])
         
         dataSource.addObject([
             "name" : "Moguilay",
+            "avatar" : "avatar5",
             "desc" : "zbien.com",
             "time" : "33 minute",
             "content": content,
@@ -147,6 +155,7 @@ class ViewController: UIViewController {
         
         dataSource.addObject([
             "name" : "Dikey",
+            "avatar" : "avatar6",
             "desc" : "Pluto at the moment",
             "time" : "35 minute",
             "content": content,
@@ -154,6 +163,7 @@ class ViewController: UIViewController {
         
         dataSource.addObject([
             "name" : "fmricky",
+            "avatar" : "avatar7",
             "desc" : "Waterloo, ON",
             "time" : "42 minute",
             "content": content,
@@ -161,6 +171,7 @@ class ViewController: UIViewController {
         
         dataSource.addObject([
             "name" : "Robert Waggott",
+            "avatar" : "avatar8",
             "desc" : "Beijing chaoyang",
             "time" : "46 minute",
             "content": content,

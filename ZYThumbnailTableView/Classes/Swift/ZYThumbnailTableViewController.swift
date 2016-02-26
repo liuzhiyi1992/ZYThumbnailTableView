@@ -15,6 +15,7 @@ typealias CreateTopExpansionViewBlock = () -> UIView
 typealias CreateBottomExpansionViewBlock = () -> UIView
 
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
+let MARGIN_KEYBOARD_ADAPTATION = CGFloat(20)
 
 
 class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -23,7 +24,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
 //MARK: DEFINE
     private static let CELL_HEIGHT_DEFAULT = CGFloat(100.0)
     private static let EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT = CGFloat(10)
-    private static let BLUR_BACKGROUND_TINT_COLOR_DEFAULT = UIColor(white: 0.7, alpha: 0.3)
+    private static let BLUR_BACKGROUND_TINT_COLOR_DEFAULT = UIColor(white: 1.0, alpha: 0.3)
     let TYPE_EXPANSION_VIEW_TOP = "TYPE_EXPANSION_VIEW_TOP"
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
@@ -33,8 +34,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     var dataList = NSArray()
     var cellReuseId = "diyCell"
     var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
-    var blurRadius: CGFloat = 3.0
+    var blurRadius: CGFloat = 4.0
     var saturationDeltaFactor: CGFloat = 1.8
+    var keyboardAdaptiveView: UIView?
     
     private var mainTableView: UITableView!
     private var clickIndexPathRow: Int?
@@ -44,6 +46,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     private var thumbnailViewCanPan = true
     private var animator: UIDynamicAnimator!
     private var expandAmplitude = EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT
+    private var keyboardUtil: ZYKeyboardUtil!
     
     
 //MARK: BLOCKS
@@ -87,6 +90,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         self.navigationItem.title = "ZYThumbnailTableView"
         self.mainTableView = UITableView(frame: self.view.frame)
         
+        configureKeyboardUtil()
+        
         configureTableView()
         
         registerNotification()
@@ -117,6 +122,38 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
     func resignNotification() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func configureKeyboardUtil() {
+        guard let nonNilKeyboardAdaptiveView = self.keyboardAdaptiveView else {
+            return
+        }
+        
+        keyboardUtil = ZYKeyboardUtil()
+        keyboardUtil.setAnimateWhenKeyboardAppearBlock { [unowned self](appearPostIndex, keyboardRect, keyboardHeight, keyboardHeightIncrement) -> Void in
+            
+            if let window = UIApplication.sharedApplication().keyWindow {
+                guard let convertRect = self.keyboardAdaptiveView?.superview?.convertRect(self.keyboardAdaptiveView!.frame, toView: window) else {
+                    return
+                }
+                if (CGRectGetMinY(keyboardRect) - MARGIN_KEYBOARD_ADAPTATION) < CGRectGetMaxY(convertRect) {
+                    let signedDiff = CGRectGetMinY(keyboardRect) - CGRectGetMaxY(convertRect) - MARGIN_KEYBOARD_ADAPTATION
+                    //updateOriginY
+                    let newOriginY = CGRectGetMinY(self.view.frame) + signedDiff
+                    self.view.updateOriginY(newOriginY)
+                }
+            }
+        }
+        
+        keyboardUtil.setAnimateWhenKeyboardDisappearBlock { [unowned self] _ -> Void in
+            
+            if self.navigationController == nil || self.navigationController?.navigationBar.hidden == true {
+                //have no navigationBar
+                self.view.updateOriginY(0)
+            } else {
+                self.view.updateOriginY(64)
+            }
+        }
     }
     
     func configureTableView() {
@@ -514,7 +551,7 @@ extension UIView {
         UIGraphicsBeginImageContext(self.bounds.size)
         if self.respondsToSelector("drawViewHierarchyInRect:afterScreenUpdates:") {
             //ios7以上
-            self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: false)
+            self.drawViewHierarchyInRect(self.frame, afterScreenUpdates: false)
         } else {
             //ios7以下
             self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
