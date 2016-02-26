@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480632851C7EB78800221C49 /* ZYKeyboardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 480632841C7EB78800221C49 /* ZYKeyboardUtil.m */; };
 		483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 483F0A7D1C7979950096A09A /* BlurUtil.m */; };
 		484A1D291C70B80F0046AEF4 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D221C70B80F0046AEF4 /* BottomView.swift */; };
 		484A1D2A1C70B80F0046AEF4 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D231C70B80F0046AEF4 /* BottomView.xib */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		480632831C7EB78800221C49 /* ZYKeyboardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYKeyboardUtil.h; sourceTree = "<group>"; };
+		480632841C7EB78800221C49 /* ZYKeyboardUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYKeyboardUtil.m; sourceTree = "<group>"; };
 		4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZYThumbnailTableView-Bridging-Header.h"; sourceTree = "<group>"; };
 		483F0A7C1C7979950096A09A /* BlurUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurUtil.h; sourceTree = "<group>"; };
 		483F0A7D1C7979950096A09A /* BlurUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurUtil.m; sourceTree = "<group>"; };
@@ -53,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480632821C7EB75900221C49 /* ZYKeyboardUtil */ = {
+			isa = PBXGroup;
+			children = (
+				480632831C7EB78800221C49 /* ZYKeyboardUtil.h */,
+				480632841C7EB78800221C49 /* ZYKeyboardUtil.m */,
+			);
+			path = ZYKeyboardUtil;
+			sourceTree = "<group>";
+		};
 		483F0A7B1C79795C0096A09A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +131,7 @@
 			children = (
 				484A1D201C70B80F0046AEF4 /* Swift */,
 				483F0A7B1C79795C0096A09A /* Util */,
+				480632821C7EB75900221C49 /* ZYKeyboardUtil */,
 				4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */,
 			);
 			path = Classes;
@@ -203,6 +216,7 @@
 				48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */,
 				484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */,
 				484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */,
+				480632851C7EB78800221C49 /* ZYKeyboardUtil.m in Sources */,
 				483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */,
 				48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */,
 			);
