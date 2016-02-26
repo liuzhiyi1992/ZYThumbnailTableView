@@ -28,24 +28,62 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     let TYPE_EXPANSION_VIEW_TOP = "TYPE_EXPANSION_VIEW_TOP"
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
+    
 //MARK: PROPERTY
-    var cellHeight: CGFloat = CELL_HEIGHT_DEFAULT
+    /**
+     tableview cell height
+    */
+    var tableviewCellHeight: CGFloat = CELL_HEIGHT_DEFAULT
     //todo数据源要不要规定成字典数组?
-    var dataList = NSArray()
-    var cellReuseId = "diyCell"
-    var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
-    var blurRadius: CGFloat = 4.0
-    var saturationDeltaFactor: CGFloat = 1.8
+    /**
+     tableview dataList
+    */
+    var tableviewDataList = NSArray()
+    /**
+     your diy tableview cell ReuseIdentifier
+    */
+    var tableviewCellReuseId = "diyCell"
+    /**
+     give me your inputView, I will not allow the keyboard cover him. (ZYKeyboardUtil)
+    */
     var keyboardAdaptiveView: UIView?
     
+    
+    private var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
+    private var blurRadius: CGFloat = 4.0
+    private var saturationDeltaFactor: CGFloat = 1.8
     private var mainTableView: UITableView!
+    /**
+     the index you click to expand in tableview
+    */
     private var clickIndexPathRow: Int?
+    /**
+     the full height of the thumbnailView calculated after spread
+    */
     private var spreadCellHeight: CGFloat?
+    /**
+     store all alived tableview cell to calculates the full height when be clickd
+    */
     private var cellDictionary: NSMutableDictionary = NSMutableDictionary()
+    /**
+     copy from the cell which be click ,and show simultaneously
+    */
     private var thumbnailView: UIView!
+    /**
+     control the panGesture working or not
+    */
     private var thumbnailViewCanPan = true
+    /**
+     UIDynamicAnimator
+    */
     private var animator: UIDynamicAnimator!
+    /**
+     the amplitude while you pan(up or down) the thumbnailView
+    */
     private var expandAmplitude = EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT
+    /**
+     A Util Handed all keyboard events with Block Conveniently
+    */
     private var keyboardUtil: ZYKeyboardUtil!
     
     
@@ -82,6 +120,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
             return UIView()
         }
     }()
+    
     
 //MARK: FUNCTION
     override func viewDidLoad() {
@@ -124,8 +163,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    /**
+     used ZYKeyboardUtil githubDemo: https://github.com/liuzhiyi1992/ZYKeyboardUtil
+    */
     func configureKeyboardUtil() {
-        guard let nonNilKeyboardAdaptiveView = self.keyboardAdaptiveView else {
+        guard self.keyboardAdaptiveView != nil else {
             return
         }
         
@@ -168,11 +210,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataList.count
+        return tableviewDataList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = cellReuseId
+        let identifier = tableviewCellReuseId
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if cell == nil {
             //配置cell的Block
@@ -194,11 +236,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == clickIndexPathRow {
             guard let nonNilspreadCellHeight = spreadCellHeight else {
-                return cellHeight
+                return tableviewCellHeight
             }
             return nonNilspreadCellHeight
         }
-        return cellHeight
+        return tableviewCellHeight
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -258,7 +300,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         //create thumbnailView
         let convertRect = mainTableView.convertRect(cell.frame, toView: self.view)
         let thumbnailLocationY = CGRectGetMinY(convertRect)
-        let thumbnailView = UIView(frame: CGRectMake(0, thumbnailLocationY, mainTableView.bounds.width, cellHeight))
+        let thumbnailView = UIView(frame: CGRectMake(0, thumbnailLocationY, mainTableView.bounds.width, tableviewCellHeight))
         self.thumbnailView = thumbnailView
         thumbnailView.backgroundColor = UIColor.whiteColor()
         let panGesture = UIPanGestureRecognizer(target: self, action: "panThumbnailView:")

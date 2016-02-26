@@ -53,11 +53,11 @@ class ViewController: UIViewController {
     
     func configureZYTableView() {
         zyThumbnailTableVC = ZYThumbnailTableViewController()
-        zyThumbnailTableVC.cellReuseId = "DIYTableViewCell"
-        zyThumbnailTableVC.cellHeight = 100.0
+        zyThumbnailTableVC.tableviewCellReuseId = "DIYTableViewCell"
+        zyThumbnailTableVC.tableviewCellHeight = 100.0
         
         dataList = createDataSource()
-        zyThumbnailTableVC.dataList = dataList
+        zyThumbnailTableVC.tableviewDataList = dataList
         
         //因为是push过去的关系,数据源交给tableviewcontroller，更新数据源也交给他吧
         zyThumbnailTableVC.configureTableViewCellBlock = {
