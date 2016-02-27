@@ -51,18 +51,13 @@ class ViewController: UIViewController {
         zyThumbnailTableVC.tableviewDataList = dataList
         
         //--------update your cell here
-        zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
+        zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
-            guard let dataDict = self.dataList[indexPath.row] as? [String : String] else {
+            guard let dataDict = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as? [String : String] else {
                 print("ERROR: illegal tableview dataSource")
                 return
             }
             myCell?.updateCell(dataDict)
-        }
-        
-        zyThumbnailTableVC.spreadCellAnimationBlock =  {
-            let cell = $0 as? DIYTableViewCell
-            cell?.contentLabel.numberOfLines = 0
         }
         
         //--------insert your diy TopView

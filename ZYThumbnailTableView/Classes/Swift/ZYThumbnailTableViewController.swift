@@ -101,12 +101,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
     }()
     
-    lazy var spreadCellAnimationBlock: SpreadCellAnimationBlick = {
-        return {
-            assertionFailure("ERROR: You must configure the spreadCellAnimationBlock")
-        }
-    }()
-    
     lazy var createTopExpansionViewBlock: CreateTopExpansionViewBlock = {
         return {
             assertionFailure("ERROR: You must configure the createTopExpansionViewBlock")
@@ -317,7 +311,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         thumbnailView.addSubview(contentView)
         thumbnailView.clipsToBounds = true
         
-        //dont contain the bottom constraint here
+        //constraint
         thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views))
         thumbnailView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: .AlignAllCenterY, metrics: nil, views: views))
         
