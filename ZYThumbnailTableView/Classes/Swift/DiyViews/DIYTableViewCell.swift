@@ -34,6 +34,10 @@ class DIYTableViewCell: UITableViewCell {
         contentLabel.text = validStringForKeyFromDictionary("content", dict: dict)
         let imageName = validStringForKeyFromDictionary("avatar", dict: dict)
         avatarImageView.image = UIImage(named: imageName) ?? UIImage(named: "avatar0")
+        let favorite = dict["favorite"] as? Bool ?? false
+        if favorite {
+            
+        }
     }
     
     func validStringForKeyFromDictionary(key: String, dict: Dictionary<String, AnyObject>) -> String {

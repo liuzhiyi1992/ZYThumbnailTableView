@@ -93,7 +93,8 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
             "avatar" : "avatar0",
             "desc" : "Beijing,Chaoyang District",
             "time" : "3 minute",
-          "content": content,
+            "content" : content,
+            "favorite" : false
             ])
         
         dataSource.addObject([
@@ -102,6 +103,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
             "desc" : "Joined on Dec 18, 2014",
             "time" : "8 minute",
             "content": "You know that you do not need to be in the limelight to gain happiness. If you constantly aim to be in the spotlight, you are looking to others for validation. \n    In actuality, you should just be yourself. People do not like characters that are always in your line of vision and trying to gain your attention.\n    You know that you can just be yourself with others, without the need to be in the limelight. \n    People will see you as a beautiful girl when you are being you, not trying to persistently have all attention on you. \n    Who can have a real conversation with someone who is eagerly looking around and making sure all eyes are on them?",
+            "favorite" : false
             ])
         
         dataSource.addObject([
@@ -110,6 +112,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
             "desc" : "The Technology Studio",
             "time" : "16 minute",
             "content": "To each parent he responded with one line: \"Are you going to help me now?\" \n    And then he continued to dig for his son, stone by stone. \n    The fire chief showed up and tried to pull him off the school s ruins saying, \"Fires are breaking out, explosions are happening everywhere. \n    You’re in danger. We’ll take care of it. Go home.\" To which this loving, caring American father asked, \"Are you going to help me now?\"",
+            "favorite" : false
             ])
         
         dataSource.addObject([
