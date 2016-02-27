@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
 
     var zyThumbnailTableVC: ZYThumbnailTableViewController!
     var dataList = NSArray()
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         //--------update your cell here
         zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
-            guard let dataDict = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as? [String : String] else {
+            guard let dataDict = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as? [String : AnyObject] else {
                 print("ERROR: illegal tableview dataSource")
                 return
             }
@@ -78,12 +78,12 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(zyThumbnailTableVC, animated: true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: delegate
+    func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath) {
+        zyThumbnailTableVC.tableviewDataList[indexPath.row]
     }
     
-    //Virtual DataSource
+    //MARK: -Virtual DataSource
     func createDataSource() -> NSArray {
         let dataSource = NSMutableArray()
         let content = "The lesson of the story, I suggested, was that in some strange sense we are more whole when we are missing something. \n    The man who has everything is in some ways a poor man. \n    He will never know what it feels like to yearn, to hope, to nourish his soul with the dream of something better. \n    He will never know the experience of having someone who loves him give him something he has always wanted or never had."
@@ -163,4 +163,9 @@ class ViewController: UIViewController {
         return NSArray(array: dataSource)
     }
     
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }

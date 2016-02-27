@@ -18,6 +18,13 @@ let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
 let MARGIN_KEYBOARD_ADAPTATION = CGFloat(20)
 
 
+
+@objc protocol ZYThumbnailTableViewControllerDelegate {
+    optional func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath)
+}
+
+
+
 class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
@@ -34,7 +41,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
      tableview cell height
     */
     var tableviewCellHeight: CGFloat = CELL_HEIGHT_DEFAULT
-    //todo数据源要不要规定成字典数组?
+    //todo数据源要不要规定成字典数组?//不需要
     /**
      tableview dataList
     */

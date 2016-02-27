@@ -27,12 +27,17 @@ class DIYTableViewCell: UITableViewCell {
         return cell!
     }
     
-    func updateCell(dict: [String : String]) {
-        nameLabel.text = dict["name"] ?? "error"
-        descLabel.text = dict["desc"] ?? "error"
-        timeLabel.text = dict["time"] ?? "error"
-        contentLabel.text = dict["content"] ?? "error"
-        avatarImageView.image = UIImage(named: dict["avatar"]!) ?? UIImage(named: "avatar0")
+    func updateCell(dict: [String : AnyObject]) {
+        nameLabel.text = validStringForKeyFromDictionary("name", dict: dict)
+        descLabel.text = validStringForKeyFromDictionary("desc", dict: dict)
+        timeLabel.text = validStringForKeyFromDictionary("time", dict: dict)
+        contentLabel.text = validStringForKeyFromDictionary("content", dict: dict)
+        let imageName = validStringForKeyFromDictionary("avatar", dict: dict)
+        avatarImageView.image = UIImage(named: imageName) ?? UIImage(named: "avatar0")
+    }
+    
+    func validStringForKeyFromDictionary(key: String, dict: Dictionary<String, AnyObject>) -> String {
+        return dict[key] as? String ?? "illegal"
     }
     
 }
