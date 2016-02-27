@@ -17,22 +17,26 @@
                     <color key="textColor" red="0.65490196078431373" green="0.85490196078431369" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descdesc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svh-3G-pj3">
-                    <rect key="frame" x="245" y="12" width="60" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYx-Oa-3t5">
-                    <rect key="frame" x="128" y="12.5" width="64" height="16"/>
+                    <rect key="frame" x="128" y="12" width="64" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                     <state key="normal" title=" Dismiss" image="star_hollow">
                         <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <state key="highlighted" image="star_solid"/>
                     <connections>
                         <action selector="clickDismissButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="hPY-5D-sAz"/>
                     </connections>
+                </button>
+                <button opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h11-8F-6f8">
+                    <rect key="frame" x="241" y="12" width="64" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
+                    <state key="normal" title=" Sharing" image="share_icon_normal">
+                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="highlighted" image="share_icon_highlight"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wHh-VB-Ssy">
                     <rect key="frame" x="15" y="39" width="290" height="1"/>
@@ -43,17 +47,14 @@
                 </imageView>
             </subviews>
             <constraints>
+                <constraint firstItem="h11-8F-6f8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0bk-tn-oen"/>
                 <constraint firstItem="XYx-Oa-3t5" firstAttribute="leading" secondItem="QLA-NH-HTS" secondAttribute="trailing" constant="15" id="5jK-6Q-djS"/>
                 <constraint firstItem="QLA-NH-HTS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="9cY-Mc-GX5"/>
+                <constraint firstAttribute="trailing" secondItem="h11-8F-6f8" secondAttribute="trailing" constant="15" id="9mx-uo-VM7"/>
                 <constraint firstItem="wHh-VB-Ssy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="DkR-iO-Bn3"/>
-                <constraint firstItem="Svh-3G-pj3" firstAttribute="leading" secondItem="QLA-NH-HTS" secondAttribute="trailing" constant="30" id="M6F-UA-wR7"/>
                 <constraint firstItem="XYx-Oa-3t5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NX6-hF-yyi"/>
-                <constraint firstItem="Svh-3G-pj3" firstAttribute="leading" secondItem="XYx-Oa-3t5" secondAttribute="trailing" constant="15" id="QRY-8n-2RL"/>
                 <constraint firstAttribute="trailing" secondItem="wHh-VB-Ssy" secondAttribute="trailing" constant="15" id="UAE-GG-BMW"/>
-                <constraint firstAttribute="trailing" secondItem="Svh-3G-pj3" secondAttribute="trailing" constant="15" id="UmS-fR-3OJ"/>
-                <constraint firstItem="Svh-3G-pj3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bVt-gU-oWg"/>
                 <constraint firstAttribute="bottom" secondItem="wHh-VB-Ssy" secondAttribute="bottom" id="eSh-c1-gxO"/>
-                <constraint firstItem="Svh-3G-pj3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ekK-3a-lO4"/>
                 <constraint firstItem="QLA-NH-HTS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rcE-8x-HV8"/>
                 <constraint firstItem="XYx-Oa-3t5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wkn-vT-Ef0"/>
             </constraints>
@@ -62,15 +63,15 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="5jK-6Q-djS"/>
-                    <exclude reference="M6F-UA-wR7"/>
-                    <exclude reference="QRY-8n-2RL"/>
-                    <exclude reference="bVt-gU-oWg"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="180" y="171"/>
         </view>
     </objects>
     <resources>
+        <image name="share_icon_highlight" width="13" height="13"/>
+        <image name="share_icon_normal" width="13" height="13"/>
         <image name="star_hollow" width="13" height="13"/>
+        <image name="star_solid" width="13" height="13"/>
     </resources>
 </document>

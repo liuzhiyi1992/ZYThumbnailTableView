@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         //--------configure your diy tableview cell datalist
         zyThumbnailTableVC.tableviewDataList = dataList
         
-        //--------here is the fun of update your cell
+        //--------update your cell here
         zyThumbnailTableVC.updateTableViewCellBlock =  { (cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
             guard let dataDict = self.dataList[indexPath.row] as? [String : String] else {
