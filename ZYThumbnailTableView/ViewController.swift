@@ -53,6 +53,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         //--------update your cell here
         zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
+            //Post is my data model
             guard let dataSource = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as? Post else {
                 print("ERROR: illegal tableview dataSource")
                 return
@@ -62,6 +63,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         
         //--------insert your diy TopView
         zyThumbnailTableVC.createTopExpansionViewBlock = { [weak self](indexPath: NSIndexPath) -> UIView in
+            //Post is my data model
             let post = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
             let topView = TopView.createView(indexPath, post: post)!
             topView.delegate = self;
@@ -100,6 +102,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     
     func topViewDidClickFavoriteBtn(topView: TopView) {
         let indexPath = topView.indexPath
+        //Post is my data model
         let post = zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
         post.favorite = !post.favorite
         zyThumbnailTableVC.reloadMainTableView()

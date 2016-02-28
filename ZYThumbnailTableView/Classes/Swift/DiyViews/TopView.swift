@@ -38,7 +38,7 @@ class TopView: UIView {
         }
         nonNilView.indexPath = indexPath
         nonNilView.configureComponents(post)
-        return view
+        return nonNilView
     }
     
     func configureComponents(post: Post) {
