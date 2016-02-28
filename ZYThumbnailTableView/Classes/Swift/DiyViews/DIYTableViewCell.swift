@@ -15,6 +15,7 @@ class DIYTableViewCell: UITableViewCell {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var favoriteMarkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,21 +28,17 @@ class DIYTableViewCell: UITableViewCell {
         return cell!
     }
     
-    func updateCell(dict: [String : AnyObject]) {
-        nameLabel.text = validStringForKeyFromDictionary("name", dict: dict)
-        descLabel.text = validStringForKeyFromDictionary("desc", dict: dict)
-        timeLabel.text = validStringForKeyFromDictionary("time", dict: dict)
-        contentLabel.text = validStringForKeyFromDictionary("content", dict: dict)
-        let imageName = validStringForKeyFromDictionary("avatar", dict: dict)
-        avatarImageView.image = UIImage(named: imageName) ?? UIImage(named: "avatar0")
-        let favorite = dict["favorite"] as? Bool ?? false
-        if favorite {
-            
+    func updateCell(post: Post) {
+        nameLabel.text = post.name
+        descLabel.text = post.desc
+        timeLabel.text = post.time
+        contentLabel.text = post.content
+        avatarImageView.image = UIImage(named: post.avatar) ?? UIImage(named: "avatar0")
+        if post.favorite {
+            self.favoriteMarkImageView.hidden = false
+        } else {
+            self.favoriteMarkImageView.hidden = true
         }
-    }
-    
-    func validStringForKeyFromDictionary(key: String, dict: Dictionary<String, AnyObject>) -> String {
-        return dict[key] as? String ?? "illegal"
     }
     
 }

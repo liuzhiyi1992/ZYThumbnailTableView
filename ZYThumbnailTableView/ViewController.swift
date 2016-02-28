@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
+class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, DiyTopViewDelegate {
 
     var zyThumbnailTableVC: ZYThumbnailTableViewController!
     var dataList = NSArray()
@@ -53,16 +53,18 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
         //--------update your cell here
         zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
-            guard let dataDict = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as? [String : AnyObject] else {
+            guard let dataSource = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as? Post else {
                 print("ERROR: illegal tableview dataSource")
                 return
             }
-            myCell?.updateCell(dataDict)
+            myCell?.updateCell(dataSource)
         }
         
         //--------insert your diy TopView
-        zyThumbnailTableVC.createTopExpansionViewBlock = {
-            return TopView.createView()!
+        zyThumbnailTableVC.createTopExpansionViewBlock = { (indexPath: NSIndexPath) -> UIView in
+            let topView = TopView.createView(indexPath)!
+            topView.delegate = self;
+            return topView
         }
         
         let diyBottomView = BottomView.createView()!
@@ -83,6 +85,20 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
         zyThumbnailTableVC.tableviewDataList[indexPath.row]
     }
     
+    func topViewDidClickFavoriteBtn(topView: TopView) {
+        let indexPath = topView.indexPath
+        let isFavorite = zyThumbnailTableVC.tableviewDataList[indexPath.row].valueForKey("favorite") as! Bool
+//        var dict = (zyThumbnailTableVC.tableviewDataList[indexPath.row] as! NSMutableDictionary)
+        //麻烦，dataList还是要装model
+//        dict.updateValue(!isFavorite, forKey: "favorite")
+//        if dict["favorite"] as? Bool == true {
+//            print("成功")
+//        }
+        zyThumbnailTableVC.reloadMainTableView()
+    }
+    
+    
+    //此方法作用是虚拟出tableview数据源，不用理会
     //MARK: -Virtual DataSource
     func createDataSource() -> NSArray {
         let dataSource = NSMutableArray()
@@ -163,7 +179,27 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
             "content": content,
             ])
         
-        return NSArray(array: dataSource)
+        //source dict to model
+        let sourceDict = NSArray(array: dataSource)
+        let postArray = NSMutableArray()
+        for dict in sourceDict {
+            let post = Post()
+            let handleDict = dict as! Dictionary<String, AnyObject>
+            post.name =  validStringForKeyFromDictionary("name", dict: handleDict)
+            post.desc = validStringForKeyFromDictionary("desc", dict: handleDict)
+            post.time = validStringForKeyFromDictionary("time", dict: handleDict)
+            post.content = validStringForKeyFromDictionary("content", dict: handleDict)
+            post.avatar = validStringForKeyFromDictionary("avatar", dict: handleDict)
+            post.favorite = handleDict["favorite"] as? Bool ?? false
+            postArray.addObject(post)
+        }
+        
+        return NSArray(array: postArray)
+    }
+    
+    
+    func validStringForKeyFromDictionary(key: String, dict: Dictionary<String, AnyObject>) -> String {
+        return dict[key] as? String ?? "illegal"
     }
     
     
@@ -171,4 +207,19 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+
+
+
+//MARK: Model class
+class Post: NSObject {
+    
+    var name: String = ""
+    var avatar: String = ""
+    var desc: String = ""
+    var time: String = ""
+    var content: String = ""
+    var favorite: Bool = false
+    
 }

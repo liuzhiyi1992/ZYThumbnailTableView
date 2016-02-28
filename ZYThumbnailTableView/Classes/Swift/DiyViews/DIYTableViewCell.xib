@@ -23,28 +23,28 @@
                                 <rect key="frame" x="0.0" y="5" width="320" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S88-SG-l14">
-                                        <rect key="frame" x="241" y="15.5" width="63.5" height="14.5"/>
+                                        <rect key="frame" x="241" y="15" width="63.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h4w-Yd-jdn">
-                                        <rect key="frame" x="15" y="9" width="42" height="42"/>
+                                        <rect key="frame" x="25" y="9" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="h4w-Yd-jdn" secondAttribute="height" multiplier="1:1" id="vSO-0z-C7E"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cig-1d-S3y">
-                                        <rect key="frame" x="67" y="9" width="164.5" height="42"/>
+                                        <rect key="frame" x="77" y="9" width="154.5" height="42"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name sub Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oH-ag-D0t">
-                                                <rect key="frame" x="0.0" y="1.5" width="113.5" height="23"/>
+                                                <rect key="frame" x="0.0" y="1" width="113.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub title the sub title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="978-KI-Qs3">
-                                                <rect key="frame" x="0.0" y="27.5" width="116.5" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="27" width="116.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.46274509803921571" green="0.34509803921568627" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -68,13 +68,24 @@
                                             </mask>
                                         </variation>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-RN-tMI">
+                                        <rect key="frame" x="8" y="9" width="12" height="12"/>
+                                        <color key="backgroundColor" red="0.65490196078431373" green="0.85490196078431369" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="ZZD-48-ZFF"/>
+                                            <constraint firstAttribute="height" constant="12" id="a7e-7u-MyV"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Z2W-RN-tMI" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="5" id="4Jt-EE-gXk"/>
+                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="Z2W-RN-tMI" secondAttribute="trailing" constant="5" id="5FS-eI-u6P"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="centerY" secondItem="h4w-Yd-jdn" secondAttribute="centerY" id="9UV-X6-HIe"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="centerY" secondItem="S88-SG-l14" secondAttribute="centerY" id="Cab-Ww-RjF"/>
-                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="15" id="G6o-qW-MKE"/>
+                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="25" id="G6o-qW-MKE"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="bottom" secondItem="h4w-Yd-jdn" secondAttribute="bottom" id="GgP-Z4-fDt"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="HWO-1k-Ie4"/>
+                                    <constraint firstItem="Z2W-RN-tMI" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="HiL-ix-jxq"/>
                                     <constraint firstAttribute="height" constant="60" id="T3O-vP-P5I"/>
                                     <constraint firstItem="S88-SG-l14" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="top" constant="10" id="TM0-Nq-4kv"/>
                                     <constraint firstAttribute="trailing" secondItem="S88-SG-l14" secondAttribute="trailing" constant="15" id="Wjf-7H-cZc"/>
@@ -91,6 +102,7 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="4Jt-EE-gXk"/>
                                         <exclude reference="Cab-Ww-RjF"/>
                                         <exclude reference="ZnY-3f-Gqh"/>
                                         <exclude reference="iSd-4e-iUO"/>
@@ -102,35 +114,17 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ri7-bE-twN">
-                                <rect key="frame" x="0.0" y="65" width="320" height="35"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAk-QQ-ry4">
-                                        <rect key="frame" x="15" y="0.0" width="290" height="30"/>
-                                        <string key="text">1the post thumbnail text
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAk-QQ-ry4">
+                                <rect key="frame" x="25" y="65" width="280" height="29"/>
+                                <string key="text">1the post thumbnail text
 GitHub Pages is now running the latest major version of Jekyll
 
 Meaning it's now easier and faster to publish beautiful sites for you and your projects</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <string key="userLabel">the post thumbnail text GitHub Pages is now running the latest major version of Jekyll   meaning it's now easier and faster to publish beautiful sites for you and your projects</string>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="KAk-QQ-ry4" secondAttribute="bottom" priority="900" constant="5" id="7oD-Ax-R9y"/>
-                                    <constraint firstAttribute="trailing" secondItem="KAk-QQ-ry4" secondAttribute="trailing" constant="15" id="PUZ-UG-tes"/>
-                                    <constraint firstItem="KAk-QQ-ry4" firstAttribute="top" secondItem="ri7-bE-twN" secondAttribute="top" id="fwK-SX-6ke"/>
-                                    <constraint firstItem="KAk-QQ-ry4" firstAttribute="leading" secondItem="ri7-bE-twN" secondAttribute="leading" constant="30" id="gnf-MW-baw"/>
-                                    <constraint firstAttribute="bottom" secondItem="KAk-QQ-ry4" secondAttribute="bottom" constant="10" id="qOd-W6-tw0"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="gnf-MW-baw"/>
-                                        <exclude reference="qOd-W6-tw0"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.30980392156862746" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <string key="userLabel">the post thumbnail text GitHub Pages is now running the latest major version of Jekyll   meaning it's now easier and faster to publish beautiful sites for you and your projects</string>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LkA-GT-aWT">
                                 <rect key="frame" x="15" y="99" width="290" height="1"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -140,17 +134,16 @@ Meaning it's now easier and faster to publish beautiful sites for you and your p
                             </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="KAk-QQ-ry4" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="bottom" id="4I6-Oj-cv3"/>
                             <constraint firstItem="3iL-zc-FDH" firstAttribute="top" secondItem="J3E-ef-S7d" secondAttribute="top" constant="5" id="Dje-7r-ICy"/>
-                            <constraint firstAttribute="bottom" secondItem="ri7-bE-twN" secondAttribute="bottom" id="EW9-jF-Q4v"/>
                             <constraint firstItem="LkA-GT-aWT" firstAttribute="leading" secondItem="J3E-ef-S7d" secondAttribute="leading" constant="15" id="Ekx-Bi-ihf"/>
-                            <constraint firstAttribute="trailing" secondItem="ri7-bE-twN" secondAttribute="trailing" id="Nja-pD-0Oh"/>
+                            <constraint firstItem="LkA-GT-aWT" firstAttribute="top" secondItem="KAk-QQ-ry4" secondAttribute="bottom" priority="900" constant="5" id="Em4-0Q-eRe"/>
                             <constraint firstItem="3iL-zc-FDH" firstAttribute="leading" secondItem="J3E-ef-S7d" secondAttribute="leading" id="Si2-Ar-c70"/>
                             <constraint firstAttribute="bottom" secondItem="LkA-GT-aWT" secondAttribute="bottom" id="Xyj-OW-ZFR"/>
                             <constraint firstAttribute="trailing" secondItem="3iL-zc-FDH" secondAttribute="trailing" id="a6j-v8-ln9"/>
+                            <constraint firstItem="KAk-QQ-ry4" firstAttribute="leading" secondItem="h4w-Yd-jdn" secondAttribute="leading" id="dVT-PE-O6S"/>
                             <constraint firstAttribute="trailing" secondItem="LkA-GT-aWT" secondAttribute="trailing" constant="15" id="hg7-35-X6b"/>
-                            <constraint firstItem="KAk-QQ-ry4" firstAttribute="leading" secondItem="h4w-Yd-jdn" secondAttribute="leading" id="k4Y-K2-d2h"/>
-                            <constraint firstItem="ri7-bE-twN" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="bottom" id="oQR-Ua-YkQ"/>
-                            <constraint firstItem="ri7-bE-twN" firstAttribute="leading" secondItem="J3E-ef-S7d" secondAttribute="leading" id="ulh-Ma-Psg"/>
+                            <constraint firstAttribute="trailing" secondItem="KAk-QQ-ry4" secondAttribute="trailing" constant="15" id="yBq-fs-SbD"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -165,6 +158,7 @@ Meaning it's now easier and faster to publish beautiful sites for you and your p
                 <outlet property="avatarImageView" destination="h4w-Yd-jdn" id="tPc-TI-dF0"/>
                 <outlet property="contentLabel" destination="KAk-QQ-ry4" id="lvw-7l-Bmw"/>
                 <outlet property="descLabel" destination="978-KI-Qs3" id="ga9-z0-Y9x"/>
+                <outlet property="favoriteMarkImageView" destination="Z2W-RN-tMI" id="wxV-O5-lH2"/>
                 <outlet property="nameLabel" destination="1oH-ag-D0t" id="YN2-XE-P0l"/>
                 <outlet property="timeLabel" destination="S88-SG-l14" id="muq-y2-537"/>
             </connections>

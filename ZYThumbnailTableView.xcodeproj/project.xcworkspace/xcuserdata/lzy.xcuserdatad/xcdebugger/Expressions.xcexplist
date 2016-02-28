@@ -3,16 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ZYThumbnailTableViewController.tableView(UITableView, heightForRowAtIndexPath : NSIndexPath) -&gt; CGFloat:ZYThumbnailTableViewController.swift">
+         contextName = "ViewController.createDataSource() -&gt; NSArray:ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "clickIndexPathRow">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "spreadCellHeight">
+               value = "sourceDict">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -37,6 +31,23 @@
                value = "cellDictionary">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ZYThumbnailTableViewController.tableView(UITableView, heightForRowAtIndexPath : NSIndexPath) -&gt; CGFloat:ZYThumbnailTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "spreadCellHeight">
+            </PersistentString>
+            <PersistentString
+               value = "clickIndexPathRow">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.topViewDidClickFavoriteBtn(TopView) -&gt; ():ViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
