@@ -22,6 +22,7 @@ class BottomView: UIView {
     }
     
     @IBAction func clickDismissButton(sender: AnyObject) {
+//        self.inputTextField.resignFirstResponder()
         NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
     }
 }

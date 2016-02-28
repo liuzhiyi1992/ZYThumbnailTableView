@@ -14,6 +14,7 @@ typealias SpreadCellAnimationBlick = (cell: UITableViewCell) -> Void
 typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView
 typealias CreateBottomExpansionViewBlock = () -> UIView
 
+
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
 let MARGIN_KEYBOARD_ADAPTATION = CGFloat(20)
 var KEY_INDEXPATH = "KEY_INDEXPATH"
@@ -286,6 +287,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     func previewCell(cell: UITableViewCell, indexPath: NSIndexPath) {
         //create previewCover
         let previewCover = UIImageView(frame: mainTableView.frame)
+        
         //blur background
         let blurImage = mainTableView.screenShot()
         previewCover.image = blurImage.applyBlurWithRadius(blurRadius, tintColor: blurTintColor, saturationDeltaFactor: saturationDeltaFactor, maskImage: nil)
@@ -293,6 +295,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapPreviewCover:")
         previewCover.addGestureRecognizer(tapGesture)
         self.view.insertSubview(previewCover, aboveSubview: mainTableView)
+        
         //animator
         animator = UIDynamicAnimator(referenceView: previewCover)
         
@@ -300,6 +303,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let convertRect = mainTableView.convertRect(cell.frame, toView: self.view)
         let thumbnailLocationY = CGRectGetMinY(convertRect)
         let thumbnailView = UIView(frame: CGRectMake(0, thumbnailLocationY, mainTableView.bounds.width, tableviewCellHeight))
+        
         //binding the indexPath
         objc_setAssociatedObject(thumbnailView, &KEY_INDEXPATH, indexPath, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         self.thumbnailView = thumbnailView
@@ -536,18 +540,13 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         outBuffer.height = UInt(CGImageGetHeight(rawImage))
         outBuffer.rowBytes = CGImageGetBytesPerRow(rawImage)
         
-        
         let flags:vImage_Flags = UInt32(kvImageNoFlags)
         error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, boxSize, boxSize, nil, flags)
-        
         if error != 0 {
             print("error from convolution \(error)")
         }
-        
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
         let ctx = CGBitmapContextCreate(outBuffer.data, Int(outBuffer.width), Int(outBuffer.height), 8, outBuffer.rowBytes, colorSpace, CGImageGetBitmapInfo(rawImage).rawValue)
-        
         let imageRef = CGBitmapContextCreateImage(ctx)
         let returnImage = UIImage(CGImage: imageRef!)
         

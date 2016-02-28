@@ -91,13 +91,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         let indexPath = topView.indexPath
         let post = zyThumbnailTableVC.tableviewDataList[indexPath.row] as! Post
         post.favorite = !post.favorite
-//        var dict = (zyThumbnailTableVC.tableviewDataList[indexPath.row] as! NSMutableDictionary)
-        //麻烦，dataList还是要装model
-//        dict.updateValue(!isFavorite, forKey: "favorite")
-//        if dict["favorite"] as? Bool == true {
-//            print("成功")
-//        }
-        zyThumbnailTableVC.reloadMainTableView()
+//        zyThumbnailTableVC.reloadMainTableView()
     }
     
     
