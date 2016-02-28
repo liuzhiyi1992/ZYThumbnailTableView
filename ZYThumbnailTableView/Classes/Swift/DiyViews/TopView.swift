@@ -18,6 +18,7 @@ import UIKit
 //default  AAAAAA
 class TopView: UIView {
     
+    @IBOutlet weak var readMarkingButton: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
     let TAG_BUTTON_GENERAL = 10
@@ -35,13 +36,10 @@ class TopView: UIView {
             assertionFailure("ERROR: can not load nib \"TopView\"")
             return nil
         }
-        
         nonNilView.indexPath = indexPath
         nonNilView.configureComponents(post)
-        
         return view
     }
-    
     
     func configureComponents(post: Post) {
         determineFavorite(post.favorite)
