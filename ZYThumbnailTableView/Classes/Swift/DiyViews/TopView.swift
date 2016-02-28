@@ -18,30 +18,55 @@ import UIKit
 //default  AAAAAA
 class TopView: UIView {
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     let TAG_BUTTON_GENERAL = 10
     let TAG_BUTTON_SELECTED = 20
+    
+    let COLOR_SELECTED = UIColor(red: 167/255.0, green: 218/255.0, blue: 85/255.0, alpha: 1.0)
+    let COLOR_NORMAL = UIColor(red: 170/255.0, green: 170/255.0, blue: 170/255.0, alpha: 1.0)
     
     var indexPath: NSIndexPath!
     var delegate: DiyTopViewDelegate?
 
-    class func createView(indexPath: NSIndexPath) -> TopView? {
+    class func createView(indexPath: NSIndexPath, post: Post) -> TopView? {
         let view = NSBundle.mainBundle().loadNibNamed("TopView", owner: nil, options: nil).first as? TopView
-        guard view != nil else {
+        guard let nonNilView = view else {
             assertionFailure("ERROR: can not load nib \"TopView\"")
             return nil
         }
-        view!.indexPath = indexPath
+        
+        nonNilView.indexPath = indexPath
+        nonNilView.configureComponents(post)
+        
         return view
+    }
+    
+    
+    func configureComponents(post: Post) {
+        determineFavorite(post.favorite)
+    }
+    
+    func determineFavorite(flag: Bool) {
+        if flag {
+            favoriteButton.setImage(UIImage(named: "star_solid"), forState: .Normal)
+            favoriteButton.setTitleColor(COLOR_SELECTED, forState: .Normal)
+            favoriteButton.tag = TAG_BUTTON_SELECTED
+        } else {
+            favoriteButton.setImage(UIImage(named: "star_hollow"), forState: .Normal)
+            favoriteButton.setTitleColor(COLOR_NORMAL, forState: .Normal)
+            favoriteButton.tag = TAG_BUTTON_GENERAL
+        }
     }
     
     @IBAction func clickFavoriteButton(sender: UIButton) {
         
         if sender.tag == TAG_BUTTON_GENERAL {
-            sender.setTitleColor(UIColor(red: 167/255.0, green: 218/255.0, blue: 85/255.0, alpha: 1.0), forState: .Normal)
+            sender.setTitleColor(COLOR_SELECTED, forState: .Normal)
             sender.setImage(UIImage(named: "star_solid"), forState: .Normal)
             sender.tag = TAG_BUTTON_SELECTED
         } else if sender.tag == TAG_BUTTON_SELECTED {
-            sender.setTitleColor(UIColor(red: 170/255.0, green: 170/255.0, blue: 170/255.0, alpha: 1.0), forState: .Normal)
+            sender.setTitleColor(COLOR_NORMAL, forState: .Normal)
             sender.setImage(UIImage(named: "star_hollow"), forState: .Normal)
             sender.tag = TAG_BUTTON_GENERAL
         }

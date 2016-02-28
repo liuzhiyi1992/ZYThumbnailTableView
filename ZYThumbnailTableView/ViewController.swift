@@ -46,6 +46,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             return DIYTableViewCell.createCell()
         }
         
+        //模拟创建一些数据作为演示
         dataList = createDataSource()
         //--------configure your diy tableview cell datalist
         zyThumbnailTableVC.tableviewDataList = dataList
@@ -61,8 +62,9 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         }
         
         //--------insert your diy TopView
-        zyThumbnailTableVC.createTopExpansionViewBlock = { (indexPath: NSIndexPath) -> UIView in
-            let topView = TopView.createView(indexPath)!
+        zyThumbnailTableVC.createTopExpansionViewBlock = { [weak self](indexPath: NSIndexPath) -> UIView in
+            let post = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as! Post
+            let topView = TopView.createView(indexPath, post: post)!
             topView.delegate = self;
             return topView
         }
@@ -87,7 +89,8 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     
     func topViewDidClickFavoriteBtn(topView: TopView) {
         let indexPath = topView.indexPath
-        let isFavorite = zyThumbnailTableVC.tableviewDataList[indexPath.row].valueForKey("favorite") as! Bool
+        let post = zyThumbnailTableVC.tableviewDataList[indexPath.row] as! Post
+        post.favorite = !post.favorite
 //        var dict = (zyThumbnailTableVC.tableviewDataList[indexPath.row] as! NSMutableDictionary)
         //麻烦，dataList还是要装model
 //        dict.updateValue(!isFavorite, forKey: "favorite")
@@ -137,6 +140,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "desc" : "Joined on Mar 26, 2013",
             "time" : "21 minute",
             "content": "One year after our \"talk,\" I discovered I had breast cancer. I was thirty-two, the mother of three beautiful young children, and scared. \n    The cancer had metastasized to my lymph nodes and the statistics were not great for long-term survival. \n    After my surgery, friends and loved ones visited and tried to find the right words. No one knew what to say, and many said the wrong things. \n    Others wept, and I tried to encourage them. I clung to hope myself.",
+            "favorite" : true
             ])
         
         dataSource.addObject([

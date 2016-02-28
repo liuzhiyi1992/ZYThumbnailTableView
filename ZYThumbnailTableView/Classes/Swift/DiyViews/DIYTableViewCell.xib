@@ -69,23 +69,29 @@
                                         </variation>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-RN-tMI">
-                                        <rect key="frame" x="8" y="9" width="12" height="12"/>
+                                        <rect key="frame" x="9" y="11" width="8" height="8"/>
                                         <color key="backgroundColor" red="0.65490196078431373" green="0.85490196078431369" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="ZZD-48-ZFF"/>
-                                            <constraint firstAttribute="height" constant="12" id="a7e-7u-MyV"/>
+                                            <constraint firstAttribute="width" constant="8" id="ZZD-48-ZFF"/>
+                                            <constraint firstAttribute="height" constant="8" id="a7e-7u-MyV"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Z2W-RN-tMI" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="5" id="4Jt-EE-gXk"/>
-                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="Z2W-RN-tMI" secondAttribute="trailing" constant="5" id="5FS-eI-u6P"/>
+                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="Z2W-RN-tMI" secondAttribute="trailing" constant="8" id="5FS-eI-u6P"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="centerY" secondItem="h4w-Yd-jdn" secondAttribute="centerY" id="9UV-X6-HIe"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="centerY" secondItem="S88-SG-l14" secondAttribute="centerY" id="Cab-Ww-RjF"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="25" id="G6o-qW-MKE"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="bottom" secondItem="h4w-Yd-jdn" secondAttribute="bottom" id="GgP-Z4-fDt"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="HWO-1k-Ie4"/>
-                                    <constraint firstItem="Z2W-RN-tMI" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="HiL-ix-jxq"/>
+                                    <constraint firstItem="Z2W-RN-tMI" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" constant="2" id="HiL-ix-jxq"/>
                                     <constraint firstAttribute="height" constant="60" id="T3O-vP-P5I"/>
                                     <constraint firstItem="S88-SG-l14" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="top" constant="10" id="TM0-Nq-4kv"/>
                                     <constraint firstAttribute="trailing" secondItem="S88-SG-l14" secondAttribute="trailing" constant="15" id="Wjf-7H-cZc"/>
