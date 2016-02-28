@@ -11,7 +11,7 @@ import UIKit
 typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
 typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
 typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
-typealias CreateBottomExpansionViewBlock = () -> UIView?
+typealias CreateBottomExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
 
 
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
@@ -363,10 +363,13 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let thresholdValue = thumbnailViewHeight * 0.3
         if thumbnailViewCanPan {
             if gestureTranslation.y > thresholdValue {
+                thumbnailViewCanPan = false
                 let indexPath = objc_getAssociatedObject(gesture.view, &KEY_INDEXPATH) as! NSIndexPath
                 layoutTopView(indexPath)
             } else if gestureTranslation.y < -thresholdValue {
-                layoutBottomView()
+                thumbnailViewCanPan = false
+                let indexPath = objc_getAssociatedObject(gesture.view, &KEY_INDEXPATH) as! NSIndexPath
+                layoutBottomView(indexPath)
             }
         }
         //gesture state
@@ -432,9 +435,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let contentView = thumbnailView.subviews.first
         let nullableTopView = createTopExpansionViewBlock(indexPath: indexPath)
         guard let topView = nullableTopView else {
+            thumbnailViewCanPan = true
             return
         }
-        thumbnailViewCanPan = false
         topView.translatesAutoresizingMaskIntoConstraints = false
         thumbnailView.addSubview(topView)
         let views = ["contentView":contentView!, "topView":topView]
@@ -459,10 +462,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         shock(thumbnailView, type: TYPE_EXPANSION_VIEW_TOP)
     }
     
-    func layoutBottomView() {
+    func layoutBottomView(indexPath: NSIndexPath) {
         let contentView = thumbnailView.subviews.first
-        let nullableBottomView = createBottomExpansionViewBlock()
+        let nullableBottomView = createBottomExpansionViewBlock(indexPath: indexPath)
         guard let bottomView = nullableBottomView else {
+            thumbnailViewCanPan = true
             return
         }
         thumbnailViewCanPan = false

@@ -72,7 +72,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         //--------let your inputView component not cover by keyboard automatically (animated) (ZYKeyboardUtil)
         zyThumbnailTableVC.keyboardAdaptiveView = diyBottomView.inputTextField;
         //--------insert your diy BottomView
-        zyThumbnailTableVC.createBottomExpansionViewBlock = {
+        zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
             return diyBottomView
         }
         
