@@ -11,12 +11,12 @@ import UIKit
 typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
 typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
 typealias SpreadCellAnimationBlick = (cell: UITableViewCell) -> Void
-typealias CreateTopExpansionViewBlock = () -> UIView
+typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView
 typealias CreateBottomExpansionViewBlock = () -> UIView
 
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
 let MARGIN_KEYBOARD_ADAPTATION = CGFloat(20)
-
+var KEY_INDEXPATH = "KEY_INDEXPATH"
 
 
 @objc protocol ZYThumbnailTableViewControllerDelegate {
@@ -280,10 +280,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         cell.contentView.removeConstraint(tempConstraint)
         spreadCellHeight = size.height
-        previewCell(cell, indexPatch: indexPath)
+        previewCell(cell, indexPath: indexPath)
     }
     
-    func previewCell(cell: UITableViewCell, indexPatch: NSIndexPath) {
+    func previewCell(cell: UITableViewCell, indexPath: NSIndexPath) {
         //create previewCover
         let previewCover = UIImageView(frame: mainTableView.frame)
         //blur background
@@ -300,6 +300,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let convertRect = mainTableView.convertRect(cell.frame, toView: self.view)
         let thumbnailLocationY = CGRectGetMinY(convertRect)
         let thumbnailView = UIView(frame: CGRectMake(0, thumbnailLocationY, mainTableView.bounds.width, tableviewCellHeight))
+        //binding the indexPath
+        objc_setAssociatedObject(thumbnailView, &KEY_INDEXPATH, indexPath, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         self.thumbnailView = thumbnailView
         thumbnailView.backgroundColor = UIColor.whiteColor()
         let panGesture = UIPanGestureRecognizer(target: self, action: "panThumbnailView:")
@@ -309,7 +311,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         //can not copy object in swift, we can only create a new one with configureTableViewCellBlock
         let previewCell = configureTableViewCellBlock()
         previewCell?.selectionStyle = .None
-        updateTableViewCellBlock(cell: previewCell!, indexPath: indexPatch)
+        updateTableViewCellBlock(cell: previewCell!, indexPath: indexPath)
         
         //layout cell contentView in thumbnailView with VFL
         let contentView = previewCell!.contentView
@@ -361,7 +363,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         let thresholdValue = thumbnailViewHeight * 0.3
         if thumbnailViewCanPan {
             if gestureTranslation.y > thresholdValue {
-                layoutTopView()
+                let indexPath = objc_getAssociatedObject(gesture.view, &KEY_INDEXPATH) as! NSIndexPath
+                layoutTopView(indexPath)
                 thumbnailViewCanPan = false
             } else if gestureTranslation.y < -thresholdValue {
                 layoutBottomView()
@@ -427,9 +430,9 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    func layoutTopView() {
+    func layoutTopView(indexPath: NSIndexPath) {
         let contentView = thumbnailView.subviews.first
-        let topView = createTopExpansionViewBlock()
+        let topView = createTopExpansionViewBlock(indexPath: indexPath)
         topView.translatesAutoresizingMaskIntoConstraints = false
         thumbnailView.addSubview(topView)
         let views = ["contentView":contentView!, "topView":topView]
@@ -552,6 +555,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         free(pixelBuffer)
         
         return returnImage
+    }
+    
+    func reloadMainTableView() {
+        mainTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
