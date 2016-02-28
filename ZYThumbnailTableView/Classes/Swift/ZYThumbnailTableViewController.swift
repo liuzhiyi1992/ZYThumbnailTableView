@@ -10,13 +10,11 @@ import UIKit
 
 typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
 typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
-typealias SpreadCellAnimationBlick = (cell: UITableViewCell) -> Void
 typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView
 typealias CreateBottomExpansionViewBlock = () -> UIView
 
 
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
-let MARGIN_KEYBOARD_ADAPTATION = CGFloat(20)
 var KEY_INDEXPATH = "KEY_INDEXPATH"
 
 
@@ -30,27 +28,33 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
 
     
 //MARK: DEFINE
+    private static let TABLEVIEW_BACKGROUND_COLOR_DEFAULT = UIColor.whiteColor()
     private static let CELL_HEIGHT_DEFAULT = CGFloat(100.0)
     private static let EXPAND_THUMBNAILVIEW_AMPLITUDE_DEFAULT = CGFloat(10)
     private static let BLUR_BACKGROUND_TINT_COLOR_DEFAULT = UIColor(white: 1.0, alpha: 0.3)
+    let MARGIN_KEYBOARD_ADAPTATION = CGFloat(20)
     let TYPE_EXPANSION_VIEW_TOP = "TYPE_EXPANSION_VIEW_TOP"
     let TYPE_EXPANSION_VIEW_BOTTOM = "TYPE_EXPANSION_VIEW_BOTTOM"
     
     
 //MARK: PROPERTY
     /**
-     tableview cell height
+     tableView cell height
     */
-    var tableviewCellHeight: CGFloat = CELL_HEIGHT_DEFAULT
+    var tableViewCellHeight: CGFloat = CELL_HEIGHT_DEFAULT
     //todo数据源要不要规定成字典数组?//不需要
     /**
-     tableview dataList
+     tableView dataList
     */
-    var tableviewDataList = NSArray()
+    var tableViewDataList = NSArray()
     /**
-     your diy tableview cell ReuseIdentifier
+     your diy tableView cell ReuseIdentifier
     */
-    var tableviewCellReuseId = "diyCell"
+    var tableViewCellReuseId = "diyCell"
+    /**
+     tableView backgroundColor
+    */
+    var tableViewBackgroudColor = TABLEVIEW_BACKGROUND_COLOR_DEFAULT
     /**
      give me your inputView, I will not allow the keyboard cover him. (ZYKeyboardUtil)
     */
@@ -60,6 +64,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     private var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
     private var blurRadius: CGFloat = 4.0
     private var saturationDeltaFactor: CGFloat = 1.8
+    
+    /**
+     main tableView
+    */
     private var mainTableView: UITableView!
     /**
      the index you click to expand in tableview
@@ -128,7 +136,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "ZYThumbnailTableView"
         self.mainTableView = UITableView(frame: self.view.frame)
         
         configureKeyboardUtil()
@@ -136,17 +143,6 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         configureTableView()
         
         registerNotification()
-        
-        mainTableView.backgroundColor = UIColor.whiteColor()
-        
-        //todo 上传pod时，注释以下修改UINavigationBar style代码
-        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
-        titleView.text = "ZYThumbnailTabelView"
-        titleView.textAlignment = .Center
-        titleView.font = UIFont.systemFontOfSize(20.0);
-        //503f39
-        titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
-        self.navigationItem.titleView = titleView
     }
     
     override func viewDidLayoutSubviews() {
@@ -180,8 +176,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
                 guard let convertRect = self.keyboardAdaptiveView?.superview?.convertRect(self.keyboardAdaptiveView!.frame, toView: window) else {
                     return
                 }
-                if (CGRectGetMinY(keyboardRect) - MARGIN_KEYBOARD_ADAPTATION) < CGRectGetMaxY(convertRect) {
-                    let signedDiff = CGRectGetMinY(keyboardRect) - CGRectGetMaxY(convertRect) - MARGIN_KEYBOARD_ADAPTATION
+                if (CGRectGetMinY(keyboardRect) - self.MARGIN_KEYBOARD_ADAPTATION) < CGRectGetMaxY(convertRect) {
+                    let signedDiff = CGRectGetMinY(keyboardRect) - CGRectGetMaxY(convertRect) - self.MARGIN_KEYBOARD_ADAPTATION
                     //updateOriginY
                     let newOriginY = CGRectGetMinY(self.view.frame) + signedDiff
                     self.view.updateOriginY(newOriginY)
@@ -203,7 +199,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     func configureTableView() {
         self.view.addSubview(mainTableView)
 
-        mainTableView.backgroundColor = UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
+        mainTableView.backgroundColor = tableViewBackgroudColor
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .None
@@ -211,11 +207,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableviewDataList.count
+        return tableViewDataList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = tableviewCellReuseId
+        let identifier = tableViewCellReuseId
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if cell == nil {
             //配置cell的Block
@@ -237,11 +233,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == clickIndexPathRow {
             guard let nonNilspreadCellHeight = spreadCellHeight else {
-                return tableviewCellHeight
+                return tableViewCellHeight
             }
             return nonNilspreadCellHeight
         }
-        return tableviewCellHeight
+        return tableViewCellHeight
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -302,7 +298,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         //create thumbnailView
         let convertRect = mainTableView.convertRect(cell.frame, toView: self.view)
         let thumbnailLocationY = CGRectGetMinY(convertRect)
-        let thumbnailView = UIView(frame: CGRectMake(0, thumbnailLocationY, mainTableView.bounds.width, tableviewCellHeight))
+        let thumbnailView = UIView(frame: CGRectMake(0, thumbnailLocationY, mainTableView.bounds.width, tableViewCellHeight))
         
         //binding the indexPath
         objc_setAssociatedObject(thumbnailView, &KEY_INDEXPATH, indexPath, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

@@ -37,8 +37,8 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     
     func configureZYTableView() {
         zyThumbnailTableVC = ZYThumbnailTableViewController()
-        zyThumbnailTableVC.tableviewCellReuseId = "DIYTableViewCell"
-        zyThumbnailTableVC.tableviewCellHeight = 100.0
+        zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
+        zyThumbnailTableVC.tableViewCellHeight = 100.0
         
 
         //--------insert your diy tableview cell
@@ -49,12 +49,12 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         //模拟创建一些数据作为演示
         dataList = createDataSource()
         //--------configure your diy tableview cell datalist
-        zyThumbnailTableVC.tableviewDataList = dataList
+        zyThumbnailTableVC.tableViewDataList = dataList
         
         //--------update your cell here
         zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
-            guard let dataSource = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as? Post else {
+            guard let dataSource = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as? Post else {
                 print("ERROR: illegal tableview dataSource")
                 return
             }
@@ -63,7 +63,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         
         //--------insert your diy TopView
         zyThumbnailTableVC.createTopExpansionViewBlock = { [weak self](indexPath: NSIndexPath) -> UIView in
-            let post = self?.zyThumbnailTableVC.tableviewDataList[indexPath.row] as! Post
+            let post = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
             let topView = TopView.createView(indexPath, post: post)!
             topView.delegate = self;
             return topView
@@ -76,6 +76,18 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         zyThumbnailTableVC.createBottomExpansionViewBlock = {
             return diyBottomView
         }
+        
+        configureZYTableViewNav()
+    }
+    
+    func configureZYTableViewNav() {
+        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
+        titleView.text = "ZYThumbnailTabelView"
+        titleView.textAlignment = .Center
+        titleView.font = UIFont.systemFontOfSize(20.0);
+        //503f39
+        titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
+        zyThumbnailTableVC.navigationItem.titleView = titleView
     }
     
     @IBAction func clickEnterButton(sender: UIButton) {
@@ -84,14 +96,14 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     
     //MARK: delegate
     func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath) {
-        zyThumbnailTableVC.tableviewDataList[indexPath.row]
+//        zyThumbnailTableVC.tableViewDataList[indexPath.row]
     }
     
     func topViewDidClickFavoriteBtn(topView: TopView) {
         let indexPath = topView.indexPath
-        let post = zyThumbnailTableVC.tableviewDataList[indexPath.row] as! Post
+        let post = zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
         post.favorite = !post.favorite
-//        zyThumbnailTableVC.reloadMainTableView()
+        zyThumbnailTableVC.reloadMainTableView()
     }
     
     
