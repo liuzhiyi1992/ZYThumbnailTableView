@@ -10,8 +10,8 @@ import UIKit
 
 typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
 typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
-typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView
-typealias CreateBottomExpansionViewBlock = () -> UIView
+typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
+typealias CreateBottomExpansionViewBlock = () -> UIView?
 
 
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
@@ -119,15 +119,15 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
     lazy var createTopExpansionViewBlock: CreateTopExpansionViewBlock = {
         return {
-            assertionFailure("ERROR: You must configure the createTopExpansionViewBlock")
-            return UIView()
+            print("WARNNING: You have no configure the createTopExpansionViewBlock")
+            return nil
         }
     }()
     
     lazy var createBottomExpansionViewBlock: CreateBottomExpansionViewBlock = {
         return {
-            assertionFailure("ERROR: You must configure the createBottomExpansionViewBlock")
-            return UIView()
+            print("WARNNING: You have no configure the createBottomExpansionViewBlock")
+            return nil
         }
     }()
     
@@ -365,10 +365,8 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
             if gestureTranslation.y > thresholdValue {
                 let indexPath = objc_getAssociatedObject(gesture.view, &KEY_INDEXPATH) as! NSIndexPath
                 layoutTopView(indexPath)
-                thumbnailViewCanPan = false
             } else if gestureTranslation.y < -thresholdValue {
                 layoutBottomView()
-                thumbnailViewCanPan = false
             }
         }
         //gesture state
@@ -432,7 +430,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
     func layoutTopView(indexPath: NSIndexPath) {
         let contentView = thumbnailView.subviews.first
-        let topView = createTopExpansionViewBlock(indexPath: indexPath)
+        let nullableTopView = createTopExpansionViewBlock(indexPath: indexPath)
+        guard let topView = nullableTopView else {
+            return
+        }
+        thumbnailViewCanPan = false
         topView.translatesAutoresizingMaskIntoConstraints = false
         thumbnailView.addSubview(topView)
         let views = ["contentView":contentView!, "topView":topView]
@@ -459,7 +461,11 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     
     func layoutBottomView() {
         let contentView = thumbnailView.subviews.first
-        let bottomView = createBottomExpansionViewBlock()
+        let nullableBottomView = createBottomExpansionViewBlock()
+        guard let bottomView = nullableBottomView else {
+            return
+        }
+        thumbnailViewCanPan = false
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         thumbnailView.addSubview(bottomView)
         let views = ["contentView":contentView!, "bottomView":bottomView]

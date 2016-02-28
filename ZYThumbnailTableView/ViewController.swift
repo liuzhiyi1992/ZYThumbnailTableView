@@ -39,17 +39,16 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         zyThumbnailTableVC = ZYThumbnailTableViewController()
         zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
         zyThumbnailTableVC.tableViewCellHeight = 100.0
+        //模拟创建一些数据作为演示
+        dataList = createDataSource()
+        //--------configure your diy tableview cell datalist
+        zyThumbnailTableVC.tableViewDataList = dataList
         
 
         //--------insert your diy tableview cell
         zyThumbnailTableVC.configureTableViewCellBlock = {
             return DIYTableViewCell.createCell()
         }
-        
-        //模拟创建一些数据作为演示
-        dataList = createDataSource()
-        //--------configure your diy tableview cell datalist
-        zyThumbnailTableVC.tableViewDataList = dataList
         
         //--------update your cell here
         zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
