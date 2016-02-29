@@ -16,6 +16,8 @@ class DIYTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var favoriteMarkImageView: UIImageView!
+    @IBOutlet weak var unreadMarkImageView: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,11 +36,9 @@ class DIYTableViewCell: UITableViewCell {
         timeLabel.text = post.time
         contentLabel.text = post.content
         avatarImageView.image = UIImage(named: post.avatar) ?? UIImage(named: "avatar0")
-        if post.favorite {
-            self.favoriteMarkImageView.hidden = false
-        } else {
-            self.favoriteMarkImageView.hidden = true
-        }
+        
+        self.favoriteMarkImageView.hidden = !post.favorite
+        self.unreadMarkImageView.hidden = post.read
     }
     
 }

@@ -72,27 +72,52 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-RN-tMI">
-                                        <rect key="frame" x="9" y="11" width="8" height="8"/>
-                                        <color key="backgroundColor" red="0.65490196078431373" green="0.85490196078431369" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noread_point" translatesAutoresizingMaskIntoConstraints="NO" id="Z2W-RN-tMI">
+                                        <rect key="frame" x="11" y="14" width="6" height="6"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="8" id="ZZD-48-ZFF"/>
                                             <constraint firstAttribute="height" constant="8" id="a7e-7u-MyV"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="ZZD-48-ZFF"/>
+                                                <exclude reference="a7e-7u-MyV"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_golden" translatesAutoresizingMaskIntoConstraints="NO" id="CGE-Ko-92r">
+                                        <rect key="frame" x="10" y="30" width="8" height="8"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="6Yy-An-xoL"/>
+                                            <constraint firstAttribute="height" constant="8" id="rQo-MV-Nk5"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6Yy-An-xoL"/>
+                                                <exclude reference="rQo-MV-Nk5"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Z2W-RN-tMI" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="5" id="4Jt-EE-gXk"/>
+                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="CGE-Ko-92r" secondAttribute="trailing" constant="8" id="5Dk-u5-vzA"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="Z2W-RN-tMI" secondAttribute="trailing" constant="8" id="5FS-eI-u6P"/>
+                                    <constraint firstItem="CGE-Ko-92r" firstAttribute="centerX" secondItem="Z2W-RN-tMI" secondAttribute="centerX" id="9RO-wD-a6Q"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="centerY" secondItem="h4w-Yd-jdn" secondAttribute="centerY" id="9UV-X6-HIe"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="centerY" secondItem="S88-SG-l14" secondAttribute="centerY" id="Cab-Ww-RjF"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" constant="25" id="G6o-qW-MKE"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="bottom" secondItem="h4w-Yd-jdn" secondAttribute="bottom" id="GgP-Z4-fDt"/>
                                     <constraint firstItem="Cig-1d-S3y" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="HWO-1k-Ie4"/>
-                                    <constraint firstItem="Z2W-RN-tMI" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" constant="2" id="HiL-ix-jxq"/>
+                                    <constraint firstItem="Z2W-RN-tMI" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" constant="5" id="HiL-ix-jxq"/>
+                                    <constraint firstItem="CGE-Ko-92r" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="top" constant="25" id="Je8-na-Gl9"/>
+                                    <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="Z2W-RN-tMI" secondAttribute="trailing" constant="8" id="QZQ-Tt-hvi"/>
                                     <constraint firstAttribute="height" constant="60" id="T3O-vP-P5I"/>
                                     <constraint firstItem="S88-SG-l14" firstAttribute="top" secondItem="3iL-zc-FDH" secondAttribute="top" constant="10" id="TM0-Nq-4kv"/>
                                     <constraint firstAttribute="trailing" secondItem="S88-SG-l14" secondAttribute="trailing" constant="15" id="Wjf-7H-cZc"/>
+                                    <constraint firstItem="CGE-Ko-92r" firstAttribute="top" secondItem="Z2W-RN-tMI" secondAttribute="bottom" constant="10" id="YH2-br-fJ6"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="centerY" secondItem="3iL-zc-FDH" secondAttribute="centerY" id="YcX-Up-95f"/>
                                     <constraint firstItem="h4w-Yd-jdn" firstAttribute="leading" secondItem="3iL-zc-FDH" secondAttribute="leading" id="ZnY-3f-Gqh"/>
                                     <constraint firstItem="1oH-ag-D0t" firstAttribute="top" secondItem="h4w-Yd-jdn" secondAttribute="top" id="epd-0M-4rb"/>
@@ -107,9 +132,12 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4Jt-EE-gXk"/>
+                                        <exclude reference="5Dk-u5-vzA"/>
                                         <exclude reference="Cab-Ww-RjF"/>
+                                        <exclude reference="QZQ-Tt-hvi"/>
                                         <exclude reference="ZnY-3f-Gqh"/>
                                         <exclude reference="iSd-4e-iUO"/>
+                                        <exclude reference="Je8-na-Gl9"/>
                                         <exclude reference="9UV-X6-HIe"/>
                                         <exclude reference="HWO-1k-Ie4"/>
                                         <exclude reference="epd-0M-4rb"/>
@@ -163,10 +191,15 @@ Meaning it's now easier and faster to publish beautiful sites for you and your p
                 <outlet property="avatarImageView" destination="h4w-Yd-jdn" id="tPc-TI-dF0"/>
                 <outlet property="contentLabel" destination="KAk-QQ-ry4" id="lvw-7l-Bmw"/>
                 <outlet property="descLabel" destination="978-KI-Qs3" id="ga9-z0-Y9x"/>
-                <outlet property="favoriteMarkImageView" destination="Z2W-RN-tMI" id="wxV-O5-lH2"/>
+                <outlet property="favoriteMarkImageView" destination="CGE-Ko-92r" id="ns5-2n-0Ef"/>
                 <outlet property="nameLabel" destination="1oH-ag-D0t" id="YN2-XE-P0l"/>
                 <outlet property="timeLabel" destination="S88-SG-l14" id="muq-y2-537"/>
+                <outlet property="unreadMarkImageView" destination="Z2W-RN-tMI" id="JIv-UA-KvS"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="noread_point" width="6" height="6"/>
+        <image name="star_golden" width="8" height="8"/>
+    </resources>
 </document>

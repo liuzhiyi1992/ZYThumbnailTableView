@@ -12,14 +12,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vty-Tl-59c">
-                    <rect key="frame" x="15" y="6" width="79" height="28"/>
+                    <rect key="frame" x="15" y="12" width="99" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Mark as read">
+                    <state key="normal" title="  Mark as read" image="tick_solid">
                         <color key="titleColor" red="0.65490196078431373" green="0.85490196078431369" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="clickMarkAsReadButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="0Hc-cQ-FXF"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYx-Oa-3t5">
-                    <rect key="frame" x="127.5" y="12" width="65" height="16"/>
+                    <rect key="frame" x="137" y="12" width="65" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                     <state key="normal" title=" Favorite" image="star_hollow">
@@ -30,7 +33,7 @@
                         <action selector="clickFavoriteButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="AHN-oG-N7P"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h11-8F-6f8">
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h11-8F-6f8">
                     <rect key="frame" x="241" y="12" width="64" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
@@ -55,13 +58,14 @@
                 <constraint firstItem="XYx-Oa-3t5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NX6-hF-yyi"/>
                 <constraint firstAttribute="trailing" secondItem="wHh-VB-Ssy" secondAttribute="trailing" constant="15" id="UAE-GG-BMW"/>
                 <constraint firstAttribute="bottom" secondItem="wHh-VB-Ssy" secondAttribute="bottom" id="eSh-c1-gxO"/>
-                <constraint firstItem="XYx-Oa-3t5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wkn-vT-Ef0"/>
+                <constraint firstItem="XYx-Oa-3t5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="10" id="wkn-vT-Ef0"/>
                 <constraint firstItem="vty-Tl-59c" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xMl-Cd-mh3"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="favoriteButton" destination="XYx-Oa-3t5" id="vhb-qH-6nd"/>
+                <outlet property="readMarkingButton" destination="vty-Tl-59c" id="OxD-em-p1v"/>
             </connections>
             <point key="canvasLocation" x="208" y="171"/>
         </view>
@@ -71,5 +75,6 @@
         <image name="share_icon_normal" width="13" height="13"/>
         <image name="star_hollow" width="13" height="13"/>
         <image name="star_solid" width="13" height="13"/>
+        <image name="tick_solid" width="13" height="13"/>
     </resources>
 </document>

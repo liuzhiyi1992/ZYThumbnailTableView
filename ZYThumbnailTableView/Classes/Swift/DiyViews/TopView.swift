@@ -11,6 +11,7 @@ import UIKit
 
 @objc protocol DiyTopViewDelegate {
     optional func topViewDidClickFavoriteBtn(topView: TopView)
+    optional func topViewDidClickMarkAsReadButton(topView: TopView)
     optional func topViewDidClickShareBtn(topView: TopView)
 }
 
@@ -18,8 +19,10 @@ import UIKit
 //default  AAAAAA
 class TopView: UIView {
     
-    @IBOutlet weak var readMarkingButton: UILabel!
+    
+    @IBOutlet weak var readMarkingButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    
     
     let TAG_BUTTON_GENERAL = 10
     let TAG_BUTTON_SELECTED = 20
@@ -42,11 +45,8 @@ class TopView: UIView {
     }
     
     func configureComponents(post: Post) {
-        determineFavorite(post.favorite)
-    }
-    
-    func determineFavorite(flag: Bool) {
-        if flag {
+        //-----收藏
+        if post.favorite {
             favoriteButton.setImage(UIImage(named: "star_solid"), forState: .Normal)
             favoriteButton.setTitleColor(COLOR_SELECTED, forState: .Normal)
             favoriteButton.tag = TAG_BUTTON_SELECTED
@@ -55,10 +55,24 @@ class TopView: UIView {
             favoriteButton.setTitleColor(COLOR_NORMAL, forState: .Normal)
             favoriteButton.tag = TAG_BUTTON_GENERAL
         }
+        
+        //-----已读
+        if post.read {
+            //setimage
+            readMarkingButton.setImage(UIImage(named: "tick_solid"), forState: .Normal)
+            readMarkingButton.setTitleColor(COLOR_SELECTED, forState: .Normal)
+            readMarkingButton.setTitle(" Mark as Unread", forState: .Normal)
+            readMarkingButton.tag = TAG_BUTTON_SELECTED
+        } else {
+            //setimage
+            readMarkingButton.setImage(UIImage(named: "tick_hollow"), forState: .Normal)
+            readMarkingButton.setTitleColor(COLOR_NORMAL, forState: .Normal)
+            readMarkingButton.setTitle(" Mark as Read", forState: .Normal)
+            readMarkingButton.tag = TAG_BUTTON_GENERAL
+        }
     }
     
     @IBAction func clickFavoriteButton(sender: UIButton) {
-        
         if sender.tag == TAG_BUTTON_GENERAL {
             sender.setTitleColor(COLOR_SELECTED, forState: .Normal)
             sender.setImage(UIImage(named: "star_solid"), forState: .Normal)
@@ -77,7 +91,30 @@ class TopView: UIView {
         if let nonNilDelegate = delegate {
             nonNilDelegate.topViewDidClickFavoriteBtn?(self)
         }
+    }
+    
+    
+    @IBAction func clickMarkAsReadButton(sender: UIButton) {
+        if sender.tag == TAG_BUTTON_GENERAL {
+            sender.setTitleColor(COLOR_SELECTED, forState: .Normal)
+            sender.setTitle(" Mark as Unread", forState: .Normal)
+            sender.setImage(UIImage(named: "tick_solid"), forState: .Normal)
+            sender.tag = TAG_BUTTON_SELECTED
+        } else if sender.tag == TAG_BUTTON_SELECTED {
+            sender.setTitleColor(COLOR_NORMAL, forState: .Normal)
+            sender.setTitle(" Mark as Read", forState: .Normal)
+            sender.setImage(UIImage(named: "tick_hollow"), forState: .Normal)
+            sender.tag = TAG_BUTTON_GENERAL
+        }
         
+        //notification
+        let notification = NSNotification(name: "NOTIFY_NAME_DISMISS_PREVIEW", object: nil)
+        NSNotificationCenter.defaultCenter().performSelector("postNotification:", withObject: notification, afterDelay: 0.25)
+        
+        //delegate
+        if let nonNilDelegate = delegate {
+            nonNilDelegate.topViewDidClickMarkAsReadButton?(self)
+        }
     }
     
     
