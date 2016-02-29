@@ -165,6 +165,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "desc" : "zbien.com",
             "time" : "33 minute",
             "content": content,
+            "favorite" : false
             ])
         
         dataSource.addObject([
@@ -173,6 +174,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "desc" : "Pluto at the moment",
             "time" : "35 minute",
             "content": content,
+            "favorite" : false
             ])
         
         dataSource.addObject([
@@ -181,6 +183,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "desc" : "Waterloo, ON",
             "time" : "42 minute",
             "content": content,
+            "favorite" : false
             ])
         
         dataSource.addObject([
@@ -189,6 +192,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "desc" : "Beijing chaoyang",
             "time" : "46 minute",
             "content": content,
+            "favorite" : false
             ])
         
         //source dict to model
