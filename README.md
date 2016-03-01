@@ -10,55 +10,8 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 
 - 自由定制：看见的除了功能以外，全部视图都开放接口灵活Diy，tableViewCell，头部扩展视图(topView)，底部扩展视图(bottomView)都是自己提供。  
 
-- 使用简单：只需要把自己的tableViewCell，topView，bottomView配置给ZYThumbnailTableViewController对象。
+- 使用简单：只需要把自己的tableViewCell，topView，bottomView配置给ZYThumbnailTableViewController对象。  
 
-<br>
-##profile:  
-**Block:**  
-- ConfigureTableViewCellBlock = () -> UITableViewCell?    
-- UpdateTableViewCellBlock = (cell: UITableViewCell, -indexPath: NSIndexPath) -> Void  
-- CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView  
-- CreateBottomExpansionViewBlock = () -> UIView  
-
-**Define:**  
-- NOTIFY_NAME_DISMISS_PREVIEW   
-通知名(让展现出来的thumbnailView消失)  
-- MARGIN_KEYBOARD_ADAPTATION    
-自动处理键盘遮挡输入控件后，键盘与输入控件保持的间距（自动处理键盘遮挡事件使用[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)实现  
-- TYPE_EXPANSION_VIEW_TOP  
-处理展开抖动事件时，顶部扩展控件的标识  
-- TYPE_EXPANSION_VIEW_BOTTOM  
-处理展开抖动事件时，底部扩展控件的标识  
-
-**Property:**  
-开放：  
-- tableViewCellHeight  
-- tableViewDataList  
-- tableViewCellReuseId  
-- tableViewBackgroudColor
-- keyboardAdaptiveView  你自定义控件里如果有希望不被键盘遮挡的输入控件，赋值给他，会帮你==自动处理遮盖事件==  
-
-私有：  
-- mainTableView  
-- clickIndexPathRow  记录被点击cell的indexPath row  
-- spreadCellHeight  存储thumbnailCell展开后的真实高度  
-- cellDictionary  存储所有存活中的cell  
-- thumbnailView  缩略view
-- thumbnailViewCanPan  控制缩略view展开(扩展topView&buttomView)手势是否工作  
-- animator  UI物理引擎控制者  
-- expandAmplitude  view展开时抖动动作的振幅  
-- keyboardUtil  自动处理键盘遮挡事件工具对象[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)  
-
-
-**Delegate func:**  
-- optional func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath)
-
-
-**对外会用到的func:**  
-- dismissPreview() 
-让thumbnailView消失，在TopView,BottomView等没有zyThumbnailTableView对象的地方可以使用通知NOTIFY_NAME_DISMISS_PREVIEW    
-- reloadMainTableView() 
-重新加载tableView  
 
 <br>
 ##Usage:  
@@ -170,6 +123,55 @@ func configureZYTableViewNav() {
         zyThumbnailTableVC.navigationItem.titleView = titleView
     }
 ```  
+
+<br>
+##profile:  
+**Block:**  
+- ConfigureTableViewCellBlock = () -> UITableViewCell?    
+- UpdateTableViewCellBlock = (cell: UITableViewCell, -indexPath: NSIndexPath) -> Void  
+- CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView  
+- CreateBottomExpansionViewBlock = () -> UIView  
+
+**Define:**  
+- NOTIFY_NAME_DISMISS_PREVIEW   
+通知名(让展现出来的thumbnailView消失)  
+- MARGIN_KEYBOARD_ADAPTATION    
+自动处理键盘遮挡输入控件后，键盘与输入控件保持的间距（自动处理键盘遮挡事件使用[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)实现  
+- TYPE_EXPANSION_VIEW_TOP  
+处理展开抖动事件时，顶部扩展控件的标识  
+- TYPE_EXPANSION_VIEW_BOTTOM  
+处理展开抖动事件时，底部扩展控件的标识  
+
+**Property:**  
+开放：  
+- tableViewCellHeight  
+- tableViewDataList  
+- tableViewCellReuseId  
+- tableViewBackgroudColor
+- keyboardAdaptiveView  你自定义控件里如果有希望不被键盘遮挡的输入控件，赋值给他，会帮你==自动处理遮盖事件==  
+
+私有：  
+- mainTableView  
+- clickIndexPathRow  记录被点击cell的indexPath row  
+- spreadCellHeight  存储thumbnailCell展开后的真实高度  
+- cellDictionary  存储所有存活中的cell  
+- thumbnailView  缩略view
+- thumbnailViewCanPan  控制缩略view展开(扩展topView&buttomView)手势是否工作  
+- animator  UI物理引擎控制者  
+- expandAmplitude  view展开时抖动动作的振幅  
+- keyboardUtil  自动处理键盘遮挡事件工具对象[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)  
+
+
+**Delegate func:**  
+- optional func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath)
+
+
+**对外会用到的func:**  
+- dismissPreview() 
+让thumbnailView消失，在TopView,BottomView等没有zyThumbnailTableView对象的地方可以使用通知NOTIFY_NAME_DISMISS_PREVIEW    
+- reloadMainTableView() 
+重新加载tableView  
+
 
 <br>
 ##CocoaPods:  
