@@ -1,5 +1,5 @@
 # ZYThumbnailTableView
-a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all diy
+a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all diy  
 高度自由定制可扩展TableView, tableViewCell,topExpansionView,bottomExpansionView均提供接口自由定制，功能堪比小型阅读app
 
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)   
