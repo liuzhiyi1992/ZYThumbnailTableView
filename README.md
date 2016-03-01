@@ -21,6 +21,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 
 <br>
 ##CocoaPods:  
+未来会更新oc版
 ```
 pod 'ZYThumbnailTableView', '~> 0.2.1'
 ```  
