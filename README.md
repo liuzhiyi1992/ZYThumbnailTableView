@@ -3,6 +3,7 @@ a TableView have thumbnail cell only, and you can use gesture let it expands oth
 
 
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)   
+##Summary:  
     tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度解耦高度自由定制，每个cell其实都是一个业务的缩略view，原谅我语文不太好不懂表达，这样的缩略view下文就叫做thumbnailView，可以根据上下手势展开更多的功能视图块，这些视图块已经开放了接口，支持使用者自己diy提供创建，同时接口中带的参数基本满足使用者需要的交互，当然tableviewCell也是完全自由diy的
 
 - 工作特点：tableViewCell充当一个缩略内容的容器，初始内容展示局限于cellHeight，当cell被点击后，根据缩略view内容重新计算出完整的高度，装入另外一个容器中完整展示出来，并且可以上下拖拽扩展出上下功能视图。  
