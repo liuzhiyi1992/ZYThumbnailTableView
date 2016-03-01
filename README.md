@@ -66,7 +66,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 ```swift
 zyThumbnailTableVC = ZYThumbnailTableViewController()
 ```  
-
+<br>
 配置tableViewCell必须的参数：cell高，cell的重用标志符，tableView的数据源等
 ```swift
 zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
@@ -76,7 +76,7 @@ zyThumbnailTableVC.tableViewDataList = dataList
 zyThumbnailTableVC.tableViewBackgroudColor = UIColor.whiteColor()
 //背景颜色可不设置，默认为白色
 ```  
-
+<br>
 接下来给ZYTableView配置你自己的tableViewCell，当然除了createCell外还可以在里面进行其他额外的操作，不过这个Block只会在需要生成cell的时候被调用，而重用cell并不会
 ```swift
 //--------insert your diy tableview cell
