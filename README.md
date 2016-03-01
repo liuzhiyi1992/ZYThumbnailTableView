@@ -66,6 +66,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 ```swift
 zyThumbnailTableVC = ZYThumbnailTableViewController()
 ```  
+
 配置tableViewCell必须的参数：cell高，cell的重用标志符，tableView的数据源等
 ```swift
 zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
@@ -75,6 +76,7 @@ zyThumbnailTableVC.tableViewDataList = dataList
 zyThumbnailTableVC.tableViewBackgroudColor = UIColor.whiteColor()
 //背景颜色可不设置，默认为白色
 ```  
+
 接下来给ZYTableView配置你自己的tableViewCell，当然除了createCell外还可以在里面进行其他额外的操作，不过这个Block只会在需要生成cell的时候被调用，而重用cell并不会
 ```swift
 //--------insert your diy tableview cell
@@ -120,7 +122,7 @@ zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
 
 就这样，属于你自己的thumbnailtableView就完成了。展开，关闭，基本功能上都能使用，但是如果在topView，bottomView中有什么交互功能之类的，就要在自己的头部尾部扩展控件和自定义的tableViewCell里面完成了，ZYThumbnailTableView提供cell的```indexPath```贯通三者通讯交流。 
-
+<br>
 回看下Demo中的交互是怎样利用```indexPath```的：  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/zyTableView%E4%B8%A4%E4%B8%AA%E4%BA%A4%E4%BA%92%E6%BC%94%E7%A4%BAgif.gif)  
 
