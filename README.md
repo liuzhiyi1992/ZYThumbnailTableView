@@ -84,6 +84,7 @@ zyThumbnailTableVC.configureTableViewCellBlock = {
     return DIYTableViewCell.createCell()
 }
 ```  
+<br>
 配置cell的update方法，tableView配置每个cell必经之处，除了updateCell可以添加额外的操作。这里要注意updateCell的时候建议尽量使用zyThumbnailTableVC对象里的数据源datalist,同时要注意时刻保证VC对象里的数据源为最新，接口回调更改数据源时不要忘了对zyThumbnailTableVC.tableViewDataList的更新。
 ```swift
 zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
@@ -96,6 +97,7 @@ zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCe
     myCell?.updateCell(dataSource)
 }
 ```  
+<br>
 配置你自己的顶部扩展视图 & 底部扩展视图（expansionView）  
 - 两个Block均提供indexPath参数，只是因为我的BottomView的业务暂时不需要识别对应的是哪个cell，所以使用时把参数省略掉了。  
 - 这里还有一个对zyThumbnailTableVC.keyboardAdaptiveView的赋值，是因为我的BottomView中包含有TextField，正如上文所说，```ZYKeyboardUtil```会自动帮我处理键盘遮挡事件。(==注意==：赋值给keyboardAdaptiveView的和我往Block里送的是同一个对象)
@@ -117,7 +119,7 @@ zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
     return diyBottomView
 }
 ```  
-
+<br>
 结合[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)工作的效果:  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
 
@@ -153,6 +155,7 @@ func topViewDidClickFavoriteBtn(topView: TopView) {
     zyThumbnailTableVC.reloadMainTableView()
 }
 ```  
+<br>
 还有对于导航条样式处理的话，Demo中直接在外面对zyThumbnailTableView对象的navigationItem做处理，亦或者可以在我的源代码中让ZYThumbnailTabelViewController继承你封装过导航栏样式的父类。  
 ```swift
 func configureZYTableViewNav() {
