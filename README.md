@@ -2,8 +2,8 @@
 a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all diy
 
 
-![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)  
-tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度解耦高度自由定制，每个cell其实都是一个业务的缩略view，原谅我语文不太好不懂表达，这样的缩略view下文就叫做thumbnailView，可以根据上下手势展开更多的功能视图块，这些视图块已经开放了接口，支持使用者自己diy提供创建，同时接口中带的参数基本满足使用者需要的交互，当然tableviewCell也是完全自由diy的
+![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)   
+    tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度解耦高度自由定制，每个cell其实都是一个业务的缩略view，原谅我语文不太好不懂表达，这样的缩略view下文就叫做thumbnailView，可以根据上下手势展开更多的功能视图块，这些视图块已经开放了接口，支持使用者自己diy提供创建，同时接口中带的参数基本满足使用者需要的交互，当然tableviewCell也是完全自由diy的
 
 - 工作特点：tableViewCell充当一个缩略内容的容器，初始内容展示局限于cellHeight，当cell被点击后，根据缩略view内容重新计算出完整的高度，装入另外一个容器中完整展示出来，并且可以上下拖拽扩展出上下功能视图。  
 
@@ -11,8 +11,8 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 
 - 使用简单：只需要把自己的tableViewCell，topView，bottomView配置给ZYThumbnailTableViewController对象。
 
-
-##profile(可略过):  
+<br>
+##profile:  
 **Block:**  
 - ConfigureTableViewCellBlock = () -> UITableViewCell?    
 - UpdateTableViewCellBlock = (cell: UITableViewCell, -indexPath: NSIndexPath) -> Void  
@@ -58,7 +58,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 - reloadMainTableView() 
 重新加载tableView  
 
-
+<br>
 ##Usage:  
 ------结合[Demo](https://github.com/liuzhiyi1992/ZYThumbnailTableView)介绍使用方法：  
 创建ZYThumbnailTableViewController对象：  
@@ -114,9 +114,12 @@ zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
     return diyBottomView
 }
 ```  
+
 结合[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)工作的效果:  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
-就这样，属于你自己的thumbnailtableView就完成了。展开，关闭，基本功能上都能使用，但是如果在topView，bottomView中有什么交互功能之类的，就要在自己的头部尾部扩展控件和自定义的tableViewCell里面完成了，ZYThumbnailTableView提供cell的```indexPath```贯通三者通讯交流。  
+
+就这样，属于你自己的thumbnailtableView就完成了。展开，关闭，基本功能上都能使用，但是如果在topView，bottomView中有什么交互功能之类的，就要在自己的头部尾部扩展控件和自定义的tableViewCell里面完成了，ZYThumbnailTableView提供cell的```indexPath```贯通三者通讯交流。 
+
 回看下Demo中的交互是怎样利用```indexPath```的：  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/zyTableView%E4%B8%A4%E4%B8%AA%E4%BA%A4%E4%BA%92%E6%BC%94%E7%A4%BAgif.gif)  
 
