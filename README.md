@@ -37,6 +37,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 - tableViewCellReuseId  
 - tableViewBackgroudColor
 - keyboardAdaptiveView  你自定义控件里如果有希望不被键盘遮挡的输入控件，赋值给他，会帮你==自动处理遮盖事件==  
+
 私有：  
 - mainTableView  
 - clickIndexPathRow  记录被点击cell的indexPath row  
