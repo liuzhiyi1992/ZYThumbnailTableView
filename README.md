@@ -14,8 +14,15 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 
 
 <br>
+##CocoaPods:  
+```
+pod 'ZYThumbnailTableView', '~> 0.2.1'
+```  
+
+
+<br>
 ##Usage:  
-------结合[Demo](https://github.com/liuzhiyi1992/ZYThumbnailTableView)介绍使用方法：  
+------结合[Demo](https://github.com/liuzhiyi1992/ZYThumbnailTableView)介绍使用方法，手把手定制自己的ThumbnailTableView：  
 创建ZYThumbnailTableViewController对象：  
 ```swift
 zyThumbnailTableVC = ZYThumbnailTableViewController()
@@ -172,12 +179,6 @@ func configureZYTableViewNav() {
 - reloadMainTableView() 
 重新加载tableView  
 
-
-<br>
-##CocoaPods:  
-```
-pod 'ZYThumbnailTableView', '~> 0.2.1'
-```
 
 <br>
 ##Relation:  
