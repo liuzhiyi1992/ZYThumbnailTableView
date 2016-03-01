@@ -1,7 +1,7 @@
 # ZYThumbnailTableView  
 ![](https://img.shields.io/badge/pod-v0.2.1-blue.svg)
-![](https://img.shields.io/badge/swift-perfect-green.svg)
 ![](https://img.shields.io/badge/objc-expect-red.svg)
+![](https://img.shields.io/badge/swift-perfect-green.svg)
 ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 
