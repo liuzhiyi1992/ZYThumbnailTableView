@@ -122,8 +122,9 @@ zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
 <br>
 结合[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)工作的效果:  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
+<br>
+就这样，属于你自己的thumbnailtableView就完成了。展开，关闭，基本功能上都能使用，但是如果在topView，bottomView中有什么交互功能之类的，就要在自己的头部尾部扩展控件和自定义的tableViewCell里面完成了，ZYThumbnailTableView提供cell的```indexPath```贯通三者通讯交流。  
 
-就这样，属于你自己的thumbnailtableView就完成了。展开，关闭，基本功能上都能使用，但是如果在topView，bottomView中有什么交互功能之类的，就要在自己的头部尾部扩展控件和自定义的tableViewCell里面完成了，ZYThumbnailTableView提供cell的```indexPath```贯通三者通讯交流。 
 <br>
 回看下Demo中的交互是怎样利用```indexPath```的：  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/zyTableView%E4%B8%A4%E4%B8%AA%E4%BA%A4%E4%BA%92%E6%BC%94%E7%A4%BAgif.gif)  
@@ -169,16 +170,16 @@ func configureZYTableViewNav() {
     }
 ```  
 
-
+<br>
 ##CocoaPods:  
 ```
 pod 'ZYThumbnailTableView', '~> 0.2.1'
 ```
 
-
+<br>
 ##Relation:  
 [@liuzhiyi1992](https://github.com/liuzhiyi1992) on Github
-
+<br>
 ##License:  
 ZYThumbnailTableView is released under the MIT license. See LICENSE for details.
 
