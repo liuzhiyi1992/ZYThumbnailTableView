@@ -182,7 +182,8 @@ func configureZYTableViewNav() {
 
 <br>
 ##Relation:  
-[@liuzhiyi1992](https://github.com/liuzhiyi1992) on Github
+[@liuzhiyi1992](https://github.com/liuzhiyi1992) on Github  
+
 <br>
 ##License:  
 ZYThumbnailTableView is released under the MIT license. See LICENSE for details.  
