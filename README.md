@@ -4,8 +4,9 @@
 ![](https://img.shields.io/badge/swift-perfect-green.svg)
 ![](https://img.shields.io/badge/Supporting-iOS7.1+-orange.svg)
 ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
-![](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+![](https://img.shields.io/badge/license-MIT-brightgreen.svg)  
 
+##可展开型预览TableView，开放接口，完全自由定制
 a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all DIY  
 高度自由定制可扩展TableView, 其中tableViewCell，topExpansionView，bottomExpansionView均提供接口自由定制，功能堪比小型阅读app
 
