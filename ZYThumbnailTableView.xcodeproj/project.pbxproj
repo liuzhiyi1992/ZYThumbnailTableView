@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		480632851C7EB78800221C49 /* ZYKeyboardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 480632841C7EB78800221C49 /* ZYKeyboardUtil.m */; };
+		480B28CC1C8FE30E009389C3 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B28C61C8FE30E009389C3 /* BottomView.swift */; };
+		480B28CD1C8FE30E009389C3 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480B28C71C8FE30E009389C3 /* BottomView.xib */; };
+		480B28CE1C8FE30E009389C3 /* DIYTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B28C81C8FE30E009389C3 /* DIYTableViewCell.swift */; };
+		480B28CF1C8FE30E009389C3 /* DIYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480B28C91C8FE30E009389C3 /* DIYTableViewCell.xib */; };
+		480B28D01C8FE30E009389C3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B28CA1C8FE30E009389C3 /* TopView.swift */; };
+		480B28D11C8FE30E009389C3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480B28CB1C8FE30E009389C3 /* TopView.xib */; };
 		483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 483F0A7D1C7979950096A09A /* BlurUtil.m */; };
-		484A1D291C70B80F0046AEF4 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D221C70B80F0046AEF4 /* BottomView.swift */; };
-		484A1D2A1C70B80F0046AEF4 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D231C70B80F0046AEF4 /* BottomView.xib */; };
-		484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D241C70B80F0046AEF4 /* TopView.swift */; };
-		484A1D2C1C70B80F0046AEF4 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 484A1D251C70B80F0046AEF4 /* TopView.xib */; };
 		484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */; };
-		48F9AB831C73302500D825AB /* DIYTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9AB811C73302500D825AB /* DIYTableViewCell.swift */; };
-		48F9AB841C73302500D825AB /* DIYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F9AB821C73302500D825AB /* DIYTableViewCell.xib */; };
 		48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE17E11C68CB8D008857BE /* AppDelegate.swift */; };
 		48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE17E31C68CB8D008857BE /* ViewController.swift */; };
 		48FE17E71C68CB8D008857BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FE17E51C68CB8D008857BE /* Main.storyboard */; };
@@ -26,16 +26,16 @@
 /* Begin PBXFileReference section */
 		480632831C7EB78800221C49 /* ZYKeyboardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYKeyboardUtil.h; sourceTree = "<group>"; };
 		480632841C7EB78800221C49 /* ZYKeyboardUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYKeyboardUtil.m; sourceTree = "<group>"; };
+		480B28C61C8FE30E009389C3 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		480B28C71C8FE30E009389C3 /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
+		480B28C81C8FE30E009389C3 /* DIYTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIYTableViewCell.swift; sourceTree = "<group>"; };
+		480B28C91C8FE30E009389C3 /* DIYTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIYTableViewCell.xib; sourceTree = "<group>"; };
+		480B28CA1C8FE30E009389C3 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		480B28CB1C8FE30E009389C3 /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZYThumbnailTableView-Bridging-Header.h"; sourceTree = "<group>"; };
 		483F0A7C1C7979950096A09A /* BlurUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurUtil.h; sourceTree = "<group>"; };
 		483F0A7D1C7979950096A09A /* BlurUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurUtil.m; sourceTree = "<group>"; };
-		484A1D221C70B80F0046AEF4 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
-		484A1D231C70B80F0046AEF4 /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
-		484A1D241C70B80F0046AEF4 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
-		484A1D251C70B80F0046AEF4 /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYThumbnailTableViewController.swift; sourceTree = "<group>"; };
-		48F9AB811C73302500D825AB /* DIYTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIYTableViewCell.swift; sourceTree = "<group>"; };
-		48F9AB821C73302500D825AB /* DIYTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIYTableViewCell.xib; sourceTree = "<group>"; };
 		48FE17DE1C68CB8D008857BE /* ZYThumbnailTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYThumbnailTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48FE17E11C68CB8D008857BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48FE17E31C68CB8D008857BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +65,19 @@
 			path = ZYKeyboardUtil;
 			sourceTree = "<group>";
 		};
+		480B28C51C8FE30E009389C3 /* DiyViews */ = {
+			isa = PBXGroup;
+			children = (
+				480B28C61C8FE30E009389C3 /* BottomView.swift */,
+				480B28C71C8FE30E009389C3 /* BottomView.xib */,
+				480B28C81C8FE30E009389C3 /* DIYTableViewCell.swift */,
+				480B28C91C8FE30E009389C3 /* DIYTableViewCell.xib */,
+				480B28CA1C8FE30E009389C3 /* TopView.swift */,
+				480B28CB1C8FE30E009389C3 /* TopView.xib */,
+			);
+			path = DiyViews;
+			sourceTree = "<group>";
+		};
 		483F0A7B1C79795C0096A09A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,22 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */,
-				484A1D211C70B80F0046AEF4 /* DiyViews */,
 			);
 			path = Swift;
-			sourceTree = "<group>";
-		};
-		484A1D211C70B80F0046AEF4 /* DiyViews */ = {
-			isa = PBXGroup;
-			children = (
-				484A1D221C70B80F0046AEF4 /* BottomView.swift */,
-				484A1D231C70B80F0046AEF4 /* BottomView.xib */,
-				484A1D241C70B80F0046AEF4 /* TopView.swift */,
-				484A1D251C70B80F0046AEF4 /* TopView.xib */,
-				48F9AB811C73302500D825AB /* DIYTableViewCell.swift */,
-				48F9AB821C73302500D825AB /* DIYTableViewCell.xib */,
-			);
-			path = DiyViews;
 			sourceTree = "<group>";
 		};
 		48FE17D51C68CB8D008857BE = {
@@ -116,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				48FE18011C68D0C3008857BE /* Classes */,
+				480B28C51C8FE30E009389C3 /* DiyViews */,
 				48FE17E31C68CB8D008857BE /* ViewController.swift */,
 				48FE17E11C68CB8D008857BE /* AppDelegate.swift */,
 				48FE17E51C68CB8D008857BE /* Main.storyboard */,
@@ -195,12 +195,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480B28D11C8FE30E009389C3 /* TopView.xib in Resources */,
 				48FE17EC1C68CB8D008857BE /* LaunchScreen.storyboard in Resources */,
-				484A1D2C1C70B80F0046AEF4 /* TopView.xib in Resources */,
 				48FE17E91C68CB8D008857BE /* Assets.xcassets in Resources */,
+				480B28CF1C8FE30E009389C3 /* DIYTableViewCell.xib in Resources */,
 				48FE17E71C68CB8D008857BE /* Main.storyboard in Resources */,
-				48F9AB841C73302500D825AB /* DIYTableViewCell.xib in Resources */,
-				484A1D2A1C70B80F0046AEF4 /* BottomView.xib in Resources */,
+				480B28CD1C8FE30E009389C3 /* BottomView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,13 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48F9AB831C73302500D825AB /* DIYTableViewCell.swift in Sources */,
-				484A1D291C70B80F0046AEF4 /* BottomView.swift in Sources */,
 				48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */,
+				480B28CE1C8FE30E009389C3 /* DIYTableViewCell.swift in Sources */,
 				484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */,
-				484A1D2B1C70B80F0046AEF4 /* TopView.swift in Sources */,
 				480632851C7EB78800221C49 /* ZYKeyboardUtil.m in Sources */,
+				480B28CC1C8FE30E009389C3 /* BottomView.swift in Sources */,
 				483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */,
+				480B28D01C8FE30E009389C3 /* TopView.swift in Sources */,
 				48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
