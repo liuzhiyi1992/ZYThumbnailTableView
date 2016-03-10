@@ -1,5 +1,5 @@
 # ZYThumbnailTableView  
-![](https://img.shields.io/badge/pod-v0.2.1-blue.svg)
+![](https://img.shields.io/badge/pod-v0.5.1-blue.svg)
 ![](https://img.shields.io/badge/objc-expect-red.svg)
 ![](https://img.shields.io/badge/swift-perfect-green.svg)
 ![](https://img.shields.io/badge/Supporting-iOS7.1+-orange.svg)
@@ -25,7 +25,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 ##CocoaPods:  
 未来会更新oc版
 ```
-pod 'ZYThumbnailTableView', '~> 0.2.1'
+pod 'ZYThumbnailTableView', '~> 0.5.1'
 ```  
 
 
