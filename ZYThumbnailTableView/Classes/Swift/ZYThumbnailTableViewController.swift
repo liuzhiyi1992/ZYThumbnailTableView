@@ -170,19 +170,10 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
         }
         
         keyboardUtil = ZYKeyboardUtil()
-        keyboardUtil.setAnimateWhenKeyboardAppearBlock { [unowned self](appearPostIndex, keyboardRect, keyboardHeight, keyboardHeightIncrement) -> Void in
-            
-            if let window = UIApplication.sharedApplication().keyWindow {
-                guard let convertRect = self.keyboardAdaptiveView?.superview?.convertRect(self.keyboardAdaptiveView!.frame, toView: window) else {
-                    return
-                }
-                if (CGRectGetMinY(keyboardRect) - self.MARGIN_KEYBOARD_ADAPTATION) < CGRectGetMaxY(convertRect) {
-                    let signedDiff = CGRectGetMinY(keyboardRect) - CGRectGetMaxY(convertRect) - self.MARGIN_KEYBOARD_ADAPTATION
-                    //updateOriginY
-                    let newOriginY = CGRectGetMinY(self.view.frame) + signedDiff
-                    self.view.updateOriginY(newOriginY)
-                }
-            }
+        //全自动键盘遮盖处理
+        keyboardUtil.setAnimateWhenKeyboardAppearAutomaticAnimBlock { [unowned self]() -> [NSObject : AnyObject]! in
+            let viewDict: [NSObject : AnyObject] = [ADAPTIVE_VIEW:self.keyboardAdaptiveView!, CONTROLLER_VIEW:self.view]
+            return viewDict
         }
         
         keyboardUtil.setAnimateWhenKeyboardDisappearBlock { [unowned self] _ -> Void in
