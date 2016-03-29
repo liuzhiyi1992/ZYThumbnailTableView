@@ -85,7 +85,7 @@ class TopView: UIView {
         
         //notification
         let notification = NSNotification(name: "NOTIFY_NAME_DISMISS_PREVIEW", object: nil)
-        NSNotificationCenter.defaultCenter().performSelector("postNotification:", withObject: notification, afterDelay: 0.25)
+        NSNotificationCenter.defaultCenter().performSelector(#selector(NSNotificationCenter.postNotification(_:)), withObject: notification, afterDelay: 0.25)
         
         //delegate
         if let nonNilDelegate = delegate {
@@ -109,7 +109,7 @@ class TopView: UIView {
         
         //notification
         let notification = NSNotification(name: "NOTIFY_NAME_DISMISS_PREVIEW", object: nil)
-        NSNotificationCenter.defaultCenter().performSelector("postNotification:", withObject: notification, afterDelay: 0.25)
+        NSNotificationCenter.defaultCenter().performSelector(#selector(NSNotificationCenter.postNotification(_:)), withObject: notification, afterDelay: 0.25)
         
         //delegate
         if let nonNilDelegate = delegate {
