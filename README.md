@@ -1,4 +1,6 @@
 # ZYThumbnailTableView  
+####可展开型预览TableView，开放接口，完全自由定制
+####An expandable preview TableView, custom-made all the modules completely with open API you can.
 ![](https://img.shields.io/badge/pod-v0.5.1-blue.svg)
 ![](https://img.shields.io/badge/objc-expect-red.svg)
 ![](https://img.shields.io/badge/swift-perfect-green.svg)
@@ -6,7 +8,7 @@
 ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![](https://img.shields.io/badge/license-MIT-brightgreen.svg)  
 <br>
-###可展开型预览TableView，开放接口，完全自由定制
+
 a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all DIY  
 高度自由定制可扩展TableView, 其中tableViewCell，topExpansionView，bottomExpansionView均提供接口自由定制，功能堪比小型阅读app
 
