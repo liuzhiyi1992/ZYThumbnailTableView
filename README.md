@@ -1,6 +1,6 @@
 # ZYThumbnailTableView  
-####可展开型预览TableView，开放接口，完全自由定制
-####An expandable preview TableView, custom-made all the modules completely with open API you can.
+#####可展开型预览TableView，开放接口，完全自由定制
+#####An expandable preview TableView, custom-made all the modules completely with open API you can.
 ![](https://img.shields.io/badge/pod-v0.5.1-blue.svg)
 ![](https://img.shields.io/badge/objc-expect-red.svg)
 ![](https://img.shields.io/badge/swift-perfect-green.svg)
