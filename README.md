@@ -13,6 +13,141 @@ a TableView have thumbnail cell only, and you can use gesture let it expands oth
 高度自由定制可扩展TableView, 其中tableViewCell，topExpansionView，bottomExpansionView均提供接口自由定制，功能堪比小型阅读app
 
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)   
+
+#英文文档
+##Summary  
+With TableView skin, the powerful heart similar to a small app, decoupling arms and legs and support highly customized there are. Every cell as a whole with the vocational work. you can expand more extension views through slide up&down with your finger, and that the cell and extension views you can custom-made completely with open API, which carry the param can meet your needs to make interaction.  
+
+- Working characteristics: TableViewCell act as a container with thumbnail content, the contents of the initial display be limited to 'cellHeight',it will recalculate the complete height when you click it, and you can slide to expand the extension views after that.   
+- Custom-made: tableViewCell, topExtensionView, bottomExtensionView all you can provide to thumbnailTableView.  
+- Simple to use: alloc a ZYThumbnailTableViewController object, assign your tableViewCell, ExtensionView(top or bottom), and your can uses the indexPath that the param with the assign Block to come true your demand.  
+
+##CocoaPods  
+```
+pod 'ZYThumbnailTableView', '~> 0.5.1'
+```  
+
+##Usage  
+You can consult the Demo to complete your own thumbnailTableView. Have fun.  
+create a ZYThumbnailTableView object:  
+```swift
+zyThumbnailTableVC = ZYThumbnailTableViewController()
+```  
+<br>
+configure the necessary param of tableViewCell, cellHeight, reused identification, dataSource...   
+```swift
+zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
+zyThumbnailTableVC.tableViewCellHeight = 100.0
+zyThumbnailTableVC.tableViewDataList = dataList
+//you can modify the cellHeight & dataList all the place dynamically
+//you must ensure the dataSource newest, dont forget to update it in network callback .
+zyThumbnailTableVC.tableViewBackgroudColor = UIColor.whiteColor()
+//default backgroundColor is white.
+```    
+<br>
+and then configure your tableViewCell  
+```swift
+//--------insert your custom tableview cell
+zyThumbnailTableVC.configureTableViewCellBlock = {
+    return DIYTableViewCell.createCell()
+}
+```  
+<br>
+configure the update cell function   
+
+```swift
+zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
+    let myCell = cell as? DIYTableViewCell
+    //Post is my datasource model
+    guard let dataSource = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as? Post else {
+        print("ERROR: illegal tableview dataSource")
+        return
+    }
+    myCell?.updateCell(dataSource)
+}
+```    
+
+<br>
+configure your expansionView(Top or bottom)  
+- Both two Block provides the 'indexPath' as a param, i omit the param indexPath in Demo because of it`s no used to my BottomView.  
+- it is an assignment about zyThumbnailTableVC.keyboardAdaptiveView, becouse of there are a TestField in my BottomView, assign to keyboardAdaptiveView, [ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil) will handle the event that keyboard cover the TextField.(Take care: there are the same object i assign to zyThumbnailTableVC.keyboardAdaptiveView and deliver to the createBottomExpansionViewBlock)    
+
+```swift
+//--------insert your diy TopView
+zyThumbnailTableVC.createTopExpansionViewBlock = { [weak self](indexPath: NSIndexPath) -> UIView in
+    //Post是我的数据model
+    let post = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
+    let topView = TopView.createView(indexPath, post: post)!
+    topView.delegate = self;
+    return topView
+}
+
+let diyBottomView = BottomView.createView()!
+//--------let your inputView component not cover by keyboard automatically (animated) (ZYKeyboardUtil)
+zyThumbnailTableVC.keyboardAdaptiveView = diyBottomView.inputTextField;
+//--------insert your diy BottomView
+zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
+    return diyBottomView
+}
+```  
+
+<br>
+The effects working with [ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)  
+
+![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
+
+<br>
+In general, your own thumbnailtableView is completed, you can produce the Interaction in your custom view file, and use 'indexPath' to connected them.  
+
+how i used 'indexPath' in my Interaction  
+![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/zyTableView%E4%B8%A4%E4%B8%AA%E4%BA%A4%E4%BA%92%E6%BC%94%E7%A4%BAgif.gif)   
+
+- mark as read, the green dot disappear.
+- mark as favorite, show a star on the edge of the cell.   
+
+I save the param 'indexpath' in my topView object while createView, if the favorite button be clicked, i modify the dataSource according to ‘indexPath' with delegate, and ```zyThumbnailTableVC.reloadMainTableView()```.  
+```swift
+//TopView---------------------------------------------
+class func createView(indexPath: NSIndexPath, post: Post) -> TopView? {
+    //--------do something
+    view.indexPath = indexPath
+    return view
+}
+
+//touch up inside---------------------------------------------
+@IBAction func clickFavoriteButton(sender: UIButton) {
+    //--------do something
+    delegate.topViewDidClickFavoriteBtn?(self)
+}
+
+//delegate func    in   ViewController---------------------------
+func topViewDidClickFavoriteBtn(topView: TopView) {
+    let indexPath = topView.indexPath
+    //Post is my dataSource model
+    let post = zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
+    post.favorite = !post.favorite
+    zyThumbnailTableVC.reloadMainTableView()
+}
+```  
+<br>
+For NavigationBar, i deal with navigationItem of zyThumbnailTableView object in ViewController in Demo, eh, maybe you can let ZYThumbnailTabelViewController inherit your communal Controller in the my Source Code.   
+```swift
+//------------ViewController------------
+func configureZYTableViewNav() {
+        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
+        titleView.text = "ZYThumbnailTabelView"
+        titleView.textAlignment = .Center
+        titleView.font = UIFont.systemFontOfSize(20.0);
+        //503f39
+        titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
+        zyThumbnailTableVC.navigationItem.titleView = titleView
+    }
+```  
+
+<br>
+<br>
+
+#For Chinese
 ##Summary:  
 tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度解耦高度自由定制，每个cell其实都是一个业务的缩略view，原谅我语文不太好不懂表达，这样的缩略view下文就叫做thumbnailView，可以根据上下手势展开更多的功能视图块，这些视图块已经开放了接口，支持使用者自己diy提供创建，同时接口中带的参数基本满足使用者需要的交互，当然tableviewCell也是完全自由diy的
 
