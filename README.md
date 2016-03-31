@@ -13,9 +13,10 @@
 a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all DIY  
 高度自由定制可扩展TableView, 其中tableViewCell，topExpansionView，bottomExpansionView均提供接口自由定制，功能堪比小型阅读app
 
-![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)     
-如果已更新Xcode7.3，请下载分支Xcode7.3-Handle使用即可。  
-If you have updated Xcode 7.3 yet, please use the branch named 'Xcode7.3-Handle'.  
+![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E6%BC%94%E7%A4%BAgif2.gif)  
+<br>
+#####If you have updated Xcode 7.3 yet, please use the branch named 'Xcode7.3-Handle'.   
+#####如果已更新Xcode7.3，请下载分支Xcode7.3-Handle使用即可。  
 
 
 #英文文档
