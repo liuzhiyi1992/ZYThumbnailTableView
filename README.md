@@ -9,6 +9,7 @@
 ![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![](https://img.shields.io/badge/license-MIT-brightgreen.svg)  
 <br>
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 a TableView have thumbnail cell only, and you can use gesture let it expands other expansionView, all DIY  
 高度自由定制可扩展TableView, 其中tableViewCell，topExpansionView，bottomExpansionView均提供接口自由定制，功能堪比小型阅读app
@@ -31,6 +32,22 @@ With TableView skin, the powerful heart similar to a small app, decoupling arms 
 ```
 pod 'ZYThumbnailTableView', '~> 0.5.1'
 ```  
+### Setting up with Carthage
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate [ZYThumbnailTableView](https://github.com/liuzhiyi1992/ZYThumbnailTableView/tree/Xcode7.3-Handle) into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "Dershowitz011/ZYYT"
+```
+
 
 ##Usage  
 You can consult the Demo to complete your own thumbnailTableView. Have fun.  
