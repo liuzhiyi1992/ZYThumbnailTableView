@@ -123,7 +123,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
     
     
 //MARK: FUNCTION
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         self.mainTableView = UITableView(frame: self.view.frame)
@@ -153,7 +153,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         self.mainTableView.updateHeight(self.view.frame.height)
     }
     
@@ -205,11 +205,11 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         mainTableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewDataList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = tableViewCellReuseId
         var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if cell == nil {
@@ -229,7 +229,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         return nonNilcell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == clickIndexPathRow {
             guard let nonNilspreadCellHeight = spreadCellHeight else {
                 return tableViewCellHeight
@@ -239,7 +239,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         return tableViewCellHeight
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = cellDictionary.valueForKey("\(indexPath.row)") as? UITableViewCell
         if let nonNilSelectedCell = selectedCell {
             //计算高度
@@ -524,7 +524,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         mainTableView.reloadData()
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
