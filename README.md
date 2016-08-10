@@ -2,7 +2,7 @@
 #####可展开型预览TableView，开放接口，完全自由定制
 #####An expandable preview TableView, custom-made all the modules completely with open API you can.  
 ######Design by [Sergii Ganushchak](https://dribbble.com/shots/2261899-3D-Touch-Preview)  
-![](https://img.shields.io/badge/pod-v0.5.1-blue.svg)
+![](https://img.shields.io/badge/pod-v1.0.1-blue.svg)
 ![](https://img.shields.io/badge/objc-expect-red.svg)
 ![](https://img.shields.io/badge/swift-perfect-green.svg)
 ![](https://img.shields.io/badge/Supporting-iOS7.1+-orange.svg)
@@ -30,7 +30,7 @@ With TableView skin, the powerful heart similar to a small app, decoupling arms 
 
 ##CocoaPods  
 ```
-pod 'ZYThumbnailTableView', '~> 0.5.1'
+pod 'ZYThumbnailTableView', '~> 1.0.1'
 ```  
 ### Setting up with Carthage
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
