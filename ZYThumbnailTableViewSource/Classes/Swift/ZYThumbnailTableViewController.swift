@@ -24,7 +24,7 @@ var KEY_INDEXPATH = "KEY_INDEXPATH"
 
 
 
-class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     //MARK: DEFINE
