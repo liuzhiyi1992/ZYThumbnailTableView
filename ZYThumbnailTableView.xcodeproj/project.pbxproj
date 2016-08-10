@@ -7,42 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		480632851C7EB78800221C49 /* ZYKeyboardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 480632841C7EB78800221C49 /* ZYKeyboardUtil.m */; };
-		480B28CC1C8FE30E009389C3 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B28C61C8FE30E009389C3 /* BottomView.swift */; };
-		480B28CD1C8FE30E009389C3 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480B28C71C8FE30E009389C3 /* BottomView.xib */; };
-		480B28CE1C8FE30E009389C3 /* DIYTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B28C81C8FE30E009389C3 /* DIYTableViewCell.swift */; };
-		480B28CF1C8FE30E009389C3 /* DIYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480B28C91C8FE30E009389C3 /* DIYTableViewCell.xib */; };
-		480B28D01C8FE30E009389C3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480B28CA1C8FE30E009389C3 /* TopView.swift */; };
-		480B28D11C8FE30E009389C3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480B28CB1C8FE30E009389C3 /* TopView.xib */; };
-		483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 483F0A7D1C7979950096A09A /* BlurUtil.m */; };
-		484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */; };
-		48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE17E11C68CB8D008857BE /* AppDelegate.swift */; };
-		48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE17E31C68CB8D008857BE /* ViewController.swift */; };
-		48FE17E71C68CB8D008857BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FE17E51C68CB8D008857BE /* Main.storyboard */; };
-		48FE17E91C68CB8D008857BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FE17E81C68CB8D008857BE /* Assets.xcassets */; };
-		48FE17EC1C68CB8D008857BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FE17EA1C68CB8D008857BE /* LaunchScreen.storyboard */; };
+		48FC163D1D5B8D8A002C8DA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC16241D5B8D8A002C8DA5 /* AppDelegate.swift */; };
+		48FC163E1D5B8D8A002C8DA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FC16251D5B8D8A002C8DA5 /* Assets.xcassets */; };
+		48FC163F1D5B8D8A002C8DA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FC16261D5B8D8A002C8DA5 /* LaunchScreen.storyboard */; };
+		48FC16401D5B8D8A002C8DA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FC16281D5B8D8A002C8DA5 /* Main.storyboard */; };
+		48FC16411D5B8D8A002C8DA5 /* ZYThumbnailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC162C1D5B8D8A002C8DA5 /* ZYThumbnailTableViewController.swift */; };
+		48FC16421D5B8D8A002C8DA5 /* BlurUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC162F1D5B8D8A002C8DA5 /* BlurUtil.m */; };
+		48FC16431D5B8D8A002C8DA5 /* ZYKeyboardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 48FC16321D5B8D8A002C8DA5 /* ZYKeyboardUtil.m */; };
+		48FC16441D5B8D8A002C8DA5 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC16351D5B8D8A002C8DA5 /* BottomView.swift */; };
+		48FC16451D5B8D8A002C8DA5 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC16361D5B8D8A002C8DA5 /* BottomView.xib */; };
+		48FC16461D5B8D8A002C8DA5 /* DIYTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC16371D5B8D8A002C8DA5 /* DIYTableViewCell.swift */; };
+		48FC16471D5B8D8A002C8DA5 /* DIYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC16381D5B8D8A002C8DA5 /* DIYTableViewCell.xib */; };
+		48FC16481D5B8D8A002C8DA5 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC16391D5B8D8A002C8DA5 /* TopView.swift */; };
+		48FC16491D5B8D8A002C8DA5 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FC163A1D5B8D8A002C8DA5 /* TopView.xib */; };
+		48FC164A1D5B8D8A002C8DA5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48FC163B1D5B8D8A002C8DA5 /* Info.plist */; };
+		48FC164B1D5B8D8A002C8DA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FC163C1D5B8D8A002C8DA5 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		480632831C7EB78800221C49 /* ZYKeyboardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYKeyboardUtil.h; sourceTree = "<group>"; };
-		480632841C7EB78800221C49 /* ZYKeyboardUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYKeyboardUtil.m; sourceTree = "<group>"; };
-		480B28C61C8FE30E009389C3 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
-		480B28C71C8FE30E009389C3 /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
-		480B28C81C8FE30E009389C3 /* DIYTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIYTableViewCell.swift; sourceTree = "<group>"; };
-		480B28C91C8FE30E009389C3 /* DIYTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIYTableViewCell.xib; sourceTree = "<group>"; };
-		480B28CA1C8FE30E009389C3 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
-		480B28CB1C8FE30E009389C3 /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
-		4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZYThumbnailTableView-Bridging-Header.h"; sourceTree = "<group>"; };
-		483F0A7C1C7979950096A09A /* BlurUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurUtil.h; sourceTree = "<group>"; };
-		483F0A7D1C7979950096A09A /* BlurUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurUtil.m; sourceTree = "<group>"; };
-		484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYThumbnailTableViewController.swift; sourceTree = "<group>"; };
+		48FC16241D5B8D8A002C8DA5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		48FC16251D5B8D8A002C8DA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48FC16271D5B8D8A002C8DA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		48FC16291D5B8D8A002C8DA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48FC162C1D5B8D8A002C8DA5 /* ZYThumbnailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYThumbnailTableViewController.swift; sourceTree = "<group>"; };
+		48FC162E1D5B8D8A002C8DA5 /* BlurUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurUtil.h; sourceTree = "<group>"; };
+		48FC162F1D5B8D8A002C8DA5 /* BlurUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurUtil.m; sourceTree = "<group>"; };
+		48FC16311D5B8D8A002C8DA5 /* ZYKeyboardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYKeyboardUtil.h; sourceTree = "<group>"; };
+		48FC16321D5B8D8A002C8DA5 /* ZYKeyboardUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYKeyboardUtil.m; sourceTree = "<group>"; };
+		48FC16331D5B8D8A002C8DA5 /* ZYThumbnailTableView-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZYThumbnailTableView-Bridging-Header.h"; sourceTree = "<group>"; };
+		48FC16351D5B8D8A002C8DA5 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		48FC16361D5B8D8A002C8DA5 /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
+		48FC16371D5B8D8A002C8DA5 /* DIYTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIYTableViewCell.swift; sourceTree = "<group>"; };
+		48FC16381D5B8D8A002C8DA5 /* DIYTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DIYTableViewCell.xib; sourceTree = "<group>"; };
+		48FC16391D5B8D8A002C8DA5 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		48FC163A1D5B8D8A002C8DA5 /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
+		48FC163B1D5B8D8A002C8DA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48FC163C1D5B8D8A002C8DA5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48FE17DE1C68CB8D008857BE /* ZYThumbnailTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYThumbnailTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		48FE17E11C68CB8D008857BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		48FE17E31C68CB8D008857BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		48FE17E61C68CB8D008857BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		48FE17E81C68CB8D008857BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		48FE17EB1C68CB8D008857BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		48FE17ED1C68CB8D008857BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,49 +57,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		480632821C7EB75900221C49 /* ZYKeyboardUtil */ = {
+		48FC16231D5B8D8A002C8DA5 /* ZYThumbnailTableViewSource */ = {
 			isa = PBXGroup;
 			children = (
-				480632831C7EB78800221C49 /* ZYKeyboardUtil.h */,
-				480632841C7EB78800221C49 /* ZYKeyboardUtil.m */,
+				48FC16241D5B8D8A002C8DA5 /* AppDelegate.swift */,
+				48FC16251D5B8D8A002C8DA5 /* Assets.xcassets */,
+				48FC16261D5B8D8A002C8DA5 /* LaunchScreen.storyboard */,
+				48FC16281D5B8D8A002C8DA5 /* Main.storyboard */,
+				48FC162A1D5B8D8A002C8DA5 /* Classes */,
+				48FC16341D5B8D8A002C8DA5 /* DiyViews */,
+				48FC163B1D5B8D8A002C8DA5 /* Info.plist */,
+				48FC163C1D5B8D8A002C8DA5 /* ViewController.swift */,
 			);
-			path = ZYKeyboardUtil;
+			path = ZYThumbnailTableViewSource;
 			sourceTree = "<group>";
 		};
-		480B28C51C8FE30E009389C3 /* DiyViews */ = {
+		48FC162A1D5B8D8A002C8DA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				480B28C61C8FE30E009389C3 /* BottomView.swift */,
-				480B28C71C8FE30E009389C3 /* BottomView.xib */,
-				480B28C81C8FE30E009389C3 /* DIYTableViewCell.swift */,
-				480B28C91C8FE30E009389C3 /* DIYTableViewCell.xib */,
-				480B28CA1C8FE30E009389C3 /* TopView.swift */,
-				480B28CB1C8FE30E009389C3 /* TopView.xib */,
+				48FC162B1D5B8D8A002C8DA5 /* Swift */,
+				48FC162D1D5B8D8A002C8DA5 /* Util */,
+				48FC16301D5B8D8A002C8DA5 /* ZYKeyboardUtil */,
+				48FC16331D5B8D8A002C8DA5 /* ZYThumbnailTableView-Bridging-Header.h */,
 			);
-			path = DiyViews;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		483F0A7B1C79795C0096A09A /* Util */ = {
+		48FC162B1D5B8D8A002C8DA5 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				483F0A7C1C7979950096A09A /* BlurUtil.h */,
-				483F0A7D1C7979950096A09A /* BlurUtil.m */,
+				48FC162C1D5B8D8A002C8DA5 /* ZYThumbnailTableViewController.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		48FC162D1D5B8D8A002C8DA5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				48FC162E1D5B8D8A002C8DA5 /* BlurUtil.h */,
+				48FC162F1D5B8D8A002C8DA5 /* BlurUtil.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		484A1D201C70B80F0046AEF4 /* Swift */ = {
+		48FC16301D5B8D8A002C8DA5 /* ZYKeyboardUtil */ = {
 			isa = PBXGroup;
 			children = (
-				484A1D281C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift */,
+				48FC16311D5B8D8A002C8DA5 /* ZYKeyboardUtil.h */,
+				48FC16321D5B8D8A002C8DA5 /* ZYKeyboardUtil.m */,
 			);
-			path = Swift;
+			path = ZYKeyboardUtil;
+			sourceTree = "<group>";
+		};
+		48FC16341D5B8D8A002C8DA5 /* DiyViews */ = {
+			isa = PBXGroup;
+			children = (
+				48FC16351D5B8D8A002C8DA5 /* BottomView.swift */,
+				48FC16361D5B8D8A002C8DA5 /* BottomView.xib */,
+				48FC16371D5B8D8A002C8DA5 /* DIYTableViewCell.swift */,
+				48FC16381D5B8D8A002C8DA5 /* DIYTableViewCell.xib */,
+				48FC16391D5B8D8A002C8DA5 /* TopView.swift */,
+				48FC163A1D5B8D8A002C8DA5 /* TopView.xib */,
+			);
+			path = DiyViews;
 			sourceTree = "<group>";
 		};
 		48FE17D51C68CB8D008857BE = {
 			isa = PBXGroup;
 			children = (
-				48FE17E01C68CB8D008857BE /* ZYThumbnailTableView */,
+				48FC16231D5B8D8A002C8DA5 /* ZYThumbnailTableViewSource */,
 				48FE17DF1C68CB8D008857BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,32 +136,6 @@
 				48FE17DE1C68CB8D008857BE /* ZYThumbnailTableView.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		48FE17E01C68CB8D008857BE /* ZYThumbnailTableView */ = {
-			isa = PBXGroup;
-			children = (
-				48FE18011C68D0C3008857BE /* Classes */,
-				480B28C51C8FE30E009389C3 /* DiyViews */,
-				48FE17E31C68CB8D008857BE /* ViewController.swift */,
-				48FE17E11C68CB8D008857BE /* AppDelegate.swift */,
-				48FE17E51C68CB8D008857BE /* Main.storyboard */,
-				48FE17E81C68CB8D008857BE /* Assets.xcassets */,
-				48FE17EA1C68CB8D008857BE /* LaunchScreen.storyboard */,
-				48FE17ED1C68CB8D008857BE /* Info.plist */,
-			);
-			path = ZYThumbnailTableView;
-			sourceTree = "<group>";
-		};
-		48FE18011C68D0C3008857BE /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				484A1D201C70B80F0046AEF4 /* Swift */,
-				483F0A7B1C79795C0096A09A /* Util */,
-				480632821C7EB75900221C49 /* ZYKeyboardUtil */,
-				4815D7991C6A34D000E0FC20 /* ZYThumbnailTableView-Bridging-Header.h */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,12 +196,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480B28D11C8FE30E009389C3 /* TopView.xib in Resources */,
-				48FE17EC1C68CB8D008857BE /* LaunchScreen.storyboard in Resources */,
-				48FE17E91C68CB8D008857BE /* Assets.xcassets in Resources */,
-				480B28CF1C8FE30E009389C3 /* DIYTableViewCell.xib in Resources */,
-				48FE17E71C68CB8D008857BE /* Main.storyboard in Resources */,
-				480B28CD1C8FE30E009389C3 /* BottomView.xib in Resources */,
+				48FC16491D5B8D8A002C8DA5 /* TopView.xib in Resources */,
+				48FC16401D5B8D8A002C8DA5 /* Main.storyboard in Resources */,
+				48FC163E1D5B8D8A002C8DA5 /* Assets.xcassets in Resources */,
+				48FC16471D5B8D8A002C8DA5 /* DIYTableViewCell.xib in Resources */,
+				48FC163F1D5B8D8A002C8DA5 /* LaunchScreen.storyboard in Resources */,
+				48FC16451D5B8D8A002C8DA5 /* BottomView.xib in Resources */,
+				48FC164A1D5B8D8A002C8DA5 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,34 +213,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48FE17E41C68CB8D008857BE /* ViewController.swift in Sources */,
-				480B28CE1C8FE30E009389C3 /* DIYTableViewCell.swift in Sources */,
-				484A1D2F1C70B80F0046AEF4 /* ZYThumbnailTableViewController.swift in Sources */,
-				480632851C7EB78800221C49 /* ZYKeyboardUtil.m in Sources */,
-				480B28CC1C8FE30E009389C3 /* BottomView.swift in Sources */,
-				483F0A7E1C7979950096A09A /* BlurUtil.m in Sources */,
-				480B28D01C8FE30E009389C3 /* TopView.swift in Sources */,
-				48FE17E21C68CB8D008857BE /* AppDelegate.swift in Sources */,
+				48FC16481D5B8D8A002C8DA5 /* TopView.swift in Sources */,
+				48FC16461D5B8D8A002C8DA5 /* DIYTableViewCell.swift in Sources */,
+				48FC163D1D5B8D8A002C8DA5 /* AppDelegate.swift in Sources */,
+				48FC16431D5B8D8A002C8DA5 /* ZYKeyboardUtil.m in Sources */,
+				48FC16411D5B8D8A002C8DA5 /* ZYThumbnailTableViewController.swift in Sources */,
+				48FC16421D5B8D8A002C8DA5 /* BlurUtil.m in Sources */,
+				48FC164B1D5B8D8A002C8DA5 /* ViewController.swift in Sources */,
+				48FC16441D5B8D8A002C8DA5 /* BottomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		48FE17E51C68CB8D008857BE /* Main.storyboard */ = {
+		48FC16261D5B8D8A002C8DA5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				48FE17E61C68CB8D008857BE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		48FE17EA1C68CB8D008857BE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				48FE17EB1C68CB8D008857BE /* Base */,
+				48FC16271D5B8D8A002C8DA5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		48FC16281D5B8D8A002C8DA5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48FC16291D5B8D8A002C8DA5 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -330,12 +332,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = ZYThumbnailTableView/Info.plist;
+				INFOPLIST_FILE = ZYThumbnailTableViewSource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lzy.ZYThumbnailTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ZYThumbnailTableView/Classes/ZYThumbnailTableView-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZYThumbnailTableViewSource/Classes/ZYThumbnailTableView-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -345,12 +347,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = ZYThumbnailTableView/Info.plist;
+				INFOPLIST_FILE = ZYThumbnailTableViewSource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lzy.ZYThumbnailTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ZYThumbnailTableView/Classes/ZYThumbnailTableView-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZYThumbnailTableViewSource/Classes/ZYThumbnailTableView-Bridging-Header.h";
 			};
 			name = Release;
 		};
