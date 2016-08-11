@@ -97,7 +97,6 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     
     //MARK: delegate
     func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath) {
-//        zyThumbnailTableVC.tableViewDataList[indexPath.row]
     }
     
     func topViewDidClickFavoriteBtn(topView: TopView) {
@@ -115,9 +114,8 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         zyThumbnailTableVC.reloadMainTableView()
     }
     
-    
     //此方法作用是虚拟出tableview数据源，不用理会
-    //MARK: -Virtual DataSource
+    //MARK: -Virtual DataSource for Demo
     func createDataSource() -> NSArray {
         let dataSource = NSMutableArray()
         let content = "The lesson of the story, I suggested, was that in some strange sense we are more whole when we are missing something. \n    The man who has everything is in some ways a poor man. \n    He will never know what it feels like to yearn, to hope, to nourish his soul with the dream of something better. \n    He will never know the experience of having someone who loves him give him something he has always wanted or never had."
@@ -227,7 +225,6 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             post.read = handleDict["read"] as? Bool ?? false
             postArray.addObject(post)
         }
-        
         return NSArray(array: postArray)
     }
     
@@ -245,10 +242,8 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
 
 
 
-
 //MARK: Model class
 class Post: NSObject {
-    
     var name: String = ""
     var avatar: String = ""
     var desc: String = ""

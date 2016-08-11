@@ -424,7 +424,6 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
                 self.animator.removeAllBehaviors()
                 self.animator.addBehavior(snapBehavior)
             })
-            
         }
     }
     
@@ -517,7 +516,6 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         return path
     }
     
-    
     public func reloadMainTableView() {
         mainTableView.reloadData()
     }
@@ -526,7 +524,6 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
 
@@ -565,10 +562,8 @@ extension UIView {
             //ios7以下
             self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         }
-        
         var screenShotImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        //可以选择压缩下图片
         let imageData = UIImageJPEGRepresentation(screenShotImage, 0.7)
         screenShotImage = UIImage(data: imageData!)
         return screenShotImage
