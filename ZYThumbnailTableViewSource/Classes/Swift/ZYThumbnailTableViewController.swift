@@ -8,10 +8,10 @@
 
 import UIKit
 
-typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
-typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
-typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
-typealias CreateBottomExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
+public typealias ConfigureTableViewCellBlock = () -> UITableViewCell?
+public typealias UpdateTableViewCellBlock = (cell: UITableViewCell, indexPath: NSIndexPath) -> Void
+public typealias CreateTopExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
+public typealias CreateBottomExpansionViewBlock = (indexPath: NSIndexPath) -> UIView?
 
 
 let NOTIFY_NAME_DISMISS_PREVIEW = "NOTIFY_NAME_DISMISS_PREVIEW"
@@ -41,24 +41,23 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
     /**
      tableView cell height
      */
-    var tableViewCellHeight: CGFloat = CELL_HEIGHT_DEFAULT
-    //todo数据源要不要规定成字典数组?//不需要
+    public var tableViewCellHeight: CGFloat = CELL_HEIGHT_DEFAULT
     /**
      tableView dataList
      */
-    var tableViewDataList = NSArray()
+    public var tableViewDataList = NSArray()
     /**
      your diy tableView cell ReuseIdentifier
      */
-    var tableViewCellReuseId = "diyCell"
+    public var tableViewCellReuseId = "diyCell"
     /**
      tableView backgroundColor
      */
-    var tableViewBackgroudColor = TABLEVIEW_BACKGROUND_COLOR_DEFAULT
+    public var tableViewBackgroudColor = TABLEVIEW_BACKGROUND_COLOR_DEFAULT
     /**
      give me your inputView, I will not allow the keyboard cover him. (ZYKeyboardUtil)
      */
-    var keyboardAdaptiveView: UIView?
+    public var keyboardAdaptiveView: UIView?
     
     
     private var blurTintColor = BLUR_BACKGROUND_TINT_COLOR_DEFAULT
@@ -104,22 +103,22 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
     
     
     //MARK: BLOCKS
-    lazy var configureTableViewCellBlock: ConfigureTableViewCellBlock = {
+    public lazy var configureTableViewCellBlock: ConfigureTableViewCellBlock = {
         return {
             assertionFailure("ERROR:  -  You must configure the configureTableViewCellBlock")
             return nil;
         }
     }()
     
-    lazy var updateTableViewCellBlock: UpdateTableViewCellBlock = {
+    public lazy var updateTableViewCellBlock: UpdateTableViewCellBlock = {
         return {
             print("ERROR: You must configure the updateTableViewCellBlock")
         }
     }()
     
-    var createTopExpansionViewBlock: CreateTopExpansionViewBlock!
+    public var createTopExpansionViewBlock: CreateTopExpansionViewBlock!
     
-    var createBottomExpansionViewBlock: CreateBottomExpansionViewBlock!
+    public var createBottomExpansionViewBlock: CreateBottomExpansionViewBlock!
     
     
 //MARK: FUNCTION
@@ -162,7 +161,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
     }
     
     func registerNotification() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ZYThumbnailTableViewController.dismissPreview), name: NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismissPreview), name: NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
     }
     
     func resignNotification() {
@@ -345,7 +344,6 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
     func dismissPreview() {
         clickIndexPathRow = nil
         //todo 这里给开发者一个选择，要动画过程还是立即完成
-        //        mainTableView.reloadData()
         mainTableView.beginUpdates()
         mainTableView.endUpdates()
         UIView.animateWithDuration(0.301992, animations: { () -> Void in
@@ -383,7 +381,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         }
     }
     
-    func shock(view: UIView, type: String) {
+    private func shock(view: UIView, type: String) {
         //超出tableview范围不shock
         var expandShockAmplitude: CGFloat!
         let convertRect = view.superview?.convertRect(view.frame, toView: self.view)
@@ -430,7 +428,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         }
     }
     
-    func layoutTopView(indexPath: NSIndexPath) {
+    private func layoutTopView(indexPath: NSIndexPath) {
         let contentView = thumbnailView.subviews.first
         let nullableTopView = createTopExpansionViewBlock(indexPath: indexPath)
         guard let topView = nullableTopView else {
@@ -461,7 +459,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         shock(thumbnailView, type: TYPE_EXPANSION_VIEW_TOP)
     }
     
-    func layoutBottomView(indexPath: NSIndexPath) {
+    private func layoutBottomView(indexPath: NSIndexPath) {
         let contentView = thumbnailView.subviews.first
         let nullableBottomView = createBottomExpansionViewBlock(indexPath: indexPath)
         guard let bottomView = nullableBottomView else {
@@ -495,7 +493,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         shock(thumbnailView, type: TYPE_EXPANSION_VIEW_BOTTOM)
     }
     
-    func handleOverFlowScreen(handleView: UIView) {
+    private func handleOverFlowScreen(handleView: UIView) {
         let keyWindow = UIApplication.sharedApplication().keyWindow
         let convertRect = handleView.superview?.convertRect(handleView.frame, toView: keyWindow)
         guard let nonNilConvertRect = convertRect else {
@@ -510,7 +508,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
         }
     }
     
-    func movingPath(startPoint: CGPoint, keyPoints: CGPoint...) -> UIBezierPath {
+    private func movingPath(startPoint: CGPoint, keyPoints: CGPoint...) -> UIBezierPath {
         let path = UIBezierPath()
         path.moveToPoint(startPoint)
         for point in keyPoints {
@@ -520,7 +518,7 @@ public class ZYThumbnailTableViewController: UIViewController, UITableViewDataSo
     }
     
     
-    func reloadMainTableView() {
+    public func reloadMainTableView() {
         mainTableView.reloadData()
     }
     

@@ -43,7 +43,6 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         dataList = createDataSource()
         //--------configure your diy tableview cell datalist
         zyThumbnailTableVC.tableViewDataList = dataList
-        
 
         //--------insert your diy tableview cell
         zyThumbnailTableVC.configureTableViewCellBlock = {
