@@ -13,7 +13,7 @@ class BottomView: UIView {
     @IBOutlet weak var inputTextField: UITextField!
     
     class func createView() -> BottomView? {
-        let view = NSBundle.mainBundle().loadNibNamed("BottomView", owner: nil, options: nil).first as? BottomView
+        let view = Bundle.main.loadNibNamed("BottomView", owner: nil, options: nil)?.first as? BottomView
         guard view != nil else {
             assertionFailure("ERROR: can not load nib \"BottomView\"")
             return nil
@@ -21,8 +21,8 @@ class BottomView: UIView {
         return view
     }
     
-    @IBAction func clickDismissButton(sender: AnyObject) {
+    @IBAction func clickDismissButton(_ sender: AnyObject) {
 //        self.inputTextField.resignFirstResponder()
-        NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_NAME_DISMISS_PREVIEW), object: nil)
     }
 }

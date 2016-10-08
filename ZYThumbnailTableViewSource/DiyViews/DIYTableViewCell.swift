@@ -25,20 +25,20 @@ class DIYTableViewCell: UITableViewCell {
     }
     
     class func createCell() -> DIYTableViewCell {
-        let cell = NSBundle.mainBundle().loadNibNamed("DIYTableViewCell", owner: nil, options: nil).first as? DIYTableViewCell
+        let cell = Bundle.main.loadNibNamed("DIYTableViewCell", owner: nil, options: nil)?.first as? DIYTableViewCell
         assert(cell != nil, "can not load nib named DIYTableViewCell")
         return cell!
     }
     
-    func updateCell(post: Post) {
+    func updateCell(_ post: Post) {
         nameLabel.text = post.name
         descLabel.text = post.desc
         timeLabel.text = post.time
         contentLabel.text = post.content
         avatarImageView.image = UIImage(named: post.avatar) ?? UIImage(named: "avatar0")
         
-        self.favoriteMarkImageView.hidden = !post.favorite
-        self.unreadMarkImageView.hidden = post.read
+        self.favoriteMarkImageView.isHidden = !post.favorite
+        self.unreadMarkImageView.isHidden = post.read
     }
     
 }

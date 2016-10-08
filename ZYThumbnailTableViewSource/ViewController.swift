@@ -21,17 +21,17 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     }
     
     func configureNav() {
-        self.navigationController?.navigationBar.translucent = false
-        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
+        self.navigationController?.navigationBar.isTranslucent = false
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
         titleView.text = "ZYThumbnailTabelView"
-        titleView.textAlignment = .Center
-        titleView.font = UIFont.systemFontOfSize(20.0);
+        titleView.textAlignment = .center
+        titleView.font = UIFont.systemFont(ofSize: 20.0);
         //503f39
         titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
         self.navigationItem.titleView = titleView
         
-        let barItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = UIColor.grayColor()
+        let barItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.done, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.gray
         self.navigationItem.backBarButtonItem = barItem
     }
     
@@ -50,10 +50,10 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         }
         
         //--------update your cell here
-        zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
+        zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: IndexPath) -> Void in
             let myCell = cell as? DIYTableViewCell
             //Post is my data model
-            guard let dataSource = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as? Post else {
+            guard let dataSource = self?.zyThumbnailTableVC.tableViewDataList[(indexPath as NSIndexPath).row] as? Post else {
                 print("ERROR: illegal tableview dataSource")
                 return
             }
@@ -61,9 +61,9 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         }
         
         //--------insert your diy TopView
-        zyThumbnailTableVC.createTopExpansionViewBlock = { [weak self](indexPath: NSIndexPath) -> UIView in
+        zyThumbnailTableVC.createTopExpansionViewBlock = { [weak self](indexPath: IndexPath) -> UIView in
             //Post is my data model
-            let post = self?.zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
+            let post = self?.zyThumbnailTableVC.tableViewDataList[(indexPath as NSIndexPath).row] as! Post
             let topView = TopView.createView(indexPath, post: post)!
             topView.delegate = self;
             return topView
@@ -82,34 +82,34 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
     }
     
     func configureZYTableViewNav() {
-        let titleView = UILabel(frame: CGRectMake(0, 0, 200, 44))
+        let titleView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
         titleView.text = "ZYThumbnailTabelView"
-        titleView.textAlignment = .Center
-        titleView.font = UIFont.systemFontOfSize(20.0);
+        titleView.textAlignment = .center
+        titleView.font = UIFont.systemFont(ofSize: 20.0);
         //503f39
         titleView.textColor = UIColor(red: 63/255.0, green: 47/255.0, blue: 41/255.0, alpha: 1.0)
         zyThumbnailTableVC.navigationItem.titleView = titleView
     }
     
-    @IBAction func clickEnterButton(sender: UIButton) {
+    @IBAction func clickEnterButton(_ sender: UIButton) {
         self.navigationController?.pushViewController(zyThumbnailTableVC, animated: true)
     }
     
     //MARK: delegate
-    func zyTableViewDidSelectRow(tableView: UITableView, indexPath: NSIndexPath) {
+    func zyTableViewDidSelectRow(_ tableView: UITableView, indexPath: IndexPath) {
     }
     
-    func topViewDidClickFavoriteBtn(topView: TopView) {
+    func topViewDidClickFavoriteBtn(_ topView: TopView) {
         let indexPath = topView.indexPath
         //Post is my data model
-        let post = zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
+        let post = zyThumbnailTableVC.tableViewDataList[(indexPath?.row)!] as! Post
         post.favorite = !post.favorite
         zyThumbnailTableVC.reloadMainTableView()
     }
     
-    func topViewDidClickMarkAsReadButton(topView: TopView) {
+    func topViewDidClickMarkAsReadButton(_ topView: TopView) {
         let indexPath = topView.indexPath
-        let post = zyThumbnailTableVC.tableViewDataList[indexPath.row] as! Post
+        let post = zyThumbnailTableVC.tableViewDataList[(indexPath?.row)!] as! Post
         post.read = !post.read
         zyThumbnailTableVC.reloadMainTableView()
     }
@@ -120,7 +120,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
         let dataSource = NSMutableArray()
         let content = "The lesson of the story, I suggested, was that in some strange sense we are more whole when we are missing something. \n    The man who has everything is in some ways a poor man. \n    He will never know what it feels like to yearn, to hope, to nourish his soul with the dream of something better. \n    He will never know the experience of having someone who loves him give him something he has always wanted or never had."
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "NURGIO",
             "avatar" : "avatar0",
             "desc" : "Beijing,Chaoyang District",
@@ -130,7 +130,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : true
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Cheers",
             "avatar" : "avatar1",
             "desc" : "Joined on Dec 18, 2014",
@@ -140,7 +140,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : true
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Adleys",
             "avatar" : "avatar2",
             "desc" : "The Technology Studio",
@@ -150,7 +150,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : false
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Coder_CYX",
             "avatar" : "avatar3",
             "desc" : "Joined on Mar 26, 2013",
@@ -160,7 +160,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : false
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Coleman",
             "avatar" : "avatar4",
             "desc" : "Zhejiang University of Technology",
@@ -170,7 +170,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : false
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Moguilay",
             "avatar" : "avatar5",
             "desc" : "zbien.com",
@@ -180,7 +180,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : false
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Dikey",
             "avatar" : "avatar6",
             "desc" : "Pluto at the moment",
@@ -190,7 +190,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : false
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "fmricky",
             "avatar" : "avatar7",
             "desc" : "Waterloo, ON",
@@ -200,7 +200,7 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             "read" : false
             ])
         
-        dataSource.addObject([
+        dataSource.add([
             "name" : "Robert Waggott",
             "avatar" : "avatar8",
             "desc" : "Beijing chaoyang",
@@ -223,13 +223,13 @@ class ViewController: UIViewController, ZYThumbnailTableViewControllerDelegate, 
             post.avatar = validStringForKeyFromDictionary("avatar", dict: handleDict)
             post.favorite = handleDict["favorite"] as? Bool ?? false
             post.read = handleDict["read"] as? Bool ?? false
-            postArray.addObject(post)
+            postArray.add(post)
         }
         return NSArray(array: postArray)
     }
     
     
-    func validStringForKeyFromDictionary(key: String, dict: Dictionary<String, AnyObject>) -> String {
+    func validStringForKeyFromDictionary(_ key: String, dict: Dictionary<String, AnyObject>) -> String {
         return dict[key] as? String ?? "illegal"
     }
     
