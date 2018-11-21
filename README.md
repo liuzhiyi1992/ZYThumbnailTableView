@@ -55,7 +55,8 @@ create a ZYThumbnailTableView object:
 ```swift
 zyThumbnailTableVC = ZYThumbnailTableViewController()
 ```  
-<br>
+
+
 configure the necessary param of tableViewCell, cellHeight, reused identification, dataSource...   
 ```swift
 zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
@@ -66,7 +67,8 @@ zyThumbnailTableVC.tableViewDataList = dataList
 zyThumbnailTableVC.tableViewBackgroudColor = UIColor.whiteColor()
 //default backgroundColor is white.
 ```    
-<br>
+
+
 and then configure your tableViewCell  
 ```swift
 //--------insert your custom tableview cell
@@ -74,7 +76,8 @@ zyThumbnailTableVC.configureTableViewCellBlock = {
     return DIYTableViewCell.createCell()
 }
 ```  
-<br>
+
+
 configure the update cell function   
 
 ```swift
@@ -113,12 +116,14 @@ zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
 }
 ```  
 
-<br>
+
+
 The effects working with [ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)  
 
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
 
-<br>
+
+
 In general, your own thumbnailtableView is completed, you can produce the Interaction in your custom view file, and use 'indexPath' to connected them.  
 
 how i used 'indexPath' in my Interaction  
@@ -151,7 +156,8 @@ func topViewDidClickFavoriteBtn(topView: TopView) {
     zyThumbnailTableVC.reloadMainTableView()
 }
 ```  
-<br>
+
+
 For NavigationBar, i deal with navigationItem of zyThumbnailTableView object in ViewController in Demo, eh, maybe you can let ZYThumbnailTabelViewController inherit your communal Controller in the my Source Code.   
 ```swift
 //------------ViewController------------
@@ -180,7 +186,7 @@ tableView的皮肤，类似一个小型app的强大交互心脏，四肢高度�
 - 使用简单：只需要把自己的tableViewCell，topView，bottomView配置给ZYThumbnailTableViewController对象。  
 
 
-<br>
+
 ##CocoaPods:  
 未来会更新oc版
 ```
@@ -188,14 +194,14 @@ pod 'ZYThumbnailTableView', '~> 1.0.5'
 ```  
 
 
-<br>
+
 ##Usage:  
 ------结合[Demo](https://github.com/liuzhiyi1992/ZYThumbnailTableView)介绍使用方法，手把手定制自己的ThumbnailTableView：  
 创建ZYThumbnailTableViewController对象：  
 ```swift
 zyThumbnailTableVC = ZYThumbnailTableViewController()
 ```  
-<br>
+
 配置tableViewCell必须的参数：cell高，cell的重用标志符，tableView的数据源等
 ```swift
 zyThumbnailTableVC.tableViewCellReuseId = "DIYTableViewCell"
@@ -213,7 +219,8 @@ zyThumbnailTableVC.configureTableViewCellBlock = {
     return DIYTableViewCell.createCell()
 }
 ```  
-<br>
+
+
 配置cell的update方法，tableView配置每个cell必经之处，除了updateCell可以添加额外的操作。这里要注意updateCell的时候建议尽量使用zyThumbnailTableVC对象里的数据源datalist,同时要注意时刻保证VC对象里的数据源为最新，接口回调更改数据源时不要忘了对zyThumbnailTableVC.tableViewDataList的更新。
 ```swift
 zyThumbnailTableVC.updateTableViewCellBlock =  { [weak self](cell: UITableViewCell, indexPath: NSIndexPath) -> Void in
@@ -248,15 +255,18 @@ zyThumbnailTableVC.createBottomExpansionViewBlock = { _ in
     return diyBottomView
 }
 ```  
-<br>
+
+
 结合[ZYKeyboardUtil](https://github.com/liuzhiyi1992/ZYKeyboardUtil)工作的效果:  
 
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/ZYThumbnailTableView%E9%85%8D%E5%90%88ZYKeyboardUtil%E6%BC%94%E7%A4%BAgif.gif)  
 
-<br>
+
+
 就这样，属于你自己的thumbnailtableView就完成了。展开，关闭，基本功能上都能使用，但是如果在topView，bottomView中有什么交互功能之类的，就要在自己的头部尾部扩展控件和自定义的tableViewCell里面完成了，ZYThumbnailTableView提供cell的```indexPath```贯通三者通讯交流。  
 
-<br>
+
+
 回看下Demo中的交互是怎样利用```indexPath```的：  
 ![](https://raw.githubusercontent.com/liuzhiyi1992/MyStore/master/ZYThumbnailTableView/zyTableView%E4%B8%A4%E4%B8%AA%E4%BA%A4%E4%BA%92%E6%BC%94%E7%A4%BAgif.gif)  
 
@@ -287,7 +297,8 @@ func topViewDidClickFavoriteBtn(topView: TopView) {
     zyThumbnailTableVC.reloadMainTableView()
 }
 ```  
-<br>
+
+
 还有对于导航条样式处理的话，Demo中直接在外面对zyThumbnailTableView对象的navigationItem做处理，亦或者可以在我的源代码中让ZYThumbnailTabelViewController继承你封装过导航栏样式的父类。  
 ```swift
 func configureZYTableViewNav() {
@@ -350,13 +361,14 @@ func configureZYTableViewNav() {
 重新加载tableView  
 
 
-<br>
+
 ##Relation:  
 [@liuzhiyi1992](https://github.com/liuzhiyi1992) on Github  
 
-<br>
+
+
 ##License:  
 ZYThumbnailTableView is released under the MIT license. See LICENSE for details.  
 
-<br>
+
 有什么问题可以在github中提交issues交流，谢谢
